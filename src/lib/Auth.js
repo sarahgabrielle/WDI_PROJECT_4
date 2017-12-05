@@ -14,7 +14,7 @@ class Auth {
     return payload.exp > now;
   }
 
-  static logout() {
+  static removeToken() {
     localStorage.removeItem('token');
   }
 
