@@ -1,7 +1,6 @@
 /* globals api, expect, describe, beforeEach, afterEach, it */
-require('../spec_helper');
-
-const User = require('../../models/user');
+require('../helper');
+const User = require('../../../models/user');
 
 describe('Users', function() {
 

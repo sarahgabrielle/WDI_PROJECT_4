@@ -25,7 +25,7 @@ class Login extends React.Component {
       .post('/api/login', this.state.user)
       .then(res => {
         Auth.setToken(res.data.token);
-        this.props.history.push('/');
+        this.props.history.push('/users/:id'); //this needs to get the ID if the person that has just logged in sso would it need back ticks and reference the id as something like this `/api/users/${this.props.match.params.id}`???
       })
       .catch(err => console.log(err));
   }

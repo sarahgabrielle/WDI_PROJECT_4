@@ -26,6 +26,8 @@ app.get('/*', (req, res) => res.sendFile(`${__dirname}/public/index.html`));
 
 app.use(errorHandler);
 
-app.listen(port, () => console.log(`Express is listening on port ${port}`));
-
-module.exports = app;
+if (env !== 'test') {
+  app.listen(port, () => console.log(`Express is up and running on port ${port}`));
+} else {
+  module.exports = app;
+}
