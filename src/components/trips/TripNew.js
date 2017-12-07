@@ -3,7 +3,7 @@ import Axios from 'axios';
 
 import TripForm from './TripForm';
 
-class TripEdit extends React.Component {
+class TripNew extends React.Component {
   state = {
     trip: {
       country: '',
@@ -12,28 +12,23 @@ class TripEdit extends React.Component {
       address: '',
       createdBy: '',
       users: []
-    }
+    },
+    errors: {}
   };
-
-  componentDidMount() {
-    Axios
-      .get(`/api/trips/${this.props.match.params.id}`)
-      .then(res => this.setState({ trip: res.data }))
-      .catch(err => console.log(err));
-  }
 
   handleChange = ({ target: { name, value } }) => {
     const trip = Object.assign({}, this.state.trip, { [name]: value });
-    this.setState({ trip });
+    const errors = Object.assign({}, this.state.errors, { [name]: '' });
+    this.setState({ trip, errors });
   }
 
   handleSubmit = (e) => {
     e.preventDefault();
 
     Axios
-      .put(`/api/trips/${this.props.match.params.id}`, this.state.trip)
-      .then(res => this.props.history.push(`/trips/${res.data.id}`))
-      .catch(err => console.log(err));
+      .post('/api/trips', this.state.trip)
+      .then(() => this.props.history.push('/trips/:id'))
+      .catch(err => this.setState({ errors: err.response.data.errors }));
   }
 
   render() {
@@ -43,9 +38,10 @@ class TripEdit extends React.Component {
         handleSubmit={this.handleSubmit}
         handleChange={this.handleChange}
         trip={this.state.trip}
+        errors={this.state.errors}
       />
     );
   }
 }
 
-export default TripEdit;
+export default TripNew;

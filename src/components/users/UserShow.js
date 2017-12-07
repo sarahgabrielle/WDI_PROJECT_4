@@ -11,10 +11,8 @@ class UserShow extends React.Component {
   }
 
   componentWillMount(){
-
     Axios
       .get(`/api/users/${this.props.match.params.id}`)
-      // .then(res => console.log(res.data))
       .then(res => this.setState({ user: res.data }))
       .catch(err => console.error(err));
   }
@@ -44,7 +42,7 @@ class UserShow extends React.Component {
               to={`/users/${this.state.user.id}/edit`}
               className="main-button"
             >
-              Edit
+              <button>Edit</button>
             </Link>
           }
           {' '}
@@ -60,15 +58,18 @@ class UserShow extends React.Component {
         <hr />
         <div className="col-lg-4">
           <h5>UPCOMING TRIPS</h5>
+          <Link to="/trips/new" className="main-button">
+            <button>Add Trip</button>
+          </Link>
           {this.state.user.upcomingTrips && <div>
             { this.state.user.upcomingTrips.map(trip => {
               return(
                 <div key={trip.id} className="">
-                  {/* <Link to={`/trips/${trip.id}`}> */}
-                  <p>{trip.country}</p>
-                  <p>{trip.resort}</p>
-                  <p>{moment(trip.date).format('ddd Do YYYY')}</p>
-                  {/* </Link> */}
+                  <Link to={`/trips/${trip.id}`}>
+                    <p>{trip.country}</p>
+                    <p>{trip.resort}</p>
+                    <p>{moment(trip.date).format('ddd Do YYYY')}</p>
+                  </Link>
                 </div>
               );
             })}
@@ -81,11 +82,11 @@ class UserShow extends React.Component {
             { this.state.user.pastTrips.map(trip => {
               return(
                 <div key={trip.id} className="">
-                  {/* <Link to={`/trips/${trip.id}`}> */}
-                  <p>{trip.country}</p>
-                  <p>{trip.resort}</p>
-                  <p>{moment(trip.date).format('ddd Do YYYY')}</p>
-                  {/* </Link> */}
+                  <Link to={`/trips/${trip.id}`}>
+                    <p>{trip.country}</p>
+                    <p>{trip.resort}</p>
+                    <p>{moment(trip.date).format('ddd Do YYYY')}</p>
+                  </Link>
                 </div>
               );
             })}

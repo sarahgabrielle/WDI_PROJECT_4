@@ -16,4 +16,11 @@ const tripSchema = new mongoose.Schema({
   timestamps: true
 });
 
+// tripSchema
+//   .virtual('users', {
+//     ref: 'User',
+//     localField: '_id',
+//     foreignField: 'trips'
+//   });
+
 module.exports = mongoose.model('Trip', tripSchema);

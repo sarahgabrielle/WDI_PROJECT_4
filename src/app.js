@@ -6,6 +6,7 @@ import Navbar from './components/utility/Navbar';
 import Login from './components/auth/Login';
 import Register from './components/auth/Register';
 import UserRoutes from './components/users/UserRoutes';
+import TripRoutes from './components/trips/TripRoutes';
 
 import 'bootstrap-css-only';
 import 'react-bootstrap';
@@ -24,6 +25,7 @@ class App extends React.Component {
             <Route path="/login" component={Login} />
             <Route path="/register" component={Register} />
             <UserRoutes />
+            <TripRoutes />
           </main>
         </div>
       </Router>

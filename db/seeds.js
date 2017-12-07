@@ -35,7 +35,7 @@ mongoose.connect(dbURI, { useMongoClient: true })
         resort: 'Chamonix',
         date: '2018-02-14',
         address: 'Rue Montagne',
-        createdBy: users[0],
+        createdBy: users[1],
         users: users
       }]);
   })
