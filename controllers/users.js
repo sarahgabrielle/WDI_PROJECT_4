@@ -32,9 +32,14 @@ function userShow(req, res, next) {
 
 function userUpdate(req, res, next) {
   User
-    .findByIdAndUpdate(req.params.id, req.body, { new: true })
+    .findById(req.params.id)
     .exec()
-    .then(user => res.status(200).json(user))
+    .then((user) => {
+      if(!user) return res.notFound();
+      user = Object.assign(user, req.body);
+      return user.save();
+    })
+    .then(user => res.json(user))
     .catch(next);
 }
 
@@ -42,7 +47,11 @@ function userDelete(req, res, next) {
   User
     .findByIdAndRemove(req.params.id)
     .exec()
-    .then(() => res.sendStatus(204).end())
+    .then((user) => {
+      if(!user) return res.notFound();
+      return user.remove();
+    })
+    .then(() => res.status(204).end())
     .catch(next);
 }
 

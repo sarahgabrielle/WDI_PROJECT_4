@@ -32,9 +32,6 @@ userSchema.pre('validate', function checkPassword(next) {
       this.invalidate('passwordConfirmation', 'Passwords do not match');
     }
   }
-  // if(!this._passwordConfirmation || this._passwordConfirmation !== this.password) {
-  //   this.invalidate('passwordConfirmation', 'Passwords do not match');
-  // }
   next();
 });
 
