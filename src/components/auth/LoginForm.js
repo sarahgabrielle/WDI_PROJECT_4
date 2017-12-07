@@ -6,20 +6,10 @@ const LoginForm = ({ handleChange, handleSubmit, user }) => {
       <div className="form-group">
         <input
           type="text"
-          name="username"
-          placeholder="username"
+          name="identifier"
+          placeholder="Username or Email address"
           onChange={handleChange}
-          value={user.username}
-          className="form-control"
-        />
-      </div>
-      <div className="form-group">
-        <input
-          type="text"
-          name="email"
-          placeholder="Email"
-          onChange={handleChange}
-          value={user.email}
+          value={user.identifier}
           className="form-control"
         />
       </div>

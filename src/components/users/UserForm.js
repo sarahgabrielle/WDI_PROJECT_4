@@ -3,9 +3,6 @@ import React from 'react';
 function UserForm({ handleSubmit, handleChange, user }) {
   return (
     <div className="row">
-      {/* <div className="page-banner col-md-12">
-      </div> */}
-      <h1>OI</h1>
       <form onSubmit={handleSubmit} className="col-md-6">
         <div className="form-group">
           <label htmlFor="image">Image</label>

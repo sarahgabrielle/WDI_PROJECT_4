@@ -14,24 +14,28 @@ class Register extends React.Component {
       email: '',
       password: '',
       passwordConfirmation: ''
-    }
+    },
+    errors: {}
   };
 
   handleChange = ({ target: { name, value }}) => {
     const user = Object.assign({}, this.state.user, { [name]: value });
-    this.setState({ user });
+    const errors = Object.assign({}, this.state.errors, { [name]: '' });
+    this.setState({ user, errors });
   }
 
   handleSubmit = (e) => {
     e.preventDefault();
+    console.log(this.state.user);
 
     Axios
       .post('/api/register', this.state.user)
       .then(res => {
         Auth.setToken(res.data.token);
-        this.props.history.push('/');
+        const { userId } = Auth.getPayload();
+        this.props.history.push(`/users/${userId}`);
       })
-      .catch(err => console.log(err));
+      .catch(err => this.setState({ errors: err.response.data.errors}));
   }
 
   render() {
@@ -40,6 +44,7 @@ class Register extends React.Component {
         user={this.state.user}
         handleChange={this.handleChange}
         handleSubmit={this.handleSubmit}
+        errors={this.state.errors}
       />
     );
   }

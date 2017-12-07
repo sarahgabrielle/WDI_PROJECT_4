@@ -3,22 +3,45 @@ const bcrypt = require('bcrypt');
 // const validator = require('validator');
 const messageSchema = require('./message');
 const documentSchema = require('./document');
+const moment = require('moment');
 
 const userSchema = new mongoose.Schema({
   image: { type: String },
-  username: { type: String, required: true },
-  firstName: { type: String, required: true },
-  lastName: { type: String, required: true },
-  email: { type: String, required: true, unique: true },
-  password: { type: String, required: true },
+  username: { type: String, required: 'Please enter a username', unique: true },
+  firstName: { type: String, required: 'Please enter your first name' },
+  lastName: { type: String, required: 'Please enter your last name' },
+  email: { type: String, required: 'Please enter your email address', unique: true },
+  password: { type: String, required: 'Please enter your password' },
   documents: [documentSchema],
-  messages: [messageSchema],
-  trips: [{ type: mongoose.Schema.ObjectId, ref: 'Trip' }]
-},
-{
+  messages: [messageSchema]
+}, {
   timestamps: true
+});
+
+userSchema
+  .virtual('trips', {
+    ref: 'Trip',
+    localField: '_id',
+    foreignField: 'users'
+  });
+
+function getTrips(time) {
+  return function() {
+    const today = moment().startOf('day');
+    if(!this.trips) return null;
+    return this.trips.filter(trip => {
+      return (time === 'past') ? trip.date < today : trip.date > today;
+    });
+  };
 }
-);
+
+userSchema
+  .virtual('pastTrips')
+  .get(getTrips('past'));
+
+userSchema
+  .virtual('upcomingTrips')
+  .get(getTrips('future'));
 
 userSchema
   .virtual('passwordConfirmation')
