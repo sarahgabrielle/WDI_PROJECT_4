@@ -6,7 +6,7 @@ function register(req, res, next) {
   User
     .create(req.body)
     .then(user => {
-      const token = jwt.sign({ userId: user.id }, secret, { expiresIn: '24hr' });
+      const token = jwt.sign({ userId: user.id }, secret, { expiresIn: '1h' });
       return res.json({ message: 'Registration successful', token });
     })
     .catch(next);
@@ -16,7 +16,6 @@ function login(req, res, next) {
   User
     .findOne({ $or: [{ email: req.body.identifier }, { username: req.body.identifier }] })
     .then((user) => {
-      console.log(user);
       if(!user || !user.validatePassword(req.body.password)) {
         return res.status(422).json({
           message: 'Unprocessable Entity',
@@ -26,8 +25,7 @@ function login(req, res, next) {
           }
         });
       }
-
-      const token = jwt.sign({ userId: user.id }, secret, { expiresIn: '24hr' });
+      const token = jwt.sign({ userId: user.id }, secret, { expiresIn: '1h' });
       return res.json({ message: `Welcome back ${user.username}`, token });
     })
     .catch(next);

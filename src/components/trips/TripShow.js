@@ -2,17 +2,18 @@ import React from 'react';
 import { Link } from 'react-router-dom';
 import Axios from 'axios';
 
-// import UserShow from '../users/UserShow';
+import Auth from '../../lib/Auth';
 
 class TripShow extends React.Component{
   state = {
-    trip: {}
+    trip: {},
+    user: Auth.getPayload()
   }
 
   componentWillMount(){
     Axios
       .get(`/api/trips/${this.props.match.params.id}`)
-      .then(res => this.setState({ user: res.data }))
+      .then(res => this.setState({ trip: res.data }))
       .catch(err => console.error(err));
   }
 
@@ -27,9 +28,8 @@ class TripShow extends React.Component{
           <button>MESSAGES</button>
           <button>MEMORIES</button>
           <button>PROFILE</button>
-          {/* { this.state.trip && <Link to={`/users/${this.state.trip.createdBy}`} className="main-button"> This is wrong as it will take me back to the user profile of the person who created the trip and not back to my profile!
-          PROFILE
-          </Link>} */}
+          <Link to={`/users/${this.state.user.userId}`} className="main-button">PROFILE
+          </Link>
         </div>
       </div>
     );

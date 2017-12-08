@@ -6,11 +6,12 @@ import Auth from '../../lib/Auth';
 const Navbar = ({ history }) => {
   function logout(e){
     e.preventDefault();
-
+    
     Auth.removeToken();
     history.push('/');
   }
 
+  console.log(Auth.isAuthenticated());
   return(
     <nav>
       { !Auth.isAuthenticated() && <Link to="/login" className="standard-button">Login</Link>}

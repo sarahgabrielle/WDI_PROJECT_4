@@ -24,7 +24,7 @@ function TripForm({ handleSubmit, handleChange, trip }) {
           </select>
           {/* {errors.category && <small>{errors.category}</small>} */}
         </div>
-        <div className="form-group">
+        {/* <div className="form-group">
           <label htmlFor="country">Country</label>
           <input
             placeholder="Please enter country"
@@ -35,7 +35,7 @@ function TripForm({ handleSubmit, handleChange, trip }) {
             value={trip.country}
             onChange={handleChange}
           />
-        </div>
+        </div> */}
         <div className="form-group">
           <label htmlFor="resort">Resort</label>
           <input
@@ -52,7 +52,7 @@ function TripForm({ handleSubmit, handleChange, trip }) {
           <label htmlFor="date">Date</label>
           <input
             placeholder="Select Date"
-            type="text"
+            type="date"
             className="form-control"
             id="date"
             name="date"
@@ -73,20 +73,20 @@ function TripForm({ handleSubmit, handleChange, trip }) {
           />
         </div>
         <div className="form-group">
-          <label htmlFor="members">Members</label>
+          <label htmlFor="users">Members</label>
           <input
             placeholder="Add friends/family to trip"
             type="text"
             className="form-control"
-            id="members"
-            name="members"
+            id="users"
+            name="users"
             value={trip.users}
             onChange={handleChange}
           />
         </div>
         <div>
           <button className="save-button">Save</button>
-          <button className="danger-button">Cancel</button>
+          <button type="button" className="danger-button">Cancel</button>
         </div>
       </form>
     </div>

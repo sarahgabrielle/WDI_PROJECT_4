@@ -11,6 +11,8 @@ function userIndex(req, res, next) {
     }, {
       path: 'messages.replies.createdBy',
       select: 'username image'
+    }, {
+      path: 'trips'
     }])
     .exec()
     .then(users => res.json(users))

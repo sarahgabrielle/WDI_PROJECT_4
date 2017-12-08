@@ -6,7 +6,7 @@ const documentSchema = require('./document');
 const tripSchema = new mongoose.Schema({
   country: { type: String, required: true },
   resort: { type: String, required: true },
-  date: { type: Date, require: true },
+  date: { type: Date, required: true },
   address: { type: String },
   memories: [documentSchema],
   groupMessage: [messageSchema],
@@ -15,12 +15,5 @@ const tripSchema = new mongoose.Schema({
 }, {
   timestamps: true
 });
-
-// tripSchema
-//   .virtual('users', {
-//     ref: 'User',
-//     localField: '_id',
-//     foreignField: 'trips'
-//   });
 
 module.exports = mongoose.model('Trip', tripSchema);

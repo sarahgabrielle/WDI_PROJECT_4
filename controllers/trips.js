@@ -1,4 +1,5 @@
 const Trip = require('../models/trip');
+const User = require('../models/user');
 
 function tripIndex(req, res, next){
   Trip
@@ -11,10 +12,21 @@ function tripIndex(req, res, next){
 
 function tripCreate(req, res, next){
   const trip = req.body;
-  trip.createdBy = req.user;
+  trip.createdBy = req.currentUser;
 
-  Trip
-    .create(trip)
+  User
+    .find({ username: req.body.users })
+    .then(users => {
+      if( users.length < req.body.users.length) {
+        console.log('Unable to find user');
+      }
+      return users;
+    })
+    .then(users => {
+      req.body.users = users;
+
+      return Trip.create(req.body);
+    })
     .then(trip => res.status(201).json(trip))
     .catch(next);
 }

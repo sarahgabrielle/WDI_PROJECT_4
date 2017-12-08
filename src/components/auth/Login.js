@@ -24,6 +24,7 @@ class Login extends React.Component {
       .post('/api/login', this.state.user)
       .then(res => {
         Auth.setToken(res.data.token);
+        localStorage.setItem('jwtExp', res.data.loggedInAt);
         const { userId } = Auth.getPayload();
         this.props.history.push(`/users/${userId}`);
       })
