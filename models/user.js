@@ -22,7 +22,7 @@ userSchema
   .virtual('trips', {
     ref: 'Trip',
     localField: '_id',
-    foreignField: 'users' || 'createdBy'
+    foreignField: 'users'
   });
 
 function getTrips(time) {

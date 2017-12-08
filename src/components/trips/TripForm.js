@@ -1,7 +1,12 @@
 import React from 'react';
+// import { Form, FormGroup, ControlLabel, Button } from 'react-bootstrap';
 
-function TripForm({ handleSubmit, handleChange, trip }) {
-  // const formInvalid = Object.keys(errors).some(key => errors[key]);
+// import AutoSuggest from 'react-bootstrap-autosuggest';
+import Select from 'react-select';
+
+function TripForm({ handleSubmit, handleChange, trip, handleUser, users, selectedOptions }) {
+  const usersForSelect = users.map(user => ({ value: user.id, label: user.username }));
+  console.log(selectedOptions);
   return(
     <div className="row">
       <form onSubmit={handleSubmit} className="col-md-6">
@@ -73,16 +78,18 @@ function TripForm({ handleSubmit, handleChange, trip }) {
           />
         </div>
         <div className="form-group">
-          <label htmlFor="users">Members</label>
-          <input
-            placeholder="Add friends/family to trip"
-            type="text"
-            className="form-control"
-            id="users"
-            name="users"
-            value={trip.users}
-            onChange={handleChange}
+          <Select
+            multi={true}
+            name="form-field-name"
+            value={selectedOptions}
+            onChange={handleUser}
+            options={usersForSelect}
           />
+          {/* <AutoSuggest
+            datalist={users.map(user => user.username )}
+            onSelect={addMember}
+            closeOnCompletion
+          /> */}
         </div>
         <div>
           <button className="save-button">Save</button>

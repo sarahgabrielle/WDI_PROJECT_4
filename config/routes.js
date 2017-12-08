@@ -1,6 +1,6 @@
 const router = require('express').Router();
 const auth = require('../controllers/auth');
-// const secureRoute = require('../lib/secureRoute'); //haven't put in secureRoute yet on my paths.
+const secureRoute = require('../lib/secureRoute'); //haven't put in secureRoute yet on my paths.
 const users = require('../controllers/users');
 const trips = require('../controllers/trips');
 
@@ -23,7 +23,7 @@ router.route('/users/:id')
 //INDEX AND NEW for Trips
 router.route('/trips')
   .get(trips.index)
-  .post(trips.create);
+  .post(secureRoute, trips.create);
 
 //SHOW //UPDATE //DELETE for Trips
 router.route('/trips/:id')

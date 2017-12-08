@@ -8,6 +8,7 @@ import Register from './components/auth/Register';
 import UserRoutes from './components/users/UserRoutes';
 import TripRoutes from './components/trips/TripRoutes';
 
+import 'react-select/dist/react-select.css';
 import 'bootstrap-css-only';
 import 'react-bootstrap';
 import 'react-router-bootstrap';
