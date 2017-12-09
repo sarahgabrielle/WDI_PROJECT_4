@@ -54,9 +54,7 @@ const LoginForm = ({ handleChange, handleSubmit, user, errors }) => {
           <Row>
             <Col xs={10} xsOffset={1} sm={6} smOffset={3} md={6} mdOffset={3}>
               <Button type="submit" disabled={formInvalid}>
-                <ControlLabel>
                   LOG IN
-                </ControlLabel>
               </Button>
             </Col>
           </Row>

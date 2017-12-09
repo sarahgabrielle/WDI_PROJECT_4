@@ -1,6 +1,7 @@
 html, body {
   height: 100%;
   background-color: #21252b;
+  color: #fff;
 }
 
 .loginForm{
@@ -15,19 +16,39 @@ html, body {
 nav{
   height: 5vh;
   text-decoration: none;
-
+  display: flex;
+  justify-content: flex-end;
   a{
     color: #fe662b;
-    display: inline;
-    float: right;
     margin: 5px 10px;
-    text-decoration: none;
   }
-  a:hover{
+  a:visited {
     color: #fe662b;
     display: inline;
     float: right;
     margin: 5px 10px;
+    cursor:pointer;
+  }
+  a:link {
     text-decoration: none;
   }
+}
+
+img {
+  width: 150px;
+  height: 150px;
+  overflow: hidden;
+  border-radius: 50%;
+
+}
+
+.avatar img {
+  width: 100%;
+  height: auto;
+}
+
+img.img-responsive{
+  display: inline;
+    float: left;
+    margin: 0 20px;
 }

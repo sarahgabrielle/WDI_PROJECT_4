@@ -23,11 +23,13 @@ const RegisterForm = ({ handleChange, handleSubmit, user, errors }) => {
                 IMAGE
               </ControlLabel>
               <FormControl
-                type="text"
+                className="avatar"
+                type="image"
                 name="image"
                 placeholder="Image"
                 onChange={handleChange}
                 value={user.image}
+                responsive
               />
             </Col>
           </Row>
@@ -138,9 +140,7 @@ const RegisterForm = ({ handleChange, handleSubmit, user, errors }) => {
           <Row>
             <Col xs={10} xsOffset={1} sm={6} smOffset={3} md={6} mdOffset={3}>
               <Button type="submit" disabled={formInvalid}>
-                <ControlLabel>
                   REGISTER
-                </ControlLabel>
               </Button>
             </Col>
           </Row>

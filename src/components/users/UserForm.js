@@ -1,74 +1,112 @@
 import React from 'react';
+import { FormGroup, FormControl, Form, Col, Row, ControlLabel, Button } from 'react-bootstrap';
 
 function UserForm({ handleSubmit, handleChange, user }) {
   return (
-    <div className="row">
-      <form onSubmit={handleSubmit} className="col-md-6">
-        <div className="form-group">
-          <label htmlFor="image">Image</label>
-          <input
-            placeholder="put image link here"
-            type="text"
-            className="form-control"
-            id="image"
-            name="image"
-            value={user.image}
-            onChange={handleChange}
-          />
-        </div>
-        <div className="form-group">
-          <label htmlFor="title">Username</label>
-          <input
-            placeholder="Username"
-            type="text"
-            className="form-control"
-            id="username"
-            name="username"
-            value={user.username}
-            onChange={handleChange}
-          />
-        </div>
-        <div className="form-group">
-          <label htmlFor="title">First Name</label>
-          <input
-            placeholder="Joe"
-            type="text"
-            className="form-control"
-            id="firstName"
-            name="firstName"
-            value={user.firstName}
-            onChange={handleChange}
-          />
-        </div>
-        <div className="form-group">
-          <label htmlFor="title">Last Name</label>
-          <input
-            placeholder="Bloggs"
-            type="text"
-            className="form-control"
-            id="lastName"
-            name="lastName"
-            value={user.lastName}
-            onChange={handleChange}
-          />
-        </div>
-        <div className="form-group">
-          <label htmlFor="title">Email</label>
-          <input
-            placeholder="joe.bloggs@gmail.com"
-            type="text"
-            className="form-control"
-            id="email"
-            name="email"
-            value={user.email}
-            onChange={handleChange}
-          />
-        </div>
-        <div>
-          <button className="save-button">Save</button>
-          <button className="danger-button">Cancel</button>
-        </div>
-      </form>
+    <div className="userForm">
+      <Row>
+        <Col xs={10} xsOffset={1} sm={6} smOffset={3} md={6} mdOffset={3}>
+          <ControlLabel>
+            EDIT PROFILE
+          </ControlLabel>
+        </Col>
+      </Row>
+      <Form onSubmit={handleSubmit}>
+        <FormGroup controlId="formBasicText">
+          <Row>
+            <Col xs={10} xsOffset={1} sm={6} smOffset={3} md={6} mdOffset={3}>
+              <ControlLabel className="avatar">
+                IMAGE
+              </ControlLabel>
+              <FormControl
+                className="avatar"
+                type="text"
+                name="image"
+                placeholder="Image"
+                onChange={handleChange}
+                value={user.image}
+                responsive
+              />
+            </Col>
+          </Row>
+        </FormGroup>
+        <FormGroup controlId="formBasicText">
+          <Row>
+            <Col xs={10} xsOffset={1} sm={6} smOffset={3} md={6} mdOffset={3}>
+              <ControlLabel>
+                USERNAME
+              </ControlLabel>
+              <FormControl
+                type="text"
+                name="username"
+                placeholder="Username"
+                onChange={handleChange}
+                value={user.username}
+              />
+            </Col>
+          </Row>
+        </FormGroup>
+        <FormGroup controlId="formBasicText">
+          <Row>
+            <Col xs={10} xsOffset={1} sm={6} smOffset={3} md={6} mdOffset={3}>
+              <ControlLabel>
+                FIRST NAME
+              </ControlLabel>
+              <FormControl
+                type="text"
+                name="firstName"
+                placeholder="First Name"
+                onChange={handleChange}
+                value={user.firstName}
+              />
+            </Col>
+          </Row>
+        </FormGroup>
+        <FormGroup controlId="formBasicText">
+          <Row>
+            <Col xs={10} xsOffset={1} sm={6} smOffset={3} md={6} mdOffset={3}>
+              <ControlLabel>
+                LAST NAME
+              </ControlLabel>
+              <FormControl
+                type="text"
+                name="lastName"
+                placeholder="Last Name"
+                onChange={handleChange}
+                value={user.lastName}
+              />
+            </Col>
+          </Row>
+        </FormGroup>
+        <FormGroup controlId="formBasicText">
+          <Row>
+            <Col xs={10} xsOffset={1} sm={6} smOffset={3} md={6} mdOffset={3}>
+              <ControlLabel>
+                EMAIL
+              </ControlLabel>
+              <FormControl
+                type="email"
+                name="email"
+                placeholder="Email"
+                onChange={handleChange}
+                value={user.email}
+              />
+            </Col>
+          </Row>
+        </FormGroup>
+        <FormGroup>
+          <Row>
+            <Col xs={10} xsOffset={1} sm={6} smOffset={3} md={6} mdOffset={3}>
+              <Button type="submit">
+                SAVE
+              </Button>
+              <Button type="button">
+                CANCEL
+              </Button>
+            </Col>
+          </Row>
+        </FormGroup>
+      </Form>
     </div>
   );
 }
