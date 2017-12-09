@@ -1,0 +1,33 @@
+html, body {
+  height: 100%;
+  background-color: #21252b;
+}
+
+.loginForm{
+  color: #fff;
+  margin-top: 100px;
+}
+
+.registerForm{
+  color: #fff;
+}
+
+nav{
+  height: 5vh;
+  text-decoration: none;
+
+  a{
+    color: #fe662b;
+    display: inline;
+    float: right;
+    margin: 5px 10px;
+    text-decoration: none;
+  }
+  a:hover{
+    color: #fe662b;
+    display: inline;
+    float: right;
+    margin: 5px 10px;
+    text-decoration: none;
+  }
+}

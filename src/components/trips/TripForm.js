@@ -85,11 +85,6 @@ function TripForm({ handleSubmit, handleChange, trip, handleUser, users, selecte
             onChange={handleUser}
             options={usersForSelect}
           />
-          {/* <AutoSuggest
-            datalist={users.map(user => user.username )}
-            onSelect={addMember}
-            closeOnCompletion
-          /> */}
         </div>
         <div>
           <button className="save-button">Save</button>

@@ -1,5 +1,4 @@
 const Trip = require('../models/trip');
-const User = require('../models/user');
 
 function tripIndex(req, res, next){
   Trip
@@ -13,6 +12,7 @@ function tripIndex(req, res, next){
 function tripCreate(req, res, next){
 
   req.body.createdBy = req.currentUser;
+  req.body.users.push(req.currentUser);
 
   Trip
     .create(req.body)

@@ -12,6 +12,7 @@ import 'react-select/dist/react-select.css';
 import 'bootstrap-css-only';
 import 'react-bootstrap';
 import 'react-router-bootstrap';
+import './scss/style.scss';
 
 class App extends React.Component {
   render() {
@@ -20,7 +21,6 @@ class App extends React.Component {
         <div>
           <header>
             <Navbar />
-            <h1>WDI Project 4: MERN Stack App</h1>
           </header>
           <main>
             <Route path="/login" component={Login} />

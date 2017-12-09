@@ -28,13 +28,6 @@ class TripNew extends React.Component {
       .catch(err => console.error(err));
   }
 
-  addMember = (member) => {
-    const user = this.state.users.find(user => user.username === member);
-    const users = this.state.trip.users.concat(user);
-    const trip = Object.assign({}, this.state.trip, { users });
-    if(user) this.setState({ trip });
-  };
-
   handleUser = (selectedOptions) => {
     const users = selectedOptions.map(selectedOption => ({ _id: selectedOption.value, username: selectedOption.label }));
     const trip = Object.assign({}, this.state.trip, { users });
@@ -68,7 +61,6 @@ class TripNew extends React.Component {
         trip={this.state.trip}
         errors={this.state.errors}
         users={this.state.users}
-        addMember={this.addMember}
         handleUser={this.handleUser}
         selectedOptions={this.state.selectedOptions}
       />
