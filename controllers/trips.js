@@ -34,6 +34,9 @@ function tripShow(req, res, next){
 
 
 function tripUpdate(req, res, next){
+
+  if(req.file) req.body.image = req.file.filename;
+
   Trip
     .findById(req.params.id)
     .exec()

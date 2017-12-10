@@ -1,8 +1,9 @@
 const router = require('express').Router();
 const auth = require('../controllers/auth');
-const secureRoute = require('../lib/secureRoute'); //haven't put in secureRoute yet on my paths.
+const secureRoute = require('../lib/secureRoute');
 const users = require('../controllers/users');
 const trips = require('../controllers/trips');
+// const imageUpload = require('../lib/imageUpload');
 
 router.route('/register')
   .post(auth.register);
