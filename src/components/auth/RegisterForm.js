@@ -24,12 +24,11 @@ const RegisterForm = ({ handleChange, handleSubmit, user, errors }) => {
               </ControlLabel>
               <FormControl
                 className="avatar"
-                type="image"
+                type="text"
                 name="image"
                 placeholder="Image"
                 onChange={handleChange}
                 value={user.image}
-                responsive
               />
             </Col>
           </Row>
