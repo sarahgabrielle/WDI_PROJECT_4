@@ -1,83 +1,83 @@
 import React from 'react';
-// import { Form, FormGroup, ControlLabel, Button } from 'react-bootstrap';
+import { FormGroup, FormControl, Form, Col, Row, ControlLabel, Button } from 'react-bootstrap';
 
 // import AutoSuggest from 'react-bootstrap-autosuggest';
 import Select from 'react-select';
 
 function TripForm({ handleSubmit, handleChange, trip, handleUser, users, selectedOptions }) {
   const usersForSelect = users.map(user => ({ value: user.id, label: user.username }));
-  console.log(selectedOptions);
   return(
-    <div className="row">
-      <form onSubmit={handleSubmit} className="col-md-6">
-        <div className="form-group">
-          <label htmlFor="category">Country</label>
-          <select
-            className="form-control"
-            id="country"
-            name="country"
-            value={trip.country}
-            onChange={handleChange}
-          >
-            <option value="" disabled>Please Select</option>
-            <option>Austria</option>
-            <option>Canada</option>
-            <option>France</option>
-            <option>Italy</option>
-            <option>Switzerland</option>
-            <option>United States</option>
-          </select>
-          {/* {errors.category && <small>{errors.category}</small>} */}
-        </div>
-        {/* <div className="form-group">
-          <label htmlFor="country">Country</label>
-          <input
-            placeholder="Please enter country"
-            type="text"
-            className="form-control"
-            id="country"
-            name="country"
-            value={trip.country}
-            onChange={handleChange}
-          />
-        </div> */}
-        <div className="form-group">
-          <label htmlFor="resort">Resort</label>
-          <input
-            placeholder="Please enter resort"
-            type="text"
-            className="form-control"
-            id="resort"
-            name="resort"
-            value={trip.resort}
-            onChange={handleChange}
-          />
-        </div>
-        <div className="form-group">
-          <label htmlFor="date">Date</label>
-          <input
-            placeholder="Select Date"
-            type="date"
-            className="form-control"
-            id="date"
-            name="date"
-            value={trip.date}
-            onChange={handleChange}
-          />
-        </div>
-        <div className="form-group">
-          <label htmlFor="address">Address</label>
-          <input
-            placeholder="Please enter the address of your accommodation"
-            type="text"
-            className="form-control"
-            id="address"
-            name="address"
-            value={trip.address}
-            onChange={handleChange}
-          />
-        </div>
-        <div className="form-group">
+    <div className="tripForm">
+      <Form onSubmit={handleSubmit}>
+        <FormGroup controlId="formBasicText">
+          <Row>
+            <Col xs={10} xsOffset={1} sm={6} smOffset={3} md={6} mdOffset={3}>
+              <ControlLabel>
+                Country
+              </ControlLabel>
+              <FormControl
+                placeholder="Please enter country"
+                type="text"
+                id="country"
+                name="country"
+                value={trip.country}
+                onChange={handleChange}
+              />
+            </Col>
+          </Row>
+        </FormGroup>
+        <FormGroup controlId="formBasicText">
+          <Row>
+            <Col xs={10} xsOffset={1} sm={6} smOffset={3} md={6} mdOffset={3}>
+              <ControlLabel>
+                Resort
+              </ControlLabel>
+              <FormControl
+                placeholder="Please enter resort"
+                type="text"
+                id="resort"
+                name="resort"
+                value={trip.resort}
+                onChange={handleChange}
+              />
+            </Col>
+          </Row>
+        </FormGroup>
+        <FormGroup controlId="formBasicText">
+          <Row>
+            <Col xs={10} xsOffset={1} sm={6} smOffset={3} md={6} mdOffset={3}>
+              <ControlLabel>
+                Date
+              </ControlLabel>
+              <FormControl
+                placeholder="Select Date"
+                type="date"
+                id="date"
+                name="date"
+                value={trip.date}
+                onChange={handleChange}
+              />
+            </Col>
+          </Row>
+        </FormGroup>
+        <FormGroup controlId="formBasicText">
+          <Row>
+            <Col xs={10} xsOffset={1} sm={6} smOffset={3} md={6} mdOffset={3}>
+              <ControlLabel>
+                Address
+              </ControlLabel>
+              <FormControl
+                placeholder="Please enter the address of your accommodation"
+                type="text"
+                id="address"
+                name="address"
+                value={trip.address}
+                onChange={handleChange}
+              />
+            </Col>
+          </Row>
+        </FormGroup>
+        <FormGroup controlId="formBasicText">
           <Select
             multi={true}
             name="form-field-name"
@@ -85,12 +85,20 @@ function TripForm({ handleSubmit, handleChange, trip, handleUser, users, selecte
             onChange={handleUser}
             options={usersForSelect}
           />
-        </div>
-        <div>
-          <button className="save-button">Save</button>
-          <button type="button" className="danger-button">Cancel</button>
-        </div>
-      </form>
+        </FormGroup>
+        <FormGroup>
+          <Row>
+            <Col xs={10} xsOffset={1} sm={6} smOffset={3} md={6} mdOffset={3}>
+              <Button type="submit">
+                SAVE
+              </Button>
+              <Button type="button">
+                CANCEL
+              </Button>
+            </Col>
+          </Row>
+        </FormGroup>
+      </Form>
     </div>
   );
 }

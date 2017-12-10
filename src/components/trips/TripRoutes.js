@@ -8,8 +8,8 @@ import TripNew from './TripNew';
 const TripRoutes = () => {
   return(
     <Switch>
-      <Route path="/trips/new" component={TripNew} />
       <Route path="/trips/:id/edit" component={TripEdit} />
+      <Route path="/trips/new" component={TripNew} />
       <Route path="/trips/:id" component={TripShow} />
     </Switch>
   );

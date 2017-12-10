@@ -1,6 +1,7 @@
 import React from 'react';
 import Axios from 'axios';
 
+import Auth from '../../lib/Auth';
 import TripForm from './TripForm';
 
 class TripEdit extends React.Component {
@@ -31,7 +32,9 @@ class TripEdit extends React.Component {
     e.preventDefault();
 
     Axios
-      .put(`/api/trips/${this.props.match.params.id}`, this.state.trip)
+      .put(`/api/trips/${this.props.match.params.id}`, this.state.trip, {
+        headers: { 'Authorization': `Bearer ${Auth.getToken()}`}
+      })
       .then(res => this.props.history.push(`/trips/${res.data.id}`))
       .catch(err => console.log(err));
   }
