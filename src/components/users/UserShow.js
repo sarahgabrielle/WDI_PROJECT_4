@@ -4,7 +4,7 @@ import Axios from 'axios';
 import moment from 'moment';
 
 import Auth from '../../lib/Auth';
-import { Col, Row, ControlLabel } from 'react-bootstrap';
+import { Col, Row, ControlLabel, Button } from 'react-bootstrap';
 import 'font-awesome/css/font-awesome.css';
 
 class UserShow extends React.Component {
@@ -29,23 +29,23 @@ class UserShow extends React.Component {
       }
 
       deleteTrip = () => {
-        
+
       }
 
       render(){
         return(
           <div>
-            <Row className="userShow">
-              <Col>
+            <Row style={{ marginTop: '30px'}}>
+              <Col md={3}>
                 <img src={this.state.user.image} className="img-responsive" />
               </Col>
-              <Col>
+              <Col md={3}>
                 <h4>{this.state.user.username}</h4>
                 <h4>{this.state.user.firstName}</h4>
                 <h4>{this.state.user.lastName}</h4>
                 <h4>{this.state.user.email}</h4>
               </Col>
-              <Col>
+              <Col md={3}>
                 { Auth.isAuthenticated &&
                   <Link to={`/users/${this.state.user.id}/edit`}>
                     <i className="fa fa-pencil fa-lg" aria-hidden="true"></i>
@@ -60,70 +60,90 @@ class UserShow extends React.Component {
               </Col>
             </Row>
             <hr />
-            <Col>
+            <Link to="/trips/new">
+              <Button style={{ margin: '0 0 0 10px'}}>ADD TRIP</Button>
+            </Link>
+            <Row style={{ margin: '20px 0 0 10px'}}>
               <ControlLabel>
                 UPCOMING TRIPS
               </ControlLabel>
-              { this.state.user.upcomingTrips && <div>
-                { this.state.user.upcomingTrips.map(trip => {
-                  return(
-                    <Row key={trip.id}>
-                      <Link to={`/trips/${trip.id}`}>
-                        <Col md={4} sm={6} xs={12}>
-                          <p>{trip.resort}</p>
-                          <p>{trip.country}</p>
-                          <p>{moment(trip.date).format('ddd Do YYYY')}</p>
-                        </Col>
-                      </Link>
-                      { Auth.isAuthenticated &&
-                        <Link to={`/trips/${trip.id}/edit`}>
-                          <i className="fa fa-pencil fa-lg" aria-hidden="true"></i>
+            </Row>
+            <Row>
+              <ul>
+                { this.state.user.upcomingTrips && <div>
+                  { this.state.user.upcomingTrips.map(trip => {
+                    return(
+                      <li key={trip.id}>
+                        <Link to={`/trips/${trip.id}`}>
+                          <Col md={3} sm={6} xs={12}>
+                            {trip.resort},  {'  '}
+                            {trip.country} { ' ' } -
+                            { ' ' }{moment(trip.date).format('dddd, Do MMM YYYY')}
+                          </Col>
                         </Link>
-                      }
-                      {' '}
-                      { Auth.isAuthenticated &&
+                        { Auth.isAuthenticated &&
+                          <Link to={`/trips/${trip.id}/edit`}>
+                            <i className="fa fa-pencil fa-lg" aria-hidden="true"></i>
+                          </Link>
+                        }
+                        {' '}
+                        { Auth.isAuthenticated &&
+                      <a>
+                        <i className="fa fa-ban fa-lg" aria-hidden="true" onClick={this.deleteTrip}></i>
+                      </a>
+                        }
+                      </li>
+                    );
+                  })}
+                </div>
+                }
+              </ul>
+            </Row>
+            <Row style={{ margin: '20px 0 0 10px'}}>
+              <ControlLabel>
+                PAST TRIPS
+              </ControlLabel>
+            </Row>
+            <Row>
+              <ul>
+                {this.state.user.pastTrips && <div>
+                  { this.state.user.pastTrips.map(trip => {
+                    return(
+                      <li key={trip.id}>
+                        <Link to={`/trips/${trip.id}`}>
+                          <Col>
+                            {trip.resort}
+                            {trip.country}
+                            {moment(trip.date).format('ddd Do YYYY')}
+                          </Col>
+                        </Link>
+                        { Auth.isAuthenticated &&
                         <a>
                           <i className="fa fa-ban fa-lg" aria-hidden="true" onClick={this.deleteTrip}></i>
                         </a>
-                      }
-                    </Row>
-                  );
-                })}
-              </div>
-              }
-              <Col>
-                <Link to="/trips/new">
-                  <i className="fa fa-plus fa-lg" aria-hidden="true"></i>
-                </Link>
-              </Col>
-            </Col>
-            <Col>
-              <h5>PAST TRIPS</h5>
-              {this.state.user.pastTrips && <div>
-                { this.state.user.pastTrips.map(trip => {
-                  return(
-                    <div key={trip.id}>
-                      <Link to={`/trips/${trip.id}`}>
-                        <p>{trip.country}</p>
-                        <p>{trip.resort}</p>
-                        <p>{moment(trip.date).format('ddd Do YYYY')}</p>
-                      </Link>
-                    </div>
-                  );
-                })}
-              </div>
-              }
-            </Col>
+                        }
+                      </li>
+                    );
+                  })}
+                </div>
+                }
+              </ul>
+            </Row>
+            {/* </Col> */}
             <hr />
-            <div className="col-lg-4">
-              <h5>DOCUMENTS</h5>
+            <Row style={{ margin: '20px 0 0 10px'}}>
+              <ControlLabel>
+                DOCUMENTS
+              </ControlLabel>
               <p>add file uploader</p>
-            </div>
+            </Row>
             <hr />
-            <div className="col-lg-4">
-              <h5>MESSAGES</h5>
+            <Row style={{ margin: '20px 0 0 10px'}}>
+              <ControlLabel>
+                MESSAGES
+              </ControlLabel>
               <p>show messages but ideally would like to get an alert of new message and click onto another page to show the private message</p>
-            </div>
+            </Row>
             <hr />
           </div>
         );

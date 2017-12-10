@@ -4,6 +4,10 @@ html, body {
   color: #fff;
 }
 
+hr {
+  border: 1px solid #da1111;
+}
+
 .loginForm{
   color: #fff;
   margin-top: 100px;
@@ -19,11 +23,11 @@ nav{
   display: flex;
   justify-content: flex-end;
   a{
-    color: #fe662b;
+    color: #da1111;
     margin: 5px 10px;
   }
   a:visited {
-    color: #fe662b;
+    color: #da1111;
     display: inline;
     float: right;
     margin: 5px 10px;
@@ -60,9 +64,20 @@ img {
 
 .userShow{
   display: flex;
-  justify-content: space-evenly;
   margin-top: 20px;
 }
-.trip{
-  // display: inline-flex;
+
+a{
+  color: #fff;
+  text-decoration: none;
+}
+
+a:hover{
+  color: #da1111;
+}
+
+ul{
+  margin: 10px;
+  padding: 0;
+  list-style: none;
 }

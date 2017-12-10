@@ -1,7 +1,8 @@
 import React from 'react';
+import BackButton from '../utility/BackButton';
 import { FormGroup, FormControl, Form, Col, Row, ControlLabel, Button } from 'react-bootstrap';
 
-function UserForm({ handleSubmit, handleChange, user }) {
+function UserForm({ history, handleSubmit, handleChange, user }) {
   return (
     <div className="userForm">
       <Row>
@@ -25,7 +26,6 @@ function UserForm({ handleSubmit, handleChange, user }) {
                 placeholder="Image"
                 onChange={handleChange}
                 value={user.image}
-                responsive
               />
             </Col>
           </Row>
@@ -100,9 +100,8 @@ function UserForm({ handleSubmit, handleChange, user }) {
               <Button type="submit">
                 SAVE
               </Button>
-              <Button type="button">
-                CANCEL
-              </Button>
+              { ' ' }
+              <BackButton history={history} />
             </Col>
           </Row>
         </FormGroup>

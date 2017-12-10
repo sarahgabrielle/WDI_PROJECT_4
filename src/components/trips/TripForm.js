@@ -1,10 +1,12 @@
 import React from 'react';
+
+import BackButton from '../utility/BackButton';
 import { FormGroup, FormControl, Form, Col, Row, ControlLabel, Button } from 'react-bootstrap';
 
 // import AutoSuggest from 'react-bootstrap-autosuggest';
 import Select from 'react-select';
 
-function TripForm({ handleSubmit, handleChange, trip, handleUser, users, selectedOptions }) {
+function TripForm({ history, handleSubmit, handleChange, trip, handleUser, users, selectedOptions }) {
   const usersForSelect = users.map(user => ({ value: user.id, label: user.username }));
   return(
     <div className="tripForm">
@@ -92,9 +94,8 @@ function TripForm({ handleSubmit, handleChange, trip, handleUser, users, selecte
               <Button type="submit">
                 SAVE
               </Button>
-              <Button type="button">
-                CANCEL
-              </Button>
+              { ' ' }
+              <BackButton history={history} />
             </Col>
           </Row>
         </FormGroup>
