@@ -16,7 +16,6 @@ class UserEdit extends React.Component {
   };
 
   componentDidMount() {
-    console.log(this);
     Axios
       .get(`/api/users/${this.props.match.params.id}`)
       .then(res => this.setState({ user: res.data }))

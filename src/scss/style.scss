@@ -47,13 +47,22 @@ img {
   height: auto;
 }
 
-img.img-responsive{
-      display: inline;
-    float: left;
-    margin: 0 20px;
-}
+// img.img-responsive{
+//     display: inline;
+//     float: left;
+//     margin: 0 20px;
+// }
 
 #background-video{
   width: 100%;
   height: 100%;
+}
+
+.userShow{
+  display: flex;
+  justify-content: space-evenly;
+  margin-top: 20px;
+}
+.trip{
+  // display: inline-flex;
 }
