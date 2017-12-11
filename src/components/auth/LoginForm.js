@@ -20,7 +20,7 @@ const LoginForm = ({ handleChange, handleSubmit, user, errors }) => {
           <Row>
             <Col xs={10} xsOffset={1} sm={6} smOffset={3} md={6} mdOffset={3}>
               <ControlLabel>
-                USERNAME OR EMAIL
+                Username or Email
               </ControlLabel>
               <FormControl
                 type="text"
@@ -37,7 +37,7 @@ const LoginForm = ({ handleChange, handleSubmit, user, errors }) => {
           <Row>
             <Col xs={10} xsOffset={1} sm={6} smOffset={3} md={6} mdOffset={3}>
               <ControlLabel>
-                PASSWORD
+                Password
               </ControlLabel>
               <FormControl
                 type="password"

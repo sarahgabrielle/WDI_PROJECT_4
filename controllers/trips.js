@@ -10,7 +10,6 @@ function tripIndex(req, res, next){
 }
 
 function tripCreate(req, res, next){
-
   req.body.createdBy = req.currentUser;
   req.body.users.push(req.currentUser);
 
@@ -26,7 +25,6 @@ function tripShow(req, res, next){
     .exec()
     .then((trip) => {
       if (!trip) return res.notFound();
-
       res.json(trip);
     })
     .catch(next);

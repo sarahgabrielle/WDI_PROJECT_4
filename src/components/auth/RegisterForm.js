@@ -20,7 +20,7 @@ const RegisterForm = ({ handleChange, handleSubmit, user, errors }) => {
           <Row>
             <Col xs={10} xsOffset={1} sm={6} smOffset={3} md={6} mdOffset={3}>
               <ControlLabel>
-                IMAGE
+                Image
               </ControlLabel>
               <FormControl
                 className="avatar"
@@ -37,7 +37,7 @@ const RegisterForm = ({ handleChange, handleSubmit, user, errors }) => {
           <Row>
             <Col xs={10} xsOffset={1} sm={6} smOffset={3} md={6} mdOffset={3}>
               <ControlLabel>
-                USERNAME
+                Username
               </ControlLabel>
               <FormControl
                 type="text"
@@ -54,7 +54,7 @@ const RegisterForm = ({ handleChange, handleSubmit, user, errors }) => {
           <Row>
             <Col xs={10} xsOffset={1} sm={6} smOffset={3} md={6} mdOffset={3}>
               <ControlLabel>
-                FIRST NAME
+                First Name
               </ControlLabel>
               <FormControl
                 type="text"
@@ -71,7 +71,7 @@ const RegisterForm = ({ handleChange, handleSubmit, user, errors }) => {
           <Row>
             <Col xs={10} xsOffset={1} sm={6} smOffset={3} md={6} mdOffset={3}>
               <ControlLabel>
-                LAST NAME
+                Last Name
               </ControlLabel>
               <FormControl
                 type="text"
@@ -88,7 +88,7 @@ const RegisterForm = ({ handleChange, handleSubmit, user, errors }) => {
           <Row>
             <Col xs={10} xsOffset={1} sm={6} smOffset={3} md={6} mdOffset={3}>
               <ControlLabel>
-                EMAIL
+                Email
               </ControlLabel>
               <FormControl
                 type="email"
@@ -105,7 +105,7 @@ const RegisterForm = ({ handleChange, handleSubmit, user, errors }) => {
           <Row>
             <Col xs={10} xsOffset={1} sm={6} smOffset={3} md={6} mdOffset={3}>
               <ControlLabel>
-                PASSWORD
+                Password
               </ControlLabel>
               <FormControl
                 type="password"
@@ -122,7 +122,7 @@ const RegisterForm = ({ handleChange, handleSubmit, user, errors }) => {
           <Row>
             <Col xs={10} xsOffset={1} sm={6} smOffset={3} md={6} mdOffset={3}>
               <ControlLabel>
-                CONFIRM PASSWORD
+                Confirm Password
               </ControlLabel>
               <FormControl
                 type="password"
