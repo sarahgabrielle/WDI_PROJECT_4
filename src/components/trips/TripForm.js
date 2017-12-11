@@ -3,15 +3,15 @@ import React from 'react';
 import BackButton from '../utility/BackButton';
 import { FormGroup, FormControl, Form, Col, Row, ControlLabel, Button } from 'react-bootstrap';
 
-// import AutoSuggest from 'react-bootstrap-autosuggest';
+import AutoComplete from '../utility/AutoComplete';
 import Select from 'react-select';
 
-function TripForm({ history, handleSubmit, handleChange, trip, handleUser, users, selectedOptions }) {
+function TripForm({ history, handleSubmit, handleChange, trip, handleUser, users, selectedOptions, handleResortLocationChange, handleAccomodationLocationChange }) {
   const usersForSelect = users.map(user => ({ value: user.id, label: user.username }));
   return(
     <div className="tripForm">
       <Form onSubmit={handleSubmit}>
-        <FormGroup controlId="formBasicText">
+        {/* <FormGroup>
           <Row>
             <Col xs={10} xsOffset={1} sm={6} smOffset={3} md={6} mdOffset={3}>
               <ControlLabel>
@@ -27,25 +27,19 @@ function TripForm({ history, handleSubmit, handleChange, trip, handleUser, users
               />
             </Col>
           </Row>
-        </FormGroup>
-        <FormGroup controlId="formBasicText">
+        </FormGroup> */}
+        <FormGroup>
           <Row>
             <Col xs={10} xsOffset={1} sm={6} smOffset={3} md={6} mdOffset={3}>
               <ControlLabel>
                 Resort
               </ControlLabel>
-              <FormControl
-                placeholder="Please enter resort"
-                type="text"
-                id="resort"
-                name="resort"
-                value={trip.resort}
-                onChange={handleChange}
+              <AutoComplete handleLocationChange={handleResortLocationChange}
               />
             </Col>
           </Row>
         </FormGroup>
-        <FormGroup controlId="formBasicText">
+        <FormGroup>
           <Row>
             <Col xs={10} xsOffset={1} sm={6} smOffset={3} md={6} mdOffset={3}>
               <ControlLabel>
@@ -62,31 +56,32 @@ function TripForm({ history, handleSubmit, handleChange, trip, handleUser, users
             </Col>
           </Row>
         </FormGroup>
-        <FormGroup controlId="formBasicText">
+        <FormGroup>
           <Row>
             <Col xs={10} xsOffset={1} sm={6} smOffset={3} md={6} mdOffset={3}>
               <ControlLabel>
                 Address
               </ControlLabel>
-              <FormControl
-                placeholder="Please enter the address of your accommodation"
-                type="text"
-                id="address"
-                name="address"
-                value={trip.address}
-                onChange={handleChange}
+              <AutoComplete handleLocationChange={handleAccomodationLocationChange}
               />
             </Col>
           </Row>
         </FormGroup>
-        <FormGroup controlId="formBasicText">
-          <Select
-            multi={true}
-            name="form-field-name"
-            value={selectedOptions}
-            onChange={handleUser}
-            options={usersForSelect}
-          />
+        <FormGroup>
+          <Row>
+            <Col xs={10} xsOffset={1} sm={6} smOffset={3} md={6} mdOffset={3}>
+              <ControlLabel>
+                Add Friends/Family
+              </ControlLabel>
+              <Select
+                multi={true}
+                name="form-field-name"
+                value={selectedOptions}
+                onChange={handleUser}
+                options={usersForSelect}
+              />
+            </Col>
+          </Row>
         </FormGroup>
         <FormGroup>
           <Row>

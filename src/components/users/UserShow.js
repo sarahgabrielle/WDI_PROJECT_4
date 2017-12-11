@@ -12,11 +12,15 @@ class UserShow extends React.Component {
         user: {}
       }
 
-      componentWillMount(){
+      getUser() {
         Axios
           .get(`/api/users/${this.props.match.params.id}`)
           .then(res => this.setState({ user: res.data }))
           .catch(err => console.error(err));
+      }
+
+      componentWillMount(){
+        this.getUser();
       }
 
       deleteUser = () => {
@@ -28,24 +32,27 @@ class UserShow extends React.Component {
           .catch(err => console.error(err));
       }
 
-      deleteTrip = () => {
-
+      deleteTrip = (trip) => {
+        Axios
+          .delete(`/api/trips/${trip.id}`)
+          .then(() => this.getUser())
+          .catch(err => console.error(err));
       }
 
       render(){
         return(
           <div>
-            <Row style={{ marginTop: '30px'}}>
-              <Col md={3}>
+            {/* <Row style={{ marginTop: '30px'}}> */}
+              {/* <Col> */}
                 <img src={this.state.user.image} className="img-responsive" />
-              </Col>
-              <Col md={3}>
+              {/* </Col> */}
+              {/* <Col> */}
                 <h4>{this.state.user.username}</h4>
                 <h4>{this.state.user.firstName}</h4>
                 <h4>{this.state.user.lastName}</h4>
                 <h4>{this.state.user.email}</h4>
-              </Col>
-              <Col md={3}>
+              {/* </Col> */}
+              <Col>
                 { Auth.isAuthenticated &&
                   <Link to={`/users/${this.state.user.id}/edit`}>
                     <i className="fa fa-pencil fa-lg" aria-hidden="true"></i>
@@ -58,7 +65,7 @@ class UserShow extends React.Component {
                 </a>
                 }
               </Col>
-            </Row>
+            {/* </Row> */}
             <hr />
             <Link to="/trips/new">
               <Button style={{ margin: '0 0 0 10px'}}>ADD TRIP</Button>
@@ -76,8 +83,7 @@ class UserShow extends React.Component {
                       <li key={trip.id}>
                         <Link to={`/trips/${trip.id}`}>
                           <Col md={3} sm={6} xs={12}>
-                            {trip.resort},  {'  '}
-                            {trip.country} { ' ' } -
+                            {trip.resort} - {'  '}
                             { ' ' }{moment(trip.date).format('dddd, Do MMM YYYY')}
                           </Col>
                         </Link>
@@ -89,7 +95,7 @@ class UserShow extends React.Component {
                         {' '}
                         { Auth.isAuthenticated &&
                       <a>
-                        <i className="fa fa-ban fa-lg" aria-hidden="true" onClick={this.deleteTrip}></i>
+                        <i className="fa fa-ban fa-lg" aria-hidden="true" onClick={() => this.deleteTrip(trip)}></i>
                       </a>
                         }
                       </li>
@@ -111,15 +117,20 @@ class UserShow extends React.Component {
                     return(
                       <li key={trip.id}>
                         <Link to={`/trips/${trip.id}`}>
-                          <Col>
-                            {trip.resort}
-                            {trip.country}
-                            {moment(trip.date).format('ddd Do YYYY')}
+                          <Col md={3} sm={6} xs={12}>
+                            {trip.resort} -  {'  '}
+                            { ' ' }{moment(trip.date).format('dddd, Do MMM YYYY')}
                           </Col>
                         </Link>
                         { Auth.isAuthenticated &&
+                          <Link to={`/trips/${trip.id}/edit`}>
+                            <i className="fa fa-pencil fa-lg" aria-hidden="true"></i>
+                          </Link>
+                        }
+                        {' '}
+                        { Auth.isAuthenticated &&
                         <a>
-                          <i className="fa fa-ban fa-lg" aria-hidden="true" onClick={this.deleteTrip}></i>
+                          <i className="fa fa-ban fa-lg" aria-hidden="true" onClick={() => this.deleteTrip(trip)}></i>
                         </a>
                         }
                       </li>

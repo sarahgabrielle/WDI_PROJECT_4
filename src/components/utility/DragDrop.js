@@ -14,7 +14,6 @@ const DragDrop = ({ onChange, value }) => {
 
   const style = value ? { backgroundImage: `url(${value})` } : null;
 
-  // render() {
   return(
     <div className="drag-drop">
       <input

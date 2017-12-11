@@ -1,6 +1,5 @@
 const mongoose = require('mongoose');
 const bcrypt = require('bcrypt');
-// const validator = require('validator');
 const messageSchema = require('./message');
 const documentSchema = require('./document');
 const moment = require('moment');
@@ -28,9 +27,9 @@ userSchema
 function getTrips(time) {
   return function() {
     const today = moment().startOf('day');
-    if(!this.trips) return null;
+    if (!this.trips) return null;
     return this.trips.filter(trip => {
-      return (time === 'past') ? trip.date < today : trip.date > today;
+      return (time === 'past') ? moment(trip.date) < today : moment(trip.date) > today;
     });
   };
 }

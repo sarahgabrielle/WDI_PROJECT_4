@@ -7,7 +7,9 @@ import Navbar from './components/utility/Navbar';
 import Login from './components/auth/Login';
 import Register from './components/auth/Register';
 import UserRoutes from './components/users/UserRoutes';
-import TripRoutes from './components/trips/TripRoutes';
+import TripEdit from './components/trips/TripEdit';
+import TripShow from './components/trips/TripShow';
+import TripNew from './components/trips/TripNew';
 
 import 'react-select/dist/react-select.css';
 import 'bootstrap-css-only';
@@ -24,12 +26,14 @@ class App extends React.Component {
             <Navbar />
           </header>
           <main>
+            <Route exact path="/" component={LandingPage} />
+            <Route path="/login" component={Login} />
+            <Route path="/register" component={Register} />
+            <UserRoutes />
             <Switch>
-              <Route exact path="/" component={LandingPage} />
-              <Route path="/login" component={Login} />
-              <Route path="/register" component={Register} />
-              <UserRoutes />
-              <TripRoutes />
+              <Route path="/trips/new" component={TripNew} />
+              <Route path="/trips/:id/edit" component={TripEdit} />
+              <Route path="/trips/:id" component={TripShow} />
             </Switch>
           </main>
         </div>

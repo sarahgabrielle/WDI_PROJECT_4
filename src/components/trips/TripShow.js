@@ -1,12 +1,12 @@
 import React from 'react';
-import { Link } from 'react-router-dom';
 import Axios from 'axios';
 
 import Auth from '../../lib/Auth';
+import GoogleMap from '../../components/GoogleMap';
 
 class TripShow extends React.Component{
   state = {
-    trip: {},
+    trip: null,
     user: Auth.getPayload()
   }
 
@@ -14,13 +14,22 @@ class TripShow extends React.Component{
     Axios
       .get(`/api/trips/${this.props.match.params.id}`)
       .then(res => this.setState({ trip: res.data }))
+      .then(res => {
+        this.setState({ trip: res.data });
+
+        return Axios
+          .get(`https://api.weatherunlocked.com/api/snowreport/${RESORT_ID}?app_id=${APP_ID}&app_key=${APP_KEY}`)
+      })
+      .then(res => console.log(res))
       .catch(err => console.error(err));
   }
 
   render(){
-    console.log(this.state.trip);
+    if (!this.state.trip) return null;
+    console.log(this.state.trip.resortLocation);
     return(
-      <div className="row">
+      <GoogleMap resortLocation={this.state.trip.resortLocation} accommodationLocation={this.state.trip.accommodationLocation} />
+      /* <div className="row">
         <div className="col-lg-4">
           <h1>Trip Show Page</h1>
           <button>MAP</button>
@@ -31,7 +40,7 @@ class TripShow extends React.Component{
           <Link to={`/users/${this.state.user.userId}`} className="main-button">PROFILE
           </Link>
         </div>
-      </div>
+      </div> */
     );
   }
 }

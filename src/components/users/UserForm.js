@@ -5,19 +5,19 @@ import { FormGroup, FormControl, Form, Col, Row, ControlLabel, Button } from 're
 function UserForm({ history, handleSubmit, handleChange, user }) {
   return (
     <div className="userForm">
-      <Row>
+      {/* <Row>
         <Col xs={10} xsOffset={1} sm={6} smOffset={3} md={6} mdOffset={3}>
           <ControlLabel>
             EDIT PROFILE
           </ControlLabel>
         </Col>
-      </Row>
+      </Row> */}
       <Form onSubmit={handleSubmit}>
         <FormGroup controlId="formBasicText">
           <Row>
             <Col xs={10} xsOffset={1} sm={6} smOffset={3} md={6} mdOffset={3}>
               <ControlLabel className="avatar">
-                IMAGE
+                Image
               </ControlLabel>
               <FormControl
                 className="avatar"
@@ -34,7 +34,7 @@ function UserForm({ history, handleSubmit, handleChange, user }) {
           <Row>
             <Col xs={10} xsOffset={1} sm={6} smOffset={3} md={6} mdOffset={3}>
               <ControlLabel>
-                USERNAME
+                Username
               </ControlLabel>
               <FormControl
                 type="text"
@@ -50,7 +50,7 @@ function UserForm({ history, handleSubmit, handleChange, user }) {
           <Row>
             <Col xs={10} xsOffset={1} sm={6} smOffset={3} md={6} mdOffset={3}>
               <ControlLabel>
-                FIRST NAME
+                First Name
               </ControlLabel>
               <FormControl
                 type="text"
@@ -66,7 +66,7 @@ function UserForm({ history, handleSubmit, handleChange, user }) {
           <Row>
             <Col xs={10} xsOffset={1} sm={6} smOffset={3} md={6} mdOffset={3}>
               <ControlLabel>
-                LAST NAME
+                Last Name
               </ControlLabel>
               <FormControl
                 type="text"
@@ -82,7 +82,7 @@ function UserForm({ history, handleSubmit, handleChange, user }) {
           <Row>
             <Col xs={10} xsOffset={1} sm={6} smOffset={3} md={6} mdOffset={3}>
               <ControlLabel>
-                EMAIL
+                Email
               </ControlLabel>
               <FormControl
                 type="email"
