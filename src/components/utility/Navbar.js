@@ -10,7 +10,7 @@ const Navbar = ({ history }) => {
     Auth.removeToken();
     history.push('/');
   }
-  
+
   return(
     <nav>
       { !Auth.isAuthenticated() && <Link to="/login" className="standard-button">Login</Link>}

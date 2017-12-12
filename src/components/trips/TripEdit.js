@@ -69,7 +69,6 @@ class TripEdit extends React.Component {
   }
 
   render() {
-    console.log('HERE...');
     return (
       <TripForm
         history={this.props.history}

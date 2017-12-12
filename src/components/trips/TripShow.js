@@ -14,33 +14,34 @@ class TripShow extends React.Component{
     Axios
       .get(`/api/trips/${this.props.match.params.id}`)
       .then(res => this.setState({ trip: res.data }))
-      .then(res => {
-        this.setState({ trip: res.data });
-
-        return Axios
-          .get(`https://api.weatherunlocked.com/api/snowreport/${RESORT_ID}?app_id=${APP_ID}&app_key=${APP_KEY}`)
-      })
-      .then(res => console.log(res))
       .catch(err => console.error(err));
   }
 
   render(){
+    function openNav() {
+      document.getElementById('mySidenav').style.width = '250px';
+    }
+
+    function closeNav() {
+      document.getElementById('mySidenav').style.width = '0';
+    }
+
     if (!this.state.trip) return null;
     console.log(this.state.trip.resortLocation);
+    console.log(this.state.trip.id);
     return(
-      <GoogleMap resortLocation={this.state.trip.resortLocation} accommodationLocation={this.state.trip.accommodationLocation} />
-      /* <div className="row">
-        <div className="col-lg-4">
-          <h1>Trip Show Page</h1>
-          <button>MAP</button>
-          <button>DASHBOARD</button>
-          <button>MESSAGES</button>
-          <button>MEMORIES</button>
-          <button>PROFILE</button>
-          <Link to={`/users/${this.state.user.userId}`} className="main-button">PROFILE
-          </Link>
+      <div>
+        <a className="fa fa-bars fa-lg sidebar-link" onClick={() => openNav()}></a>
+        <GoogleMap resortLocation={this.state.trip.resortLocation} accommodationLocation={this.state.trip.accommodationLocation} />
+        <div id="mySidenav" className="sidenav">
+          <a href="javascript:void(0)" className="closebtn" onClick={() => closeNav()}>&times;</a>
+          <a href={`/trips/${this.state.trip.id}/dashboard`}>Dashboard</a>
+          <a href={`/trips/${this.state.trip.id}/messages`}>Messages</a>
+          <a href={`/trips/${this.state.trip.id}/memories`}>Memories</a>
+          <a href={`/trips/${this.state.trip.id}`}>Map</a>
+          <a href={`/users/${this.state.user.userId}`}>Profile</a>
         </div>
-      </div> */
+      </div>
     );
   }
 }
