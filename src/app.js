@@ -10,6 +10,9 @@ import UserRoutes from './components/users/UserRoutes';
 import TripEdit from './components/trips/TripEdit';
 import TripShow from './components/trips/TripShow';
 import TripNew from './components/trips/TripNew';
+import DashBoard from './components/trips/SideNav/DashBoard';
+import Messages from './components/trips/SideNav/Messages';
+import Memories from './components/trips/SideNav/Memories';
 
 import 'react-select/dist/react-select.css';
 import 'bootstrap-css-only';
@@ -32,6 +35,9 @@ class App extends React.Component {
             <UserRoutes />
             <Switch>
               <Route path="/trips/new" component={TripNew} />
+              <Route path="/trips/:id/dashboard" component={DashBoard} />
+              <Route path="/trips/:id/messages" component={Messages} />
+              <Route path="/trips/:id/memories" component={Memories} />
               <Route path="/trips/:id/edit" component={TripEdit} />
               <Route path="/trips/:id" component={TripShow} />
             </Switch>

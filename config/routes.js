@@ -3,7 +3,8 @@ const auth = require('../controllers/auth');
 const secureRoute = require('../lib/secureRoute');
 const users = require('../controllers/users');
 const trips = require('../controllers/trips');
-// const imageUpload = require('../lib/imageUpload');
+// const messages = require('../controllers/messages');
+// const fileUpload = require('../lib/fileUpload');
 
 router.route('/register')
   .post(auth.register);
@@ -20,7 +21,6 @@ router.route('/users/:id')
   .put(users.update)
   .delete(users.delete);
 
-
 //INDEX AND NEW for Trips
 router.route('/trips')
   .get(trips.index)
@@ -31,6 +31,20 @@ router.route('/trips/:id')
   .get(trips.show)
   .put(trips.update)
   .delete(trips.delete);
+
+router.route('/trips/:id/messages')
+  .post(secureRoute, trips.messageCreate);
+
+router.route('/trips/:id/messages/:messageId')
+  .delete(secureRoute, trips.deleteMessage);
+
+// router.route('/trips/:id/memories')
+//   .post(secureRoute, fileUpload, trips.memoriesCreate);
+
+// router.route('/messages/:id')
+//   .get(messages.show)
+//   .put(messages.update)
+//   .delete(messages.delete);
 
 router.route('/*')
   .all((req, res) => res.notFound());

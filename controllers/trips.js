@@ -11,7 +11,6 @@ function tripIndex(req, res, next){
 
 function tripCreate(req, res, next){
   req.body.createdBy = req.currentUser;
-  req.body.users.push(req.currentUser);
 
   Trip
     .create(req.body)
@@ -22,6 +21,7 @@ function tripCreate(req, res, next){
 function tripShow(req, res, next){
   Trip
     .findById(req.params.id)
+    .populate('createdBy groupMessage.createdBy')
     .exec()
     .then((trip) => {
       if (!trip) return res.notFound();
@@ -59,10 +59,69 @@ function tripDelete(req, res, next){
     .catch(next);
 }
 
+function tripMessageCreate(req, res, next) {
+
+  req.body.createdBy = req.currentUser;
+
+  Trip
+    .findById(req.params.id)
+    .exec()
+    .then(trip => {
+      if(!trip) return res.notFound();
+
+      trip.groupMessage.push(req.body);
+      return trip.save();
+    })
+    .then(trip => Trip.populate(trip, {path: 'groupMessage.createdBy'}))
+    .then(trip => res.status(201).json(trip))
+    .catch(next);
+}
+
+function tripMessageDelete(req, res, next) {
+  Trip
+    .findById(req.params.id)
+    .exec()
+    .then((trip) => {
+      if(!trip) return res.notFound();
+
+      const message = trip.groupMessage.id(req.params.messageId);
+      message.remove();
+
+      return trip.save();
+    })
+    .then(() => res.status(204).end)
+    .catch(next);
+}
+
+function tripMemoriesCreate(req, res, next) {
+
+  if(req.file) {
+    req.body.filename = req.file.filename;
+    req.body.fileType = req.file.type;
+  }
+
+  Trip
+    .findById(req.params.id)
+    .exec()
+    .then(trip => {
+      if(!trip) return res.notFound();
+
+      const memory = trip.memories.create(req.body);
+      trip.memories.push(memory);
+      return trip.save()
+        .then(() => res.json(memory));
+    })
+    .catch(next);
+}
+
+
 module.exports = {
   index: tripIndex,
   create: tripCreate,
   show: tripShow,
   update: tripUpdate,
-  delete: tripDelete
+  delete: tripDelete,
+  messageCreate: tripMessageCreate,
+  deleteMessage: tripMessageDelete,
+  memoryCreate: tripMemoriesCreate
 };

@@ -11,8 +11,6 @@ function userIndex(req, res, next) {
     }, {
       path: 'messages.replies.createdBy',
       select: 'username image'
-    }, {
-      path: 'trips'
     }])
     .exec()
     .then(users => res.json(users))
@@ -22,7 +20,7 @@ function userIndex(req, res, next) {
 function userShow(req, res, next) {
   User
     .findById(req.params.id)
-    .populate('trips')
+    .fill('trips')
     .exec()
     .then((user) => {
       if (!user) return res.notFound();

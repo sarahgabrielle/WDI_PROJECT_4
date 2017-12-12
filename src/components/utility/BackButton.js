@@ -4,7 +4,7 @@ import { Button } from 'react-bootstrap';
 const BackButton = ({ history }) => {
   return (
     <Button onClick={() => history.goBack()}>
-        CANCEL
+        GO BACK
     </Button>
   );
 };

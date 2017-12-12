@@ -1,8 +1,9 @@
-const mongoose = require('mongoose');
+const mongoose = require('mongoose-fill');
 const bcrypt = require('bcrypt');
 const messageSchema = require('./message');
 const documentSchema = require('./document');
 const moment = require('moment');
+const _ = require('lodash');
 
 const userSchema = new mongoose.Schema({
   image: { type: String },
@@ -18,10 +19,10 @@ const userSchema = new mongoose.Schema({
 });
 
 userSchema
-  .virtual('trips', {
-    ref: 'Trip',
-    localField: '_id',
-    foreignField: 'users'
+  .fill('trips', function(next) {
+    this.db.model('Trip')
+      .find({ $or: [{ users: this._id }, { createdBy: this._id }] })
+      .exec((err, trips) => next(err, _.uniqBy(trips, '_id')));
   });
 
 function getTrips(time) {

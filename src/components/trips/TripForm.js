@@ -11,23 +11,6 @@ function TripForm({ history, handleSubmit, handleChange, trip, handleUser, users
   return(
     <div className="tripForm">
       <Form onSubmit={handleSubmit}>
-        {/* <FormGroup>
-          <Row>
-            <Col xs={10} xsOffset={1} sm={6} smOffset={3} md={6} mdOffset={3}>
-              <ControlLabel>
-                Country
-              </ControlLabel>
-              <FormControl
-                placeholder="Please enter country"
-                type="text"
-                id="country"
-                name="country"
-                value={trip.country}
-                onChange={handleChange}
-              />
-            </Col>
-          </Row>
-        </FormGroup> */}
         <FormGroup>
           <Row>
             <Col xs={10} xsOffset={1} sm={6} smOffset={3} md={6} mdOffset={3}>
