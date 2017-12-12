@@ -4,7 +4,7 @@ import Auth from '../../../lib/Auth';
 import MessageForm from './MessageForm';
 
 
-class Messages extends React.Component{
+class Messages extends React.Component {
   state = {
     trip: {},
     message: {
@@ -15,8 +15,7 @@ class Messages extends React.Component{
   componentDidMount(){
     Axios
       .get(`/api/trips/${this.props.match.params.id}`)
-      .then(res => this.setState({ trip: res.data }),
-        console.log('Hello', this))
+      .then(res => this.setState({ trip: res.data }))
       .catch(err => console.error(err));
   }
 
@@ -40,6 +39,7 @@ class Messages extends React.Component{
 
   messageDelete = (e) => {
     const messageId = e.target.value;
+
     Axios
       .delete(`/api/trips/${this.state.trip.id}/messages/${messageId}`, {
         headers: { 'Authorization': `Bearer ${Auth.getToken()}` }
@@ -61,9 +61,9 @@ class Messages extends React.Component{
         <MessageForm
           handleChange={this.handleChange}
           handleSubmit={this.handleSubmit}
-          messageDelete={this.messageDelete}
           message={this.state.message}
           messages={this.state.trip.groupMessage}
+          messageDelete={this.messageDelete}
           history={this.props.history}
         />
       </div>
@@ -72,81 +72,3 @@ class Messages extends React.Component{
 }
 
 export default Messages;
-
-
-  // How to map in a map
-  // vm.comments.forEach(comment => {
-  //   comment.createdAt = $moment(comment.createdAt).fromNow();
-  //   comment.replies.forEach(reply => {
-  //     reply.createdAt = $moment(reply.createdAt).fromNow();
-  //   });
-  // });
-
-
-
-//   function deleteComment(comment) {
-//     Comment
-//       .remove({ id: comment._id })
-//       .$promise
-//       .then(() => {
-//         Comment
-//           .query()
-//           .$promise
-//           .then(data => {
-//             vm.comments = data.reverse();
-//             vm.comments.forEach(comment => {
-//               comment.createdAt = $moment(comment.createdAt).fromNow();
-//               comment.replies.forEach(reply => {
-//                 reply.createdAt = $moment(reply.createdAt).fromNow();
-//               });
-//             });
-//           });
-//       });
-//   }
-//
-//   function addReply(comment) {
-//     const reply = document.getElementById(comment._id).value;
-//     vm.newReply = {
-//       content: reply
-//     };
-//     Comment
-//       .replyCreate({ id: comment._id }, vm.newReply)
-//       .$promise
-//       .then(() => {
-//         Comment
-//           .query()
-//           .$promise
-//           .then(data => {
-//             vm.comments = data.reverse();
-//             vm.comments.forEach(comment => {
-//               comment.createdAt = $moment(comment.createdAt).fromNow();
-//               comment.replies.forEach(reply => {
-//                 reply.createdAt = $moment(reply.createdAt).fromNow();
-//               });
-//             });
-//             document.getElementById(comment._id).value = '';
-//           });
-//       });
-//   }
-//
-//   function deleteReply(comment, reply) {
-//     Comment
-//       .replyDelete({ id: comment._id, replyId: reply._id })
-//       .$promise
-//       .then(() => {
-//         Comment
-//           .query()
-//           .$promise
-//           .then(data => {
-//             vm.comments = data.reverse();
-//             vm.comments.forEach(comment => {
-//               comment.createdAt = $moment(comment.createdAt).fromNow();
-//               comment.replies.forEach(reply => {
-//                 reply.createdAt = $moment(reply.createdAt).fromNow();
-//               });
-//             });
-//           });
-//       });
-//   }
-//
-// }

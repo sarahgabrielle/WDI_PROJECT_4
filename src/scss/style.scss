@@ -140,3 +140,19 @@ input {
   padding: 20px;
   color: black;
 }
+
+div.drag-drop {
+  input[type=file] {
+    display: none;
+  }
+
+  div.dropzone {
+    height: 200px;
+    width: 200px;
+    background: url("http://www.kamarajcollege.ac.in/sites/default/files/blogpost-4.jpg");
+    background-color: #fafafa;
+    background-size: contain;
+    // background-repeat: no-repeat;
+    background-position: center;
+  }
+}

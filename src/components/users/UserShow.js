@@ -148,14 +148,7 @@ class UserShow extends React.Component {
               </ControlLabel>
               <p>add file uploader</p>
             </Row>
-            <hr />
-            <Row style={{ margin: '20px 0 0 10px'}}>
-              <ControlLabel>
-                MESSAGES
-              </ControlLabel>
-              <p>show messages but ideally would like to get an alert of new message and click onto another page to show the private message</p>
-            </Row>
-            <hr />
+            {/* <hr /> */}
           </div>
         );
       }
