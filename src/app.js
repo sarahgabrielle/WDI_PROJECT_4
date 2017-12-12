@@ -15,8 +15,8 @@ import Messages from './components/trips/SideNav/Messages';
 import Memories from './components/trips/SideNav/Memories';
 
 import 'react-select/dist/react-select.css';
-import 'bootstrap-css-only';
-import 'react-bootstrap';
+// import 'bootstrap-css-only';
+// import 'react-bootstrap';
 import 'react-router-bootstrap';
 import './scss/style.scss';
 

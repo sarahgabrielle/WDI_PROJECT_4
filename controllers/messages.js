@@ -1,6 +1,7 @@
 const Message = require('../models/message');
 
 function messagesIndex(req, res, next) {
+
   Message
     .find()
     .populate('createdBy')
@@ -10,8 +11,11 @@ function messagesIndex(req, res, next) {
 }
 
 function messagesCreate(req, res, next) {
+
   const message = req.body;
+
   message.createdBy = req.user;
+
   Message
     .create(message)
     .then((message) => res.status(201).json(message))
@@ -19,6 +23,7 @@ function messagesCreate(req, res, next) {
 }
 
 function messagesShow(req, res, next) {
+
   Message
     .findById(req.params.id)
     .exec()
@@ -30,6 +35,7 @@ function messagesShow(req, res, next) {
 }
 
 function messagesUpdate(req, res, next) {
+
   Message
     .findByIdAndUpdate(req.params.id, req.body, { new: true })
     .exec()
@@ -38,6 +44,7 @@ function messagesUpdate(req, res, next) {
 }
 
 function messagesDelete(req, res, next) {
+
   Message
     .findByIdAndRemove(req.params.id)
     .exec()
@@ -46,6 +53,7 @@ function messagesDelete(req, res, next) {
 }
 
 function replyCreate(req, res, next) {
+
   Message
     .findById(req.params.id)
     .exec()
@@ -60,6 +68,7 @@ function replyCreate(req, res, next) {
 }
 
 function replyDelete(req, res, next) {
+  
   Message
     .findById(req.params.id)
     .exec()

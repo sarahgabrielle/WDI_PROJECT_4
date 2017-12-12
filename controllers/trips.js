@@ -1,6 +1,7 @@
 const Trip = require('../models/trip');
 
 function tripIndex(req, res, next){
+
   Trip
     .find()
     .populate('createdBy')
@@ -10,6 +11,7 @@ function tripIndex(req, res, next){
 }
 
 function tripCreate(req, res, next){
+
   req.body.createdBy = req.currentUser;
 
   Trip
@@ -19,6 +21,7 @@ function tripCreate(req, res, next){
 }
 
 function tripShow(req, res, next){
+
   Trip
     .findById(req.params.id)
     .populate('createdBy groupMessage.createdBy')
@@ -30,10 +33,7 @@ function tripShow(req, res, next){
     .catch(next);
 }
 
-
 function tripUpdate(req, res, next){
-
-  if(req.file) req.body.image = req.file.filename;
 
   Trip
     .findById(req.params.id)
@@ -48,6 +48,7 @@ function tripUpdate(req, res, next){
 }
 
 function tripDelete(req, res, next){
+
   Trip
     .findById(req.params.id)
     .exec()
@@ -78,6 +79,7 @@ function tripMessageCreate(req, res, next) {
 }
 
 function tripMessageDelete(req, res, next) {
+
   Trip
     .findById(req.params.id)
     .exec()
@@ -89,7 +91,7 @@ function tripMessageDelete(req, res, next) {
 
       return trip.save();
     })
-    .then(() => res.status(204).end)
+    .then(() => res.status(204).end())
     .catch(next);
 }
 
@@ -106,14 +108,30 @@ function tripMemoriesCreate(req, res, next) {
     .then(trip => {
       if(!trip) return res.notFound();
 
-      const memory = trip.memories.create(req.body);
-      trip.memories.push(memory);
-      return trip.save()
-        .then(() => res.json(memory));
+      trip.memories.push(req.body);
+      return trip.save();
     })
+    .then(trip => res.status(201).json(trip))
     .catch(next);
 }
 
+function tripMemoryDelete(req, res, next) {
+
+  Trip
+    .findById(req.params.id)
+    .exec()
+    .then((trip) => {
+      if(!trip) return res.notFound();
+      console.log(trip);
+      const memory = trip.memories.id(req.params.memoryId);
+      console.log(memory);
+      memory.remove();
+
+      return trip.save();
+    })
+    .then(() => res.status(204).end())
+    .catch(next);
+}
 
 module.exports = {
   index: tripIndex,
@@ -121,7 +139,8 @@ module.exports = {
   show: tripShow,
   update: tripUpdate,
   delete: tripDelete,
-  messageCreate: tripMessageCreate,
+  createMessage: tripMessageCreate,
   deleteMessage: tripMessageDelete,
-  memoryCreate: tripMemoriesCreate
+  createMemory: tripMemoriesCreate,
+  deleteMemory: tripMemoryDelete
 };

@@ -3,6 +3,7 @@ const { secret } = require('../config/environment');
 const User = require('../models/user');
 
 function register(req, res, next) {
+
   User
     .create(req.body)
     .then(user => {
@@ -13,6 +14,7 @@ function register(req, res, next) {
 }
 
 function login(req, res, next) {
+  
   User
     .findOne({ $or: [{ email: req.body.identifier }, { username: req.body.identifier }] })
     .then((user) => {

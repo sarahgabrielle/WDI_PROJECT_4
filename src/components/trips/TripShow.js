@@ -38,7 +38,7 @@ class TripShow extends React.Component{
           <a href={`/trips/${this.state.trip.id}/dashboard`}>Dashboard</a>
           <a href={`/trips/${this.state.trip.id}/messages`}>Messages</a>
           <a href={`/trips/${this.state.trip.id}/memories`}>Memories</a>
-          <a href={`/trips/${this.state.trip.id}`}>Map</a>
+          {/* <a href={`/trips/${this.state.trip.id}`}>Map</a> */}
           <a href={`/users/${this.state.user.userId}`}>Profile</a>
         </div>
       </div>

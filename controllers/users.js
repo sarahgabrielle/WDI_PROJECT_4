@@ -1,6 +1,7 @@
 const User = require('../models/user');
 
 function userIndex(req, res, next) {
+
   User
     .find()
     .populate([{
@@ -18,6 +19,7 @@ function userIndex(req, res, next) {
 }
 
 function userShow(req, res, next) {
+
   User
     .findById(req.params.id)
     .fill('trips')
@@ -31,6 +33,7 @@ function userShow(req, res, next) {
 }
 
 function userUpdate(req, res, next) {
+
   User
     .findById(req.params.id)
     .exec()
@@ -44,6 +47,7 @@ function userUpdate(req, res, next) {
 }
 
 function userDelete(req, res, next) {
+
   User
     .findById(req.params.id)
     .exec()
@@ -55,9 +59,50 @@ function userDelete(req, res, next) {
     .catch(next);
 }
 
+
+function userDocumentCreate(req, res, next) {
+
+  if(req.file) {
+    req.body.filename = req.file.filename;
+    req.body.fileType = req.file.type;
+  }
+
+  User
+    .findById(req.params.id)
+    .exec()
+    .then(user => {
+      if(!user) return res.notFound();
+
+      user.documents.push(req.body);
+      return user.save();
+    })
+    .then(user => res.status(201).json(user))
+    .catch(next);
+}
+
+function tripDocumentDelete(req, res, next) {
+
+  User
+    .findById(req.params.id)
+    .exec()
+    .then((user) => {
+      if(!user) return res.notFound();
+      console.log(user);
+      const doc = trip.documents.id(req.params.documentId);
+      console.log(document);
+      doc.remove();
+
+      return user.save();
+    })
+    .then(() => res.status(204).end())
+    .catch(next);
+}
+
 module.exports = {
   index: userIndex,
   show: userShow,
   update: userUpdate,
-  delete: userDelete
+  delete: userDelete,
+  createDocument: userDocumentCreate,
+  deleteDocument: tripDocumentDelete
 };
