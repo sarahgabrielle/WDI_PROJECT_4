@@ -2,7 +2,6 @@ import React from 'react';
 import Axios from 'axios';
 import Auth from '../../../lib/Auth';
 import MemoriesForm from './MemoriesForm';
-import BackButton from '../../utility/BackButton';
 
 class Memories extends React.Component {
   state = {
@@ -56,7 +55,6 @@ class Memories extends React.Component {
   render(){
     return(
       <div>
-
         <MemoriesForm
           handleChange={this.handleChange}
           handleSubmit={this.handleSubmit}

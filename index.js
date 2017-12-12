@@ -1,5 +1,14 @@
 const express = require('express');
+const http = require('http');
+
 const app = express();
+const server = http.createServer(app);
+
+const sockets = require('./lib/sockets');
+sockets.connect(server);
+
+// const express = require('express');
+// const app = express();
 
 const mongoose = require('mongoose');
 mongoose.Promise = require('bluebird');
@@ -27,7 +36,7 @@ app.get('/*', (req, res) => res.sendFile(`${__dirname}/public/index.html`));
 app.use(errorHandler);
 
 if (env !== 'test') {
-  app.listen(port, () => console.log(`Express is up and running on port ${port}`));
+  server.listen(port, () => console.log(`Express is up and running on port ${port}`));
 } else {
   module.exports = app;
 }

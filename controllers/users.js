@@ -87,10 +87,7 @@ function tripDocumentDelete(req, res, next) {
     .exec()
     .then((user) => {
       if(!user) return res.notFound();
-      console.log(user);
-      const doc = trip.documents.id(req.params.documentId);
-      console.log(document);
-      doc.remove();
+      user.documents.pull(req.params.documentId);
 
       return user.save();
     })

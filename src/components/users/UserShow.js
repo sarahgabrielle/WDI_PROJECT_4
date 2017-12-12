@@ -2,14 +2,18 @@ import React from 'react';
 import { Link } from 'react-router-dom';
 import Axios from 'axios';
 import moment from 'moment';
-
 import Auth from '../../lib/Auth';
+import DocumentForm from './DocumentForm';
+
 import { Col, Row, ControlLabel, Button } from 'react-bootstrap';
 import 'font-awesome/css/font-awesome.css';
 
 class UserShow extends React.Component {
       state = {
-        user: {}
+        user: {},
+        doc: {
+          base64: ''
+        }
       }
 
       getUser() {
@@ -36,6 +40,40 @@ class UserShow extends React.Component {
         Axios
           .delete(`/api/trips/${trip.id}`)
           .then(() => this.getUser())
+          .catch(err => console.error(err));
+      }
+
+      handleChange = ({ target: { name, value } }) => {
+        this.setState({ doc: { [name]: value } }, () => console.log(this.state));
+      }
+
+      handleSubmit = (e) => {
+        e.preventDefault();
+
+        Axios
+          .post(`/api/users/${this.state.user.id}/documents`, this.state.doc, {
+            headers: { 'Authorization': `Bearer ${Auth.getToken()}` }
+          })
+          .then(res => {
+            const user = Object.assign({}, this.state.user, { documents: res.data.documents });
+            this.setState({ user, document: { base64: '' } });
+          })
+          .catch(err => console.error(err));
+      }
+
+      documentDelete = (e) => {
+        const documentId = e.target.value;
+        console.log(e.target.value);
+
+        Axios
+          .delete(`/api/users/${this.state.user.id}/documents/${documentId}`, {
+            headers: { 'Authorization': `Bearer ${Auth.getToken()}` }
+          })
+          .then(() => {
+            const documents = this.state.user.documents.filter(doc => doc.id !== documentId);
+            const user = Object.assign({}, this.state.user, { documents });
+            this.setState({ user });
+          })
           .catch(err => console.error(err));
       }
 
@@ -143,10 +181,18 @@ class UserShow extends React.Component {
             {/* </Col> */}
             <hr />
             <Row style={{ margin: '20px 0 0 10px'}}>
-              <ControlLabel>
-                DOCUMENTS
-              </ControlLabel>
-              <p>add file uploader</p>
+              <h1>Documents</h1>
+              { this.state.user.documents && this.state.user.documents.map(doc =>
+                <div key={doc.id}>
+                  {doc.filename}
+                  <button value={doc.id} onClick={this.documentDelete}>Delete</button>
+                </div>
+              )}
+              <DocumentForm
+                handleChange={this.handleChange}
+                handleSubmit={this.handleSubmit}
+                documents={this.state.user.documents}
+              />
             </Row>
             {/* <hr /> */}
           </div>

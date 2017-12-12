@@ -2,9 +2,10 @@ import React from 'react';
 import Axios from 'axios';
 import Auth from '../../../lib/Auth';
 import MessageForm from './MessageForm';
-
+import socketIOClient from 'socket.io-client';
 
 class Messages extends React.Component {
+  webSocket = socketIOClient('/socket');
   state = {
     trip: {},
     message: {
@@ -13,6 +14,14 @@ class Messages extends React.Component {
   };
 
   componentDidMount(){
+    this.webSocket.on('connect', () => {
+      console.log(`${this.webSocket.id} connected`);
+
+      this.webSocket.on('MESSAGE', data => {
+        console.log(data);
+      });
+    });
+
     Axios
       .get(`/api/trips/${this.props.match.params.id}`)
       .then(res => this.setState({ trip: res.data }))
@@ -23,8 +32,9 @@ class Messages extends React.Component {
     this.setState({ message: { [name]: value } });
   }
 
-  handleSubmit = (e) => {
+  handleSubmit = (e, isSocket) => {
     e.preventDefault();
+    if(!isSocket) this.webSocket.emit('MESSAGE', { message: this.state.message.content });
     console.log(this.state.trip.id);
     Axios
       .post(`/api/trips/${this.state.trip.id}/messages`, this.state.message, {
