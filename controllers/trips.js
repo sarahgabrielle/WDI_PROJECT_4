@@ -123,9 +123,7 @@ function tripMemoryDelete(req, res, next) {
     .then((trip) => {
       if(!trip) return res.notFound();
       console.log(trip);
-      const memory = trip.memories.id(req.params.memoryId);
-      console.log(memory);
-      memory.remove();
+      trip.memories.pull(req.params.memoryId);
 
       return trip.save();
     })
