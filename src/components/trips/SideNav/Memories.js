@@ -38,7 +38,6 @@ class Memories extends React.Component {
 
   memoryDelete = (e) => {
     const memoryId = e.target.value;
-    console.log(e.target.value);
 
     Axios
       .delete(`/api/trips/${this.state.trip.id}/memories/${memoryId}`, {

@@ -27,8 +27,6 @@ class TripShow extends React.Component{
     }
 
     if (!this.state.trip) return null;
-    console.log(this.state.trip.resortLocation);
-    console.log(this.state.trip.id);
     return(
       <div>
         <a className="fa fa-bars fa-lg sidebar-link" onClick={() => openNav()}></a>
