@@ -1,5 +1,8 @@
 const Trip = require('../models/trip');
 
+const sockets = require('../lib/sockets');
+const io = sockets.getConnection();
+
 function tripIndex(req, res, next){
 
   Trip
@@ -74,7 +77,11 @@ function tripMessageCreate(req, res, next) {
       return trip.save();
     })
     .then(trip => Trip.populate(trip, {path: 'groupMessage.createdBy'}))
-    .then(trip => res.status(201).json(trip))
+    .then(trip => {
+      const message = trip.groupMessage[trip.groupMessage.length -1];
+      io.emit('MESSAGE', message);
+      return res.sendStatus(201);
+    })
     .catch(next);
 }
 

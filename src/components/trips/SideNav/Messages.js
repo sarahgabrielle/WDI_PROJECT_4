@@ -14,36 +14,35 @@ class Messages extends React.Component {
   };
 
   componentDidMount(){
-    this.webSocket.on('connect', () => {
-      console.log(`${this.webSocket.id} connected`);
-
-      this.webSocket.on('MESSAGE', data => {
-        console.log(data);
-      });
-    });
-
     Axios
       .get(`/api/trips/${this.props.match.params.id}`)
       .then(res => this.setState({ trip: res.data }))
       .catch(err => console.error(err));
+
+
+    this.webSocket.on('connect', () => {
+      console.log(`${this.webSocket.id} connected`);
+
+      this.webSocket.on('MESSAGE', data => {
+        const trip = Object.assign({}, this.state.trip, { groupMessage: this.state.trip.groupMessage.concat(data)});
+
+        this.setState({ trip });
+      });
+    });
   }
 
   handleChange = ({ target: { name, value } }) => {
     this.setState({ message: { [name]: value } });
   }
 
-  handleSubmit = (e, isSocket) => {
+  handleSubmit = (e) => {
     e.preventDefault();
-    if(!isSocket) this.webSocket.emit('MESSAGE', { message: this.state.message.content });
-    console.log(this.state.trip.id);
+
     Axios
       .post(`/api/trips/${this.state.trip.id}/messages`, this.state.message, {
         headers: { 'Authorization': `Bearer ${Auth.getToken()}` }
       })
-      .then(res => {
-        const trip = Object.assign({}, this.state.trip, { groupMessage: res.data.groupMessage });
-        this.setState({ trip, message: { content: ''} });
-      })
+      .then(() => this.setState({ message: { content: ''} }))
       .catch(err => console.error(err));
   }
 
