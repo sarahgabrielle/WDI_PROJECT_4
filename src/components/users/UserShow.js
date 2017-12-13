@@ -4,6 +4,7 @@ import Axios from 'axios';
 import moment from 'moment';
 import Auth from '../../lib/Auth';
 import DocumentForm from './DocumentForm';
+import Counter from '../utility/Counter';
 
 import { Col, Row, ControlLabel, Button } from 'react-bootstrap';
 import 'font-awesome/css/font-awesome.css';
@@ -17,13 +18,15 @@ class UserShow extends React.Component {
       }
 
       getUser() {
-        Axios
+        return Axios
           .get(`/api/users/${this.props.match.params.id}`)
           .then(res => this.setState({ user: res.data }))
           .catch(err => console.error(err));
       }
 
       componentWillMount(){
+        this.intervals = [];
+        this.counters = [];
         this.getUser();
       }
 
@@ -116,7 +119,7 @@ class UserShow extends React.Component {
             <Row>
               <ul>
                 { this.state.user.upcomingTrips && <div>
-                  { this.state.user.upcomingTrips.map(trip => {
+                  { this.state.user.upcomingTrips.map((trip, i) => {
                     return(
                       <li key={trip.id}>
                         <Link to={`/trips/${trip.id}`}>
@@ -136,6 +139,7 @@ class UserShow extends React.Component {
                         <i className="fa fa-ban fa-lg" aria-hidden="true" onClick={() => this.deleteTrip(trip)}></i>
                       </a>
                         }
+                        Packing time left: <Counter date={trip.date} />
                       </li>
                     );
                   })}

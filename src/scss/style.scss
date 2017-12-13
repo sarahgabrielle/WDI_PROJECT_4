@@ -157,3 +157,14 @@ div.drag-drop {
     background-size: cover
   }
 }
+
+.weather-icon {
+  width: 64px;
+  height: 64px;
+  background-repeat: no-repeat;
+  background-size: contain;
+  background-position: center;
+  &.snow {
+    background-image: url(http://www.iro-mavrogeni.co.uk/images/projects/CCVB-Website/weather-icon-02.gif)
+  }
+}

@@ -3,47 +3,67 @@ import Axios from 'axios';
 import Auth from '../../../lib/Auth';
 // import { Button } from 'react-bootstrap';
 import moment from 'moment';
+// import Skycons from 'skycons-component';
+import '../../utility/skycons';
 
 class DashBoard extends React.Component {
   state = {
     trip: {},
     weather: null
   }
-  componentDidMount(){
-    Axios
-      .get(`/api/trips/${this.props.match.params.id}`)
-      .then(res => {
-        this.setState({ trip: res.data });
 
-        Axios
-          .get(`/api/trips/${res.data.id}/dashboard/getWeatherdata/${res.data.resortLocation.lat}/${res.data.resortLocation.lng}`)
-          .then(res => this.setState({ weather: res.data }));
-      })
-      .catch(err => console.error(err));
+  async componentDidMount(){
+    try {
+      const { data: trip } = await Axios.get(`/api/trips/${this.props.match.params.id}`);
+      const { data: weather } = await Axios
+        .get(`/api/trips/${trip.id}/dashboard/getWeatherdata/${trip.resortLocation.lat}/${trip.resortLocation.lng}`);
+      this.setState({ trip, weather }, () => {
+        var icons = new window.Skycons();
+        const list = [
+          'clear-day',
+          'clear-night',
+          'partly-cloudy-day',
+          'partly-cloudy-night',
+          'cloudy',
+          'rain',
+          'sleet',
+          'snow',
+          'wind',
+          'fog'
+        ];
+        for (let i = list.length; i--;) {
+          icons.set(list[i], list[i]);
+        }
+        icons.play();
+      });
+    } catch (e) {
+      console.log(e);
+    }
   }
 
   render(){
-    console.log(this.state.weather);
+    if (!this.state.weather) return null;
+    const { offset, timezone, daily } = this.state.weather;
     return(
       <div>
         <h1>This is the DashBoard Page</h1>
-
-        { this.state.weather && <h1>{this.state.weather.timezone}</h1> }
-        {/* { this.state.weather && <h1>{moment.unix(this.state.weather.currently.time).format('MMM Do')}</h1> } */}
-        { this.state.weather && <h1>{this.state.weather.daily.icon}</h1>}
-        { this.state.weather && <h1>{this.state.weather.daily.data.map(data => {
+        <h1>{timezone}</h1>
+        {/* <div className={`weather-icon ${daily.icon}`}></div> */}
+        <h1>{daily.icon}</h1>
+        <h1>{daily.data.map(data => {
           return(
-            <li key={data.id}>
+            <li key={data.time}>
               {moment.unix(data.time).format('MMM Do')}
-              <p>{data.icon}</p>
+              <p><canvas id={data.icon} width="128" height="128"></canvas></p>
               <p>{data.summary}</p>
-              <p>{moment.unix(data.sunriseTime).format('LT')}</p>
-              <p>{moment.unix(data.sunsetTime).format('LT')}</p>
-              <p>{data.temperatureMin}*C</p>
-              <p>{data.temperatureMax}*C</p>
+              <p>{moment.unix(data.sunriseTime).add(offset, 'hours').format('LT')}</p>
+              <p>{moment.unix(data.sunsetTime).add(offset, 'hours').format('LT')}</p>
+              <p>{data.temperatureMin}˚C</p>
+              <p>{data.temperatureMax}˚C</p>
+              <p>{data.windSpeed}</p>
             </li>
           );
-        })}</h1>}
+        })}</h1>
       </div>
 
 
@@ -52,6 +72,12 @@ class DashBoard extends React.Component {
 }
 
 export default DashBoard;
+
+{/* <option value="us">˚F,&nbsp;mph</option>
+<option value="us">˚F,&nbsp;mph</option>
+<option value="ca">˚C,&nbsp;km/h</option>
+<option value="uk2">˚C,&nbsp;mph</option> */}
+
 
 {/* <div>
   <figure className="icons">

@@ -24,6 +24,8 @@
     "font-awesome": "^4.7.0",
     "jsonwebtoken": "^8.1.0",
     "lodash": "^4.17.4",
+    "material-ui": "^1.0.0-beta.23",
+    "material-ui-icons": "^1.0.0-beta.17",
     "moment": "^2.19.3",
     "mongoose": "^4.11.12",
     "mongoose-fill": "^1.7.0",
@@ -39,6 +41,7 @@
     "react-select": "^1.1.0",
     "request": "^2.83.0",
     "request-promise": "^4.2.2",
+    "skycons-component": "^1.1.2",
     "socket.io": "^2.0.4",
     "socket.io-client": "^2.0.4"
   },
