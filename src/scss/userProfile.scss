@@ -44,10 +44,20 @@ img.img-responsive {
 }
 
 .pastTrips {
+  margin-top: 20px;
   position: relative;
   text-align: center;
   font-family: "Roboto", "Helvetica", "Arial", sans-serif;
   div{
+    position: absolute;
+    right: 20px;
+  }
+}
+
+a.listItem{
+  display: block;
+  text-align: center;
+  .tripButtons{
     position: absolute;
     right: 20px;
   }
@@ -58,12 +68,12 @@ img.img-responsive {
   font-family: "Roboto", "Helvetica", "Arial", sans-serif;
 }
 
-a.listItem{
-  // position: absolute;
-  display: block;
-  text-align: center;
-  .tripButtons{
-    position: absolute;
-    right: 20px;
-  }
+.fileUpload {
+  margin-top: 20px;
+}
+
+.documentButton {
+  position: absolute;
+  right: 20px;
+  margin-bottom: 20px;
 }

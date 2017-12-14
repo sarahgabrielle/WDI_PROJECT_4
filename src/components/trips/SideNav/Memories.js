@@ -14,12 +14,17 @@ class Memories extends React.Component {
   componentDidMount(){
     Axios
       .get(`/api/trips/${this.props.match.params.id}`)
-      .then(res => this.setState({ trip: res.data }))
+      .then(res => {
+        this.setState({
+          trip: res.data
+        });
+      })
       .catch(err => console.error(err));
   }
 
   handleChange = ({ target: { name, value } }) => {
-    this.setState({ memory: { [name]: value } });
+    const memory = Object.assign({}, this.state.memory, { [name]: value });
+    this.setState({ memory });
   }
 
   handleSubmit = (e) => {

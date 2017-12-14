@@ -3,7 +3,8 @@ const s3 = require('../lib/s3');
 
 const documentSchema = new mongoose.Schema({
   filename: { type: String },
-  fileType: { type: String }
+  fileType: { type: String },
+  title: { type: String }
 });
 
 documentSchema
@@ -14,9 +15,9 @@ documentSchema
   });
 
 documentSchema
-  .virtual('imageSRC')
-  .get(function getImageSRC() {
-    if(this.fileType !== 'image') return null;
+  .virtual('link')
+  .get(function getDocLink() {
+    if(!this.filename) return null;
     if(this.filename.match(/^http/)) return this.filename;
     return `https://s3-eu-west-1.amazonaws.com/${process.env.AWS_BUCKET_NAME}/${this.filename}`;
   });
