@@ -14,7 +14,6 @@ import DashBoard from './components/trips/SideNav/DashBoard';
 import Messages from './components/trips/SideNav/Messages';
 import Memories from './components/trips/SideNav/Memories';
 
-
 import './scss/style.scss';
 
 import { MuiThemeProvider, createMuiTheme } from 'material-ui/styles';
@@ -41,6 +40,7 @@ class App extends React.Component {
           <div>
             <header>
               <Navbar />
+              {/* <SideNav /> */}
             </header>
             <main>
               <Route exact path="/" component={LandingPage} />

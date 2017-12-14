@@ -6,7 +6,6 @@ import Auth from '../../lib/Auth';
 import DocumentForm from './DocumentForm';
 import Counter from '../utility/Counter';
 
-import { Col, Row, ControlLabel } from 'react-bootstrap';
 import List, { ListItem, ListItemText } from 'material-ui/List';
 import Button from 'material-ui/Button';
 import AddIcon from 'material-ui-icons/Add';
@@ -16,7 +15,8 @@ class UserShow extends React.Component {
       state = {
         user: {},
         doc: {
-          base64: ''
+          base64: '',
+          title: ''
         }
       }
 
@@ -50,7 +50,8 @@ class UserShow extends React.Component {
       }
 
       handleChange = ({ target: { name, value } }) => {
-        this.setState({ doc: { [name]: value } }, () => console.log(this.state));
+        const doc = Object.assign({}, this.state.doc, { [name]: value });
+        this.setState({ doc }, () => console.log(this.state));
       }
 
       handleSubmit = (e) => {
@@ -62,7 +63,7 @@ class UserShow extends React.Component {
           })
           .then(res => {
             const user = Object.assign({}, this.state.user, { documents: res.data.documents });
-            this.setState({ user, document: { base64: '' } });
+            this.setState({ user, doc: { base64: '', title: '' } });
           })
           .catch(err => console.error(err));
       }
@@ -135,13 +136,13 @@ class UserShow extends React.Component {
                         <div className="tripButtons">
                           { Auth.isAuthenticated &&
                         <Link to={`/trips/${trip.id}/edit`}>
-                          <i className="fa fa-pencil fa-lg" aria-hidden="true"></i>
+                          <i className="material-icons">mode_edit</i>
                         </Link>
                           }
                           {' '}
                           { Auth.isAuthenticated &&
                       <a>
-                        <i className="fa fa-ban fa-lg" aria-hidden="true" onClick={() => this.deleteTrip(trip)}></i>
+                        <i className="material-icons" onClick={() => this.deleteTrip(trip)}>delete</i>
                       </a>
                           }
                         </div>
@@ -153,80 +154,47 @@ class UserShow extends React.Component {
                   })}
                 </div>
                 }
-                {/* <ul>
-                { this.state.user.upcomingTrips && <div>
-                  { this.state.user.upcomingTrips.map((trip, i) => {
-                    return(
-                      <li key={trip.id}>
-                        <Link to={`/trips/${trip.id}`}>
-                          <Col md={3} sm={6} xs={12}>
-                            {trip.resort} - {'  '}
-                            { ' ' }{moment(trip.date).format('dddd, Do MMM YYYY')}
-                          </Col>
-                        </Link>
-                        { Auth.isAuthenticated &&
-                          <Link to={`/trips/${trip.id}/edit`}>
-                            <i className="fa fa-pencil fa-lg" aria-hidden="true"></i>
-                          </Link>
-                        }
-                        {' '}
-                        { Auth.isAuthenticated &&
-                      <a>
-                        <i className="fa fa-ban fa-lg" aria-hidden="true" onClick={() => this.deleteTrip(trip)}></i>
-                      </a>
-                        }
-                        Holiday countdown: <Counter date={trip.date} />
-                      </li>
-                    );
-                  })}
-                </div>
-                }
-              </ul> */}
               </List>
             </div>
             <div className="pastTrips">
-              <div>
-
-              </div>
-                PAST TRIPS
+              PAST TRIPS
             </div>
-            <Row>
-              <ul>
+            <div>
+              <List>
                 {this.state.user.pastTrips && <div>
                   { this.state.user.pastTrips.map(trip => {
                     return(
-                      <li key={trip.id}>
-                        <Link to={`/trips/${trip.id}`}>
-                          <Col md={3} sm={6} xs={12}>
-                            {trip.resort} -  {'  '}
-                            { ' ' }{moment(trip.date).format('dddd, Do MMM YYYY')}
-                          </Col>
-                        </Link>
-                        { Auth.isAuthenticated &&
+                      <ListItem button component="a" className="listItem" key={trip.id} href={`/trips/${trip.id}`}>
+                        {trip.resort} -  {'  '}
+                        { ' ' }{moment(trip.date).format('dddd, Do MMM YYYY')}
+                        <div className="tripButtons">
+                          { Auth.isAuthenticated &&
                           <Link to={`/trips/${trip.id}/edit`}>
-                            <i className="fa fa-pencil fa-lg" aria-hidden="true"></i>
+                            <i className="material-icons">mode_edit</i>
                           </Link>
-                        }
-                        {' '}
-                        { Auth.isAuthenticated &&
+                          }
+                          {' '}
+                          { Auth.isAuthenticated &&
                         <a>
-                          <i className="fa fa-ban fa-lg" aria-hidden="true" onClick={() => this.deleteTrip(trip)}></i>
+                          <i className="material-icons" onClick={() => this.deleteTrip(trip)}>delete</i>
                         </a>
-                        }
-                      </li>
+                          }
+                        </div>
+                      </ListItem>
                     );
                   })}
                 </div>
                 }
-              </ul>
-            </Row>
+              </List>
+            </div>
             <hr />
             <div className="documents">
-              DOCUMENTS
+            DOCUMENTS
               <div>
                 { this.state.user.documents && this.state.user.documents.map(doc =>
                   <div key={doc.id}>
-                    {doc.filename}
+                    <a href={doc.link}>{doc.title}</a>
+
                     <button value={doc.id} onClick={this.documentDelete}>Delete</button>
                   </div>
                 )}

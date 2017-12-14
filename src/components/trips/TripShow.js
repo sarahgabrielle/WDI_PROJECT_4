@@ -7,7 +7,8 @@ import GoogleMap from '../../components/GoogleMap';
 class TripShow extends React.Component{
   state = {
     trip: null,
-    user: Auth.getPayload()
+    user: Auth.getPayload(),
+    open: false
   }
 
   componentWillMount(){

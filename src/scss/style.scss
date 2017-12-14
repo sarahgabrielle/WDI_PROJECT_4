@@ -1,8 +1,9 @@
-// html, body {
-//   height: 100%;
-//   background-color: #2E2C2E;
-//   color: #CDCDD1;
-// }
+html, body {
+  // height: 100%;
+  // background-color: #263238;
+  // color: #CDCDD1;
+  font-family: "Roboto", "Helvetica", "Arial", sans-serif;
+}
 //
 // hr {
 //   border: 1px solid #CDCDD1;
@@ -169,7 +170,12 @@
 //   }
 // }
 
+.material-icons {
+  color: #607D8B
+}
+
 @import '/login.scss';
 @import '/register.scss';
 @import '/NavBar.scss';
-@import '/userProfile.scss'
+@import '/userProfile.scss';
+@import '/sideNav.scss';

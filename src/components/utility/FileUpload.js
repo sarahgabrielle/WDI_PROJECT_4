@@ -14,6 +14,7 @@ const FileUpload = ({ onChange }) => {
     <div className="file-upload">
       <input
         type="file"
+        accept="application/pdf"
         onChange={handleImage}
       />
     </div>
