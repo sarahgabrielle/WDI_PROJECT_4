@@ -6,7 +6,10 @@ import Auth from '../../lib/Auth';
 import DocumentForm from './DocumentForm';
 import Counter from '../utility/Counter';
 
-import { Col, Row, ControlLabel, Button } from 'react-bootstrap';
+import { Col, Row, ControlLabel } from 'react-bootstrap';
+import List, { ListItem, ListItemText } from 'material-ui/List';
+import Button from 'material-ui/Button';
+import AddIcon from 'material-ui-icons/Add';
 import 'font-awesome/css/font-awesome.css';
 
 class UserShow extends React.Component {
@@ -83,41 +86,74 @@ class UserShow extends React.Component {
       render(){
         return(
           <div>
-            {/* <Row style={{ marginTop: '30px'}}> */}
-              {/* <Col> */}
-                <img src={this.state.user.image} className="img-responsive" />
-              {/* </Col> */}
-              {/* <Col> */}
-                <h4>{this.state.user.username}</h4>
-                <h4>{this.state.user.firstName}</h4>
-                <h4>{this.state.user.lastName}</h4>
-                <h4>{this.state.user.email}</h4>
-              {/* </Col> */}
-              <Col>
+            <div className="userImage">
+              <div>
                 { Auth.isAuthenticated &&
                   <Link to={`/users/${this.state.user.id}/edit`}>
-                    <i className="fa fa-pencil fa-lg" aria-hidden="true"></i>
+                    <i className="material-icons">mode_edit</i>
                   </Link>
                 }
-                {' '}
                 { Auth.isAuthenticated &&
                 <a>
-                  <i className="fa fa-ban fa-lg" aria-hidden="true" onClick={this.deleteUser}></i>
+                  <i className="material-icons" onClick={this.deleteUser}>delete</i>
                 </a>
                 }
-              </Col>
-            {/* </Row> */}
+              </div>
+              <img src={this.state.user.image} className="img-responsive" style={{
+                marginTop: '20px'}}/>
+            </div>
+            <div>
+              <List className="userProfile">
+                <ListItem className="listItemProfile">
+                  <ListItemText primary={this.state.user.username} />
+                </ListItem>
+                <ListItem>
+                  <ListItemText primary={this.state.user.email} />
+                </ListItem>
+              </List>
+            </div>
             <hr />
-            <Link to="/trips/new">
-              <Button style={{ margin: '0 0 0 10px'}}>ADD TRIP</Button>
-            </Link>
-            <Row style={{ margin: '20px 0 0 10px'}}>
-              <ControlLabel>
+            <div className="upcomingTrips">
+              <div>
+                <Link to="/trips/new">
+                  <Button fab mini color="primary" aria-label="add" className="addTrip">
+                    <AddIcon />
+                  </Button>
+                </Link>
+              </div>
                 UPCOMING TRIPS
-              </ControlLabel>
-            </Row>
-            <Row>
-              <ul>
+            </div>
+            <div>
+              <List>
+                { this.state.user.upcomingTrips && <div>
+                  { this.state.user.upcomingTrips.map((trip, i) => {
+                    return(
+                      <ListItem button component="a" className="listItem" key={trip.id} href={`/trips/${trip.id}`}>
+                        {trip.resort} - {'  '}
+                        { ' ' }
+                        {moment(trip.date).format('dddd, Do MMM YYYY')}
+                        <div className="tripButtons">
+                          { Auth.isAuthenticated &&
+                        <Link to={`/trips/${trip.id}/edit`}>
+                          <i className="fa fa-pencil fa-lg" aria-hidden="true"></i>
+                        </Link>
+                          }
+                          {' '}
+                          { Auth.isAuthenticated &&
+                      <a>
+                        <i className="fa fa-ban fa-lg" aria-hidden="true" onClick={() => this.deleteTrip(trip)}></i>
+                      </a>
+                          }
+                        </div>
+                        <div className="countdown">
+                    Holiday countdown: <Counter date={trip.date} />
+                        </div>
+                      </ListItem>
+                    );
+                  })}
+                </div>
+                }
+                {/* <ul>
                 { this.state.user.upcomingTrips && <div>
                   { this.state.user.upcomingTrips.map((trip, i) => {
                     return(
@@ -139,19 +175,21 @@ class UserShow extends React.Component {
                         <i className="fa fa-ban fa-lg" aria-hidden="true" onClick={() => this.deleteTrip(trip)}></i>
                       </a>
                         }
-                        Packing time left: <Counter date={trip.date} />
+                        Holiday countdown: <Counter date={trip.date} />
                       </li>
                     );
                   })}
                 </div>
                 }
-              </ul>
-            </Row>
-            <Row style={{ margin: '20px 0 0 10px'}}>
-              <ControlLabel>
+              </ul> */}
+              </List>
+            </div>
+            <div className="pastTrips">
+              <div>
+
+              </div>
                 PAST TRIPS
-              </ControlLabel>
-            </Row>
+            </div>
             <Row>
               <ul>
                 {this.state.user.pastTrips && <div>
@@ -182,23 +220,23 @@ class UserShow extends React.Component {
                 }
               </ul>
             </Row>
-            {/* </Col> */}
             <hr />
-            <Row style={{ margin: '20px 0 0 10px'}}>
-              <h1>Documents</h1>
-              { this.state.user.documents && this.state.user.documents.map(doc =>
-                <div key={doc.id}>
-                  {doc.filename}
-                  <button value={doc.id} onClick={this.documentDelete}>Delete</button>
-                </div>
-              )}
+            <div className="documents">
+              DOCUMENTS
+              <div>
+                { this.state.user.documents && this.state.user.documents.map(doc =>
+                  <div key={doc.id}>
+                    {doc.filename}
+                    <button value={doc.id} onClick={this.documentDelete}>Delete</button>
+                  </div>
+                )}
+              </div>
               <DocumentForm
                 handleChange={this.handleChange}
                 handleSubmit={this.handleSubmit}
                 documents={this.state.user.documents}
               />
-            </Row>
-            {/* <hr /> */}
+            </div>
           </div>
         );
       }

@@ -1,5 +1,6 @@
 (function(global) {
   "use strict";
+  console.log('LOADED');
 
   /* Set up a RequestAnimationFrame shim so we can animate efficiently FOR
    * GREAT JUSTICE. */
@@ -642,36 +643,56 @@
       return draw;
     },
     add: function(el, draw) {
-      var obj;
-
-      if(typeof el === "string")
-        el = document.getElementById(el);
+      if (typeof el === "string")
+        el = document.querySelectorAll(`[data-icon='${el}']`);
+// console.dir(el)
 
       // Does nothing if canvas name doesn't exists
-      if(el === null)
+      if (el === null)
         return;
 
       draw = this._determineDrawingFunction(draw);
 
       // Does nothing if the draw function isn't actually a function
-      if(typeof draw !== "function")
+      if (typeof draw !== "function")
         return;
 
-      obj = {
-        element: el,
-        context: el.getContext("2d"),
-        drawing: draw
-      };
+      for (let i = 0; i < el.length; i++) {
+        const obj = {
+          element: el[i],
+          context: el[i].getContext("2d"),
+          drawing: draw
+        };
 
-      this.list.push(obj);
-      this.draw(obj, KEYFRAME);
+        this.list.push(obj);
+        this.draw(obj, KEYFRAME);
+      }
+
+      // const obj = {
+      //   element: el,
+      //   context: el.getContext("2d"),
+      //   drawing: draw
+      // };
+      //
+      // this.list.push(obj);
+      // this.draw(obj, KEYFRAME);
     },
     set: function(el, draw) {
       var i;
 
-      if(typeof el === "string")
-        el = document.getElementById(el);
+      if (typeof el === "string")
+        el = document.querySelectorAll(`[data-icon='${el}']`);
 
+      // for (let j= 0; j < el.length; j++) {
+      //   for(i = this.list.length; i--; )
+      //     if(this.list[i].element === el[j]) {
+      //       this.list[i].drawing = this._determineDrawingFunction(draw);
+      //       this.draw(this.list[i], KEYFRAME);
+      //       return;
+      //     }
+      //
+      //   this.add(el[j], draw);
+      // }
       for(i = this.list.length; i--; )
         if(this.list[i].element === el) {
           this.list[i].drawing = this._determineDrawingFunction(draw);
@@ -685,8 +706,15 @@
       var i;
 
       if(typeof el === "string")
-        el = document.getElementById(el);
+        el = document.querySelectorAll(`[data-icon='${el}']`);
 
+      // for (let k = 0; k < el.length; k++) {
+      //   for(i = this.list.length; i--; )
+      //     if(this.list[i].element === el[k]) {
+      //       this.list.splice(i, 1);
+      //       return;
+      //     }
+      // }
       for(i = this.list.length; i--; )
         if(this.list[i].element === el) {
           this.list.splice(i, 1);
