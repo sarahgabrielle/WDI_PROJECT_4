@@ -9,9 +9,14 @@ class Auth {
 
   static isAuthenticated() {
     const payload = this.getPayload();
-    if(!payload) return false;
+    if (!payload) return false;
     const now = (new Date()).getTime() / 1000;
-    return payload.exp > now;
+    if (payload.exp > now) {
+      return true;
+    } else {
+      localStorage.clear();
+      return false;
+    }
   }
 
   static removeToken() {

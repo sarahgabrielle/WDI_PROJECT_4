@@ -14,11 +14,8 @@ import DashBoard from './components/trips/SideNav/DashBoard';
 import Messages from './components/trips/SideNav/Messages';
 import Memories from './components/trips/SideNav/Memories';
 
-// import 'react-select/dist/react-select.css';
-// import 'bootstrap-css-only';
-// import 'react-bootstrap';
-// import 'react-router-bootstrap';
-// import './scss/style.scss';
+
+import './scss/style.scss';
 
 import { MuiThemeProvider, createMuiTheme } from 'material-ui/styles';
 import purple from 'material-ui/colors/purple';

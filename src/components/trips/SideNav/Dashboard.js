@@ -54,7 +54,7 @@ class DashBoard extends React.Component {
           return(
             <li key={data.time}>
               {moment.unix(data.time).format('MMM Do')}
-              <p><canvas id={data.icon} width="128" height="128"></canvas></p>
+              <p><canvas data-icon={data.icon} width="128" height="128"></canvas></p>
               <p>{data.summary}</p>
               <p>{moment.unix(data.sunriseTime).add(offset, 'hours').format('LT')}</p>
               <p>{moment.unix(data.sunsetTime).add(offset, 'hours').format('LT')}</p>

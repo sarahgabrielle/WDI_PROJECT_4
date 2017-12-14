@@ -1,4 +1,4 @@
-export default (function(global) {
+(function(global) {
   "use strict";
 
   /* Set up a RequestAnimationFrame shim so we can animate efficiently FOR
@@ -642,61 +642,56 @@ export default (function(global) {
       return draw;
     },
     add: function(el, draw) {
-      if (typeof el === "string")
-        el = document.getElementsByClassName(el);
+      var obj;
+
+      if(typeof el === "string")
+        el = document.getElementById(el);
 
       // Does nothing if canvas name doesn't exists
-      if (el === null)
+      if(el === null)
         return;
 
       draw = this._determineDrawingFunction(draw);
 
       // Does nothing if the draw function isn't actually a function
-      if (typeof draw !== "function")
+      if(typeof draw !== "function")
         return;
 
-      for (let i = 0; i < el.length; i++) {
-        const obj = {
-          element: el[i],
-          context: el[i].getContext("2d"),
-          drawing: draw
-        };
-        console.log(obj)
+      obj = {
+        element: el,
+        context: el.getContext("2d"),
+        drawing: draw
+      };
 
-        this.list.push(obj);
-        this.draw(obj, KEYFRAME);
-      }
+      this.list.push(obj);
+      this.draw(obj, KEYFRAME);
     },
     set: function(el, draw) {
       var i;
 
-      if (typeof el === "string")
-        el = document.getElementsByClassName(el);
+      if(typeof el === "string")
+        el = document.getElementById(el);
 
-      for (let j= 0; j < el.length; j++) {
-        for(i = this.list.length; i--; )
-          if(this.list[i].element === el[j]) {
-            this.list[i].drawing = this._determineDrawingFunction(draw);
-            this.draw(this.list[i], KEYFRAME);
-            return;
-          }
+      for(i = this.list.length; i--; )
+        if(this.list[i].element === el) {
+          this.list[i].drawing = this._determineDrawingFunction(draw);
+          this.draw(this.list[i], KEYFRAME);
+          return;
+        }
 
-        this.add(el[j], draw);
-      }
+      this.add(el, draw);
     },
     remove: function(el) {
       var i;
 
       if(typeof el === "string")
-        el = document.getElementsByClassName(el);
+        el = document.getElementById(el);
 
-      for (let k = 0; k < el.length; k++) {
-        for(i = this.list.length; i--; )
-          if(this.list[i].element === el[k]) {
-            this.list.splice(i, 1);
-            return;
-          }
-      }
+      for(i = this.list.length; i--; )
+        if(this.list[i].element === el) {
+          this.list.splice(i, 1);
+          return;
+        }
     },
     draw: function(obj, time) {
       var canvas = obj.context.canvas;

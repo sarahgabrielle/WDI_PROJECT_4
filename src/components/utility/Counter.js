@@ -16,8 +16,9 @@ class Counter extends React.Component {
       const days = Math.floor(duration / 60 / 60 / 24);
       const hours = Math.floor((duration - (days * 24 * 60 * 60)) / 60 / 60);
       const minutes = Math.floor((duration - (days * 24 * 60 * 60) - (hours * 60 * 60)) / 60);
+      const seconds = Math.floor((duration - (days * 24 * 60 * 60) - (hours * 60 * 60)) - (minutes * 60));
 
-      return `${days}d ${padNum(hours)}h ${padNum(minutes)}m`;
+      return `${days}d ${padNum(hours)}h ${padNum(minutes)}m ${padNum(seconds)}s`;
     }
 
     this.counter.innerHTML = getTime(now);
