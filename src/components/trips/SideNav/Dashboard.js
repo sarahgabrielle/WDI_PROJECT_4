@@ -1,6 +1,6 @@
 import React from 'react';
 import Axios from 'axios';
-import Auth from '../../../lib/Auth';
+// import Auth from '../../../lib/Auth';
 // import { Button } from 'react-bootstrap';
 import moment from 'moment';
 // import Skycons from 'skycons-component';
@@ -43,18 +43,15 @@ class DashBoard extends React.Component {
 
   render(){
     if (!this.state.weather) return null;
-    const { offset, timezone, daily } = this.state.weather;
+    const { offset, daily } = this.state.weather;
     return(
       <div>
-        <h1>This is the DashBoard Page</h1>
-        <h1>{timezone}</h1>
-        {/* <div className={`weather-icon ${daily.icon}`}></div> */}
-        <h1>{daily.icon}</h1>
-        <h1>{daily.data.map(data => {
+        <h4 className="heading">WEATHER FORECAST</h4>
+        <ul>{daily.data.map(data => {
           return(
             <li key={data.time}>
               {moment.unix(data.time).format('MMM Do')}
-              <p><canvas data-icon={data.icon} width="128" height="128"></canvas></p>
+              <p><canvas data-icon={data.icon} width="100" height="100"></canvas></p>
               <p>{data.summary}</p>
               <p>{moment.unix(data.sunriseTime).add(offset, 'hours').format('LT')}</p>
               <p>{moment.unix(data.sunsetTime).add(offset, 'hours').format('LT')}</p>
@@ -63,7 +60,7 @@ class DashBoard extends React.Component {
               <p>{data.windSpeed}</p>
             </li>
           );
-        })}</h1>
+        })}</ul>
       </div>
 
 

@@ -142,7 +142,7 @@ class UserShow extends React.Component {
                           {' '}
                           { Auth.isAuthenticated &&
                       <a>
-                        <i className="material-icons" onClick={() => this.deleteTrip(trip)}>delete</i>
+                        <i className="material-icons" onClick={(e) => this.deleteTrip(trip, e)}>delete</i>
                       </a>
                           }
                         </div>
