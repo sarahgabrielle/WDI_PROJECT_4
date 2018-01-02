@@ -3,7 +3,7 @@ import ReactDOM from 'react-dom';
 import { BrowserRouter as Router, Route, Switch } from 'react-router-dom';
 
 import LandingPage from './components/utility/LandingPage';
-import Navbar from './components/utility/Navbar';
+import Navbar from './components/utility/NavBar';
 import Login from './components/auth/Login';
 import Register from './components/auth/Register';
 import UserRoutes from './components/users/UserRoutes';
@@ -40,7 +40,6 @@ class App extends React.Component {
           <div>
             <header>
               <Navbar />
-              {/* <SideNav /> */}
             </header>
             <main>
               <Route exact path="/" component={LandingPage} />

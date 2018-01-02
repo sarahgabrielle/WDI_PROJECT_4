@@ -1,23 +1,22 @@
 import React from 'react';
 import FileUpload from '../utility/FileUpload';
-import Button from 'material-ui/Button';
-import AddIcon from 'material-ui-icons/Add';
+import { Form, Button} from 'react-bootstrap';
 
 function DocumentForm({ handleChange, handleSubmit }) {
+  console.log('clicking');
   return(
-    <form onSubmit={handleSubmit}>
-      <div className="documentButton">
-        <Button fab mini color="primary" aria-label="add" className="post" type="submit">
-          <AddIcon />
-        </Button>
-      </div>
+    <Form onSubmit={handleSubmit}>
       <div className="fileUpload">
+        {/* <div className="test"> */}
         <FileUpload
           onChange={handleChange}
         />
-        <input type="text" name="title" onChange={handleChange} placeholder="Title" />
+        <input className="fileTitle" type="text" name="title" onChange={handleChange} placeholder="Enter Document Title" />
       </div>
-    </form>
+      <div className="addDocument">
+        <Button className="post" type="submit">ADD DOCUMENT</Button>
+      </div>
+    </Form>
   );
 }
 

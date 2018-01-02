@@ -5,10 +5,6 @@ import moment from 'moment';
 import Auth from '../../lib/Auth';
 import DocumentForm from './DocumentForm';
 import Counter from '../utility/Counter';
-
-import List, { ListItem, ListItemText } from 'material-ui/List';
-import Button from 'material-ui/Button';
-import AddIcon from 'material-ui-icons/Add';
 import 'font-awesome/css/font-awesome.css';
 
 class UserShow extends React.Component {
@@ -87,115 +83,130 @@ class UserShow extends React.Component {
       render(){
         return(
           <div>
-            <div className="userImage">
-              <div>
-                { Auth.isAuthenticated &&
-                  <Link to={`/users/${this.state.user.id}/edit`}>
-                    <i className="material-icons">mode_edit</i>
-                  </Link>
-                }
-                { Auth.isAuthenticated &&
-                <a>
-                  <i className="material-icons" onClick={this.deleteUser}>delete</i>
-                </a>
-                }
+            <div className="mu blf abk">
+              <div className="na"></div>
+              <div className="mv arx">
+                <img src={this.state.user.image} className="blg"/>
+                <p className="bjx">{this.state.user.username}</p>
+                <p className="abk">{this.state.user.email}</p>
+                <ul className="blh">
+                  <li className="bli">
+                    { Auth.isAuthenticated &&
+                      <Link to={`/users/${this.state.user.id}/edit`}>
+                        <i className="material-icons">mode_edit</i>
+                      </Link>
+                    }
+                  </li>
+                  <li className="bli">
+                    { Auth.isAuthenticated &&
+                    <a>
+                      <i className="material-icons" onClick={this.deleteUser}>delete</i>
+                    </a>
+                    }
+                  </li>
+                </ul>
               </div>
-              <img src={this.state.user.image} className="img-responsive" style={{
-                marginTop: '20px'}}/>
             </div>
-            <div>
-              <List className="userProfile">
-                <ListItem className="listItemProfile">
-                  <ListItemText primary={this.state.user.username} />
-                </ListItem>
-                <ListItem>
-                  <ListItemText primary={this.state.user.email} />
-                </ListItem>
-              </List>
-            </div>
-            <hr />
-            <div className="upcomingTrips">
-              <div>
-                <Link to="/trips/new">
-                  <Button fab mini color="primary" aria-label="add" className="addTrip">
-                    <AddIcon />
-                  </Button>
+            <div className="trips">
+              <div className="upcomingTrips">
+                <div className="heading">UPCOMING TRIPS</div>
+                <div className="tripList">
+                  {/* <ul> */}
+                    { this.state.user.upcomingTrips && <div>
+                      { this.state.user.upcomingTrips.map((trip, i) => {
+                        return(
+                          <p className="bjx" key={trip.id} href={`/trips/${trip.id}`}>
+                            {trip.resort} - {'  '}
+                            { ' ' }
+                            {moment(trip.date).format('dddd, Do MMM YYYY')}
+                            <ul className="blh">
+                              <li className="bli">
+                                { Auth.isAuthenticated &&
+                                  <Link to={`/trips/${trip.id}/edit`}>
+                                    <i className="material-icons">mode_edit</i>
+                                  </Link>
+                                }
+                              </li>
+                              <li className="bli">
+                                { Auth.isAuthenticated &&
+                                <a>
+                                  <i className="material-icons" onClick={(e) => this.deleteTrip(trip, e)}>delete</i>
+                                </a>
+                                }
+                              </li>
+                            </ul>
+                            <div className="countdown">
+                        Holiday countdown: <Counter date={trip.date} />
+                            </div>
+                          </p>
+                        );
+                      })}
+                    </div>
+                    }
+                  {/* </ul> */}
+                </div>
+              </div>
+              <div className="pastTrips">
+                <div className="heading">PAST TRIPS</div>
+                <div className="tripList">
+                  {/* <ul> */}
+                    {this.state.user.pastTrips && <div>
+                      { this.state.user.pastTrips.map(trip => {
+                        return(
+                          <div className="bjx" key={trip.id} href={`/trips/${trip.id}`}>
+                            {trip.resort} -  {'  '}
+                            { ' ' }{moment(trip.date).format('dddd, Do MMM YYYY')}
+                            <ul className="blh">
+                              <li className="bli">
+                                { Auth.isAuthenticated &&
+                                  <Link to={`/trips/${trip.id}/edit`}>
+                                    <i className="material-icons">mode_edit</i>
+                                  </Link>
+                                }
+                              </li>
+                              <li className="bli">
+                                { Auth.isAuthenticated &&
+                                <a>
+                                  <i className="material-icons" onClick={() => this.deleteTrip(trip)}>delete</i>
+                                </a>
+                                }
+                              </li>
+                            </ul>
+                          </div>
+                        );
+                      })}
+                    </div>
+                    }
+                  {/* </ul> */}
+                </div>
+              </div>
+              <div className="addTrip">
+                <Link className="addButton" to="/trips/new">
+                    ADD TRIP
                 </Link>
               </div>
-                UPCOMING TRIPS
             </div>
-            <div>
-              <List>
-                { this.state.user.upcomingTrips && <div>
-                  { this.state.user.upcomingTrips.map((trip, i) => {
-                    return(
-                      <ListItem button component="a" className="listItem" key={trip.id} href={`/trips/${trip.id}`}>
-                        {trip.resort} - {'  '}
-                        { ' ' }
-                        {moment(trip.date).format('dddd, Do MMM YYYY')}
-                        <div className="tripButtons">
-                          { Auth.isAuthenticated &&
-                        <Link to={`/trips/${trip.id}/edit`}>
-                          <i className="material-icons">mode_edit</i>
-                        </Link>
-                          }
-                          {' '}
-                          { Auth.isAuthenticated &&
-                      <a>
-                        <i className="material-icons" onClick={(e) => this.deleteTrip(trip, e)}>delete</i>
-                      </a>
-                          }
-                        </div>
-                        <div className="countdown">
-                    Holiday countdown: <Counter date={trip.date} />
-                        </div>
-                      </ListItem>
-                    );
-                  })}
-                </div>
-                }
-              </List>
-            </div>
-            <div className="pastTrips">
-              PAST TRIPS
-            </div>
-            <div>
-              <List>
-                {this.state.user.pastTrips && <div>
-                  { this.state.user.pastTrips.map(trip => {
-                    return(
-                      <ListItem button component="a" className="listItem" key={trip.id} href={`/trips/${trip.id}`}>
-                        {trip.resort} -  {'  '}
-                        { ' ' }{moment(trip.date).format('dddd, Do MMM YYYY')}
-                        <div className="tripButtons">
-                          { Auth.isAuthenticated &&
-                          <Link to={`/trips/${trip.id}/edit`}>
-                            <i className="material-icons">mode_edit</i>
-                          </Link>
-                          }
-                          {' '}
-                          { Auth.isAuthenticated &&
-                        <a>
-                          <i className="material-icons" onClick={() => this.deleteTrip(trip)}>delete</i>
-                        </a>
-                          }
-                        </div>
-                      </ListItem>
-                    );
-                  })}
-                </div>
-                }
-              </List>
-            </div>
-            <hr />
             <div className="documents">
-            DOCUMENTS
-              <div>
+              <div className="document">
+                DOCUMENTS
+              </div>
+              <div className="bjx">
                 { this.state.user.documents && this.state.user.documents.map(doc =>
-                  <div key={doc.id}>
-                    <a href={doc.link}>{doc.title}</a>
+                  <div className="bjx" key={doc.id}>
+                    <ul className="blh">
+                      <li className="bli">
+                        <a href={doc.link}>{doc.title}</a>
+                      </li>
+                      <li className="bli">
+                        {/* <button value={doc.id} onClick={this.documentDelete}> */}
+                        {/* </button> */}
 
-                    <button value={doc.id} onClick={this.documentDelete}>Delete</button>
+                        {/* <a type="submit" value={doc.id} onClick={this.documentDelete}>
+                          <i className="material-icons">delete</i>
+                        </a> */}
+                      </li>
+                      <button type="button" className="glyphicon" value={doc.id} onClick={this.documentDelete}></button>
+                    </ul>
                   </div>
                 )}
               </div>

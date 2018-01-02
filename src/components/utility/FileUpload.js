@@ -11,13 +11,12 @@ const FileUpload = ({ onChange }) => {
   };
 
   return(
-    <div className="file-upload">
       <input
+        id="test"
         type="file"
         accept="application/pdf"
         onChange={handleImage}
       />
-    </div>
   );
   // }
 };
