@@ -1,7 +1,9 @@
 html, body {
-  // height: 100%;
+  height: 100%;
   // background-color: #263238;
-  // color: #CDCDD1;
+  background-color: #f5f8fa;
+  // color: #eceff1;
+  color: #171717;
   padding: 0;
   margin: 0;
   font-family: "Roboto", "Helvetica", "Arial", sans-serif;
@@ -182,8 +184,8 @@ html, body {
 //   }
 // }
 
-.material-icons {
-  color: #607D8B
+.form-group{
+  margin-bottom: 30px;
 }
 
 // @import '/login.scss';

@@ -18,9 +18,6 @@ const LoginForm = ({ handleChange, handleSubmit, user, errors }) => {
         <FormGroup controlId="formBasicText">
           <Row>
             <Col xs={10} xsOffset={1} sm={6} smOffset={3} md={6} mdOffset={3}>
-              <ControlLabel>
-                Username or Email
-              </ControlLabel>
               <FormControl
                 type="text"
                 name="identifier"
@@ -35,9 +32,6 @@ const LoginForm = ({ handleChange, handleSubmit, user, errors }) => {
         <FormGroup controlId="formBasicPassword">
           <Row>
             <Col xs={10} xsOffset={1} sm={6} smOffset={3} md={6} mdOffset={3}>
-              <ControlLabel>
-                Password
-              </ControlLabel>
               <FormControl
                 type="password"
                 name="password"

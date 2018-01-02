@@ -18,11 +18,8 @@ const RegisterForm = ({ handleChange, handleSubmit, user, errors }) => {
         <FormGroup>
           <Row>
             <Col xs={10} xsOffset={1} sm={6} smOffset={3} md={6} mdOffset={3}>
-              <ControlLabel>
-                Image
-              </ControlLabel>
               <FormControl
-                label="Image"
+                placeholder="Image"
                 type="text"
                 id="image"
                 name="image"
@@ -35,11 +32,8 @@ const RegisterForm = ({ handleChange, handleSubmit, user, errors }) => {
         <FormGroup>
           <Row>
             <Col xs={10} xsOffset={1} sm={6} smOffset={3} md={6} mdOffset={3}>
-              <ControlLabel>
-                Username
-              </ControlLabel>
               <FormControl
-                label="Username"
+                placeholder="Username"
                 type="text"
                 id="username"
                 name="username"
@@ -53,11 +47,8 @@ const RegisterForm = ({ handleChange, handleSubmit, user, errors }) => {
         <FormGroup>
           <Row>
             <Col xs={10} xsOffset={1} sm={6} smOffset={3} md={6} mdOffset={3}>
-              <ControlLabel>
-                First Name
-              </ControlLabel>
               <FormControl
-                label="First Name"
+                placeholder="First Name"
                 type="text"
                 id="firstName"
                 name="firstName"
@@ -71,11 +62,8 @@ const RegisterForm = ({ handleChange, handleSubmit, user, errors }) => {
         <FormGroup>
           <Row>
             <Col xs={10} xsOffset={1} sm={6} smOffset={3} md={6} mdOffset={3}>
-              <ControlLabel>
-                Last Name
-              </ControlLabel>
               <FormControl
-                label="Last Name"
+                placeholder="Last Name"
                 type="text"
                 id="lastName"
                 name="lastName"
@@ -89,11 +77,8 @@ const RegisterForm = ({ handleChange, handleSubmit, user, errors }) => {
         <FormGroup>
           <Row>
             <Col xs={10} xsOffset={1} sm={6} smOffset={3} md={6} mdOffset={3}>
-              <ControlLabel>
-                Email
-              </ControlLabel>
               <FormControl
-                label="Email"
+                placeholder="Email"
                 type="email"
                 id="email"
                 name="email"
@@ -107,11 +92,8 @@ const RegisterForm = ({ handleChange, handleSubmit, user, errors }) => {
         <FormGroup>
           <Row>
             <Col xs={10} xsOffset={1} sm={6} smOffset={3} md={6} mdOffset={3}>
-              <ControlLabel>
-                Password
-              </ControlLabel>
               <FormControl
-                label="Password"
+                placeholder="Password"
                 type="password"
                 id="password"
                 name="password"
@@ -125,11 +107,8 @@ const RegisterForm = ({ handleChange, handleSubmit, user, errors }) => {
         <FormGroup>
           <Row>
             <Col xs={10} xsOffset={1} sm={6} smOffset={3} md={6} mdOffset={3}>
-              <ControlLabel>
-                Confirm Password
-              </ControlLabel>
               <FormControl
-                label="Confirm Password"
+                placeholder="Confirm Password"
                 type="password"
                 id="passwordConfirmation"
                 name="passwordConfirmation"
