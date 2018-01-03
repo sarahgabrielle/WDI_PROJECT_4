@@ -7,7 +7,7 @@ const RegisterForm = ({ handleChange, handleSubmit, user, errors }) => {
   return (
     <div className="registerForm">
       <Row>
-        <Col xs={10} xsOffset={1} sm={6} smOffset={3} md={6} mdOffset={3}>
+        <Col xs={10} sm={6} smOffset={3} md={6} mdOffset={3}>
           <ControlLabel>
             REGISTER
           </ControlLabel>
@@ -17,7 +17,7 @@ const RegisterForm = ({ handleChange, handleSubmit, user, errors }) => {
       <Form onSubmit={handleSubmit}>
         <FormGroup>
           <Row>
-            <Col xs={10} xsOffset={1} sm={6} smOffset={3} md={6} mdOffset={3}>
+            <Col xs={10} sm={6} smOffset={3} md={6} mdOffset={3}>
               <FormControl
                 placeholder="Image"
                 type="text"
@@ -31,7 +31,7 @@ const RegisterForm = ({ handleChange, handleSubmit, user, errors }) => {
         </FormGroup>
         <FormGroup>
           <Row>
-            <Col xs={10} xsOffset={1} sm={6} smOffset={3} md={6} mdOffset={3}>
+            <Col xs={10} sm={6} smOffset={3} md={6} mdOffset={3}>
               <FormControl
                 placeholder="Username"
                 type="text"
@@ -46,7 +46,7 @@ const RegisterForm = ({ handleChange, handleSubmit, user, errors }) => {
         </FormGroup>
         <FormGroup>
           <Row>
-            <Col xs={10} xsOffset={1} sm={6} smOffset={3} md={6} mdOffset={3}>
+            <Col xs={10} sm={6} smOffset={3} md={6} mdOffset={3}>
               <FormControl
                 placeholder="First Name"
                 type="text"
@@ -61,7 +61,7 @@ const RegisterForm = ({ handleChange, handleSubmit, user, errors }) => {
         </FormGroup>
         <FormGroup>
           <Row>
-            <Col xs={10} xsOffset={1} sm={6} smOffset={3} md={6} mdOffset={3}>
+            <Col xs={10} sm={6} smOffset={3} md={6} mdOffset={3}>
               <FormControl
                 placeholder="Last Name"
                 type="text"
@@ -76,7 +76,7 @@ const RegisterForm = ({ handleChange, handleSubmit, user, errors }) => {
         </FormGroup>
         <FormGroup>
           <Row>
-            <Col xs={10} xsOffset={1} sm={6} smOffset={3} md={6} mdOffset={3}>
+            <Col xs={10} sm={6} smOffset={3} md={6} mdOffset={3}>
               <FormControl
                 placeholder="Email"
                 type="email"
@@ -91,7 +91,7 @@ const RegisterForm = ({ handleChange, handleSubmit, user, errors }) => {
         </FormGroup>
         <FormGroup>
           <Row>
-            <Col xs={10} xsOffset={1} sm={6} smOffset={3} md={6} mdOffset={3}>
+            <Col xs={10} sm={6} smOffset={3} md={6} mdOffset={3}>
               <FormControl
                 placeholder="Password"
                 type="password"
@@ -106,7 +106,7 @@ const RegisterForm = ({ handleChange, handleSubmit, user, errors }) => {
         </FormGroup>
         <FormGroup>
           <Row>
-            <Col xs={10} xsOffset={1} sm={6} smOffset={3} md={6} mdOffset={3}>
+            <Col xs={10} sm={6} smOffset={3} md={6} mdOffset={3}>
               <FormControl
                 placeholder="Confirm Password"
                 type="password"
@@ -121,7 +121,7 @@ const RegisterForm = ({ handleChange, handleSubmit, user, errors }) => {
         </FormGroup>
         <FormGroup>
           <Row>
-            <Col xs={10} xsOffset={1} sm={6} smOffset={3} md={6} mdOffset={3}>
+            <Col xs={10} sm={6} smOffset={3} md={6} mdOffset={3}>
               <Button type="submit" disabled={formInvalid}>REGISTER</Button>
             </Col>
           </Row>

@@ -99,9 +99,9 @@ class UserShow extends React.Component {
                   </li>
                   <li className="bli">
                     { Auth.isAuthenticated &&
-                    <a>
+                    <Link to="">
                       <i className="material-icons" onClick={this.deleteUser}>delete</i>
-                    </a>
+                    </Link>
                     }
                   </li>
                 </ul>
@@ -112,37 +112,37 @@ class UserShow extends React.Component {
                 <div className="heading">UPCOMING TRIPS</div>
                 <div className="tripList">
                   {/* <ul> */}
-                    { this.state.user.upcomingTrips && <div>
-                      { this.state.user.upcomingTrips.map((trip, i) => {
-                        return(
-                          <p className="bjx" key={trip.id} href={`/trips/${trip.id}`}>
-                            {trip.resort} - {'  '}
-                            { ' ' }
-                            {moment(trip.date).format('dddd, Do MMM YYYY')}
-                            <ul className="blh">
-                              <li className="bli">
-                                { Auth.isAuthenticated &&
-                                  <Link to={`/trips/${trip.id}/edit`}>
-                                    <i className="material-icons">mode_edit</i>
-                                  </Link>
-                                }
-                              </li>
-                              <li className="bli">
-                                { Auth.isAuthenticated &&
+                  { this.state.user.upcomingTrips && <div>
+                    { this.state.user.upcomingTrips.map((trip, i) => {
+                      return(
+                        <a className="bjx" key={trip.id} href={`/trips/${trip.id}`}>
+                          {trip.resort} - {'  '}
+                          { ' ' }
+                          {moment(trip.date).format('dddd, Do MMM YYYY')}
+                          <ul className="blh">
+                            <li className="bli">
+                              { Auth.isAuthenticated &&
+                              <Link to={`/trips/${trip.id}/edit`}>
+                                <i className="material-icons">mode_edit</i>
+                              </Link>
+                              }
+                            </li>
+                            <li className="bli">
+                              { Auth.isAuthenticated &&
                                 <a>
                                   <i className="material-icons" onClick={(e) => this.deleteTrip(trip, e)}>delete</i>
                                 </a>
-                                }
-                              </li>
-                            </ul>
-                            <div className="countdown">
-                        Holiday countdown: <Counter date={trip.date} />
-                            </div>
-                          </p>
-                        );
-                      })}
-                    </div>
-                    }
+                              }
+                            </li>
+                          </ul>
+                          <div className="countdown">
+                            Holiday countdown: <Counter date={trip.date} />
+                          </div>
+                        </a>
+                      );
+                    })}
+                  </div>
+                  }
                   {/* </ul> */}
                 </div>
               </div>
@@ -150,38 +150,38 @@ class UserShow extends React.Component {
                 <div className="heading">PAST TRIPS</div>
                 <div className="tripList">
                   {/* <ul> */}
-                    {this.state.user.pastTrips && <div>
-                      { this.state.user.pastTrips.map(trip => {
-                        return(
-                          <div className="bjx" key={trip.id} href={`/trips/${trip.id}`}>
-                            {trip.resort} -  {'  '}
-                            { ' ' }{moment(trip.date).format('dddd, Do MMM YYYY')}
-                            <ul className="blh">
-                              <li className="bli">
-                                { Auth.isAuthenticated &&
+                  {this.state.user.pastTrips && <div>
+                    { this.state.user.pastTrips.map(trip => {
+                      return(
+                        <div className="bjx" key={trip.id} href={`/trips/${trip.id}`}>
+                          {trip.resort} -  {'  '}
+                          { ' ' }{moment(trip.date).format('dddd, Do MMM YYYY')}
+                          <ul className="blh">
+                            <li className="bli">
+                              { Auth.isAuthenticated &&
                                   <Link to={`/trips/${trip.id}/edit`}>
                                     <i className="material-icons">mode_edit</i>
                                   </Link>
-                                }
-                              </li>
-                              <li className="bli">
-                                { Auth.isAuthenticated &&
+                              }
+                            </li>
+                            <li className="bli">
+                              { Auth.isAuthenticated &&
                                 <a>
                                   <i className="material-icons" onClick={() => this.deleteTrip(trip)}>delete</i>
                                 </a>
-                                }
-                              </li>
-                            </ul>
-                          </div>
-                        );
-                      })}
-                    </div>
-                    }
+                              }
+                            </li>
+                          </ul>
+                        </div>
+                      );
+                    })}
+                  </div>
+                  }
                   {/* </ul> */}
                 </div>
               </div>
               <div className="addTrip">
-                <Link className="addButton" to="/trips/new">
+                <Link className="addButton button" to="/trips/new">
                     ADD TRIP
                 </Link>
               </div>

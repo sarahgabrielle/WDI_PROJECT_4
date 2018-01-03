@@ -3,8 +3,8 @@ import { Button } from 'react-bootstrap';
 
 const BackButton = ({ history }) => {
   return (
-    <Button onClick={() => history.goBack()}>
-      <i className="material-icons">arrow_back</i>
+    <Button className="button" onClick={() => history.goBack()}>
+      CANCEL
     </Button>
   );
 };

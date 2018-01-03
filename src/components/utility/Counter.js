@@ -35,7 +35,7 @@ class Counter extends React.Component {
 
   render() {
     return (
-      <span ref={element => this.counter = element}></span>
+      <span className="countdown" ref={element => this.counter = element}></span>
     );
   }
 }

@@ -7,7 +7,7 @@ const LoginForm = ({ handleChange, handleSubmit, user, errors }) => {
   return (
     <div className="loginForm">
       <Row>
-        <Col xs={10} xsOffset={1} sm={6} smOffset={3} md={6} mdOffset={3}>
+        <Col xs={10} sm={6} smOffset={3} md={6} mdOffset={3}>
           <ControlLabel>
             LOGIN
           </ControlLabel>
@@ -17,7 +17,7 @@ const LoginForm = ({ handleChange, handleSubmit, user, errors }) => {
       <Form onSubmit={handleSubmit}>
         <FormGroup controlId="formBasicText">
           <Row>
-            <Col xs={10} xsOffset={1} sm={6} smOffset={3} md={6} mdOffset={3}>
+            <Col xs={10} sm={6} smOffset={3} md={6} mdOffset={3}>
               <FormControl
                 type="text"
                 name="identifier"
@@ -31,7 +31,7 @@ const LoginForm = ({ handleChange, handleSubmit, user, errors }) => {
         </FormGroup>
         <FormGroup controlId="formBasicPassword">
           <Row>
-            <Col xs={10} xsOffset={1} sm={6} smOffset={3} md={6} mdOffset={3}>
+            <Col xs={10} sm={6} smOffset={3} md={6} mdOffset={3}>
               <FormControl
                 type="password"
                 name="password"
@@ -45,7 +45,7 @@ const LoginForm = ({ handleChange, handleSubmit, user, errors }) => {
         </FormGroup>
         <FormGroup>
           <Row>
-            <Col xs={10} xsOffset={1} sm={6} smOffset={3} md={6} mdOffset={3}>
+            <Col xs={10} sm={6} smOffset={3} md={6} mdOffset={3}>
               <Button type="submit" disabled={formInvalid}>
                   LOG IN
               </Button>

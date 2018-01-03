@@ -5,17 +5,10 @@ import { FormGroup, FormControl, Form, Col, Row, ControlLabel, Button } from 're
 function UserForm({ history, handleSubmit, handleChange, user }) {
   return (
     <div className="userForm">
-      {/* <Row>
-        <Col xs={10} xsOffset={1} sm={6} smOffset={3} md={6} mdOffset={3}>
-          <ControlLabel>
-            EDIT PROFILE
-          </ControlLabel>
-        </Col>
-      </Row> */}
       <Form onSubmit={handleSubmit}>
         <FormGroup controlId="formBasicText">
           <Row>
-            <Col xs={10} xsOffset={1} sm={6} smOffset={3} md={6} mdOffset={3}>
+            <Col xs={10} sm={6} smOffset={3} md={6} mdOffset={3}>
               <ControlLabel className="avatar">
                 Image
               </ControlLabel>
@@ -32,7 +25,7 @@ function UserForm({ history, handleSubmit, handleChange, user }) {
         </FormGroup>
         <FormGroup controlId="formBasicText">
           <Row>
-            <Col xs={10} xsOffset={1} sm={6} smOffset={3} md={6} mdOffset={3}>
+            <Col xs={10} sm={6} smOffset={3} md={6} mdOffset={3}>
               <ControlLabel>
                 Username
               </ControlLabel>
@@ -48,7 +41,7 @@ function UserForm({ history, handleSubmit, handleChange, user }) {
         </FormGroup>
         <FormGroup controlId="formBasicText">
           <Row>
-            <Col xs={10} xsOffset={1} sm={6} smOffset={3} md={6} mdOffset={3}>
+            <Col xs={10} sm={6} smOffset={3} md={6} mdOffset={3}>
               <ControlLabel>
                 First Name
               </ControlLabel>
@@ -64,7 +57,7 @@ function UserForm({ history, handleSubmit, handleChange, user }) {
         </FormGroup>
         <FormGroup controlId="formBasicText">
           <Row>
-            <Col xs={10} xsOffset={1} sm={6} smOffset={3} md={6} mdOffset={3}>
+            <Col xs={10} sm={6} smOffset={3} md={6} mdOffset={3}>
               <ControlLabel>
                 Last Name
               </ControlLabel>
@@ -80,7 +73,7 @@ function UserForm({ history, handleSubmit, handleChange, user }) {
         </FormGroup>
         <FormGroup controlId="formBasicText">
           <Row>
-            <Col xs={10} xsOffset={1} sm={6} smOffset={3} md={6} mdOffset={3}>
+            <Col xs={10} sm={6} smOffset={3} md={6} mdOffset={3}>
               <ControlLabel>
                 Email
               </ControlLabel>
@@ -96,8 +89,8 @@ function UserForm({ history, handleSubmit, handleChange, user }) {
         </FormGroup>
         <FormGroup>
           <Row>
-            <Col xs={10} xsOffset={1} sm={6} smOffset={3} md={6} mdOffset={3}>
-              <Button type="submit">
+            <Col xs={10} sm={6} smOffset={3} md={6} mdOffset={3}>
+              <Button className="button" type="submit">
                 SAVE
               </Button>
               { ' ' }
