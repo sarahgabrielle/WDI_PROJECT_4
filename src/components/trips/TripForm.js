@@ -5,6 +5,7 @@ import { FormGroup, FormControl, Form, Col, Row, ControlLabel, Button } from 're
 
 import AutoComplete from '../utility/AutoComplete';
 import Select from 'react-select';
+import 'react-select/dist/react-select.css';
 
 function TripForm({ history, handleSubmit, handleChange, trip, handleUser, users, selectedOptions, handleResortLocationChange, handleAccomodationLocationChange }) {
   const usersForSelect = users.map(user => ({ value: user.id, label: user.username }));
@@ -13,18 +14,20 @@ function TripForm({ history, handleSubmit, handleChange, trip, handleUser, users
       <Form onSubmit={handleSubmit}>
         <FormGroup>
           <Row>
-            <Col xs={10} xsOffset={1} sm={6} smOffset={3} md={6} mdOffset={3}>
+            <Col xs={10} sm={6} smOffset={3} md={6} mdOffset={3}>
               <ControlLabel>
                 Resort
               </ControlLabel>
-              <AutoComplete handleLocationChange={handleResortLocationChange}
+              <AutoComplete
+                value={trip.resort}
+                handleLocationChange={handleResortLocationChange}
               />
             </Col>
           </Row>
         </FormGroup>
         <FormGroup>
           <Row>
-            <Col xs={10} xsOffset={1} sm={6} smOffset={3} md={6} mdOffset={3}>
+            <Col xs={10} sm={6} smOffset={3} md={6} mdOffset={3}>
               <ControlLabel>
                 Date
               </ControlLabel>
@@ -41,7 +44,7 @@ function TripForm({ history, handleSubmit, handleChange, trip, handleUser, users
         </FormGroup>
         <FormGroup>
           <Row>
-            <Col xs={10} xsOffset={1} sm={6} smOffset={3} md={6} mdOffset={3}>
+            <Col xs={10} sm={6} smOffset={3} md={6} mdOffset={3}>
               <ControlLabel>
                 Address
               </ControlLabel>
@@ -52,11 +55,12 @@ function TripForm({ history, handleSubmit, handleChange, trip, handleUser, users
         </FormGroup>
         <FormGroup>
           <Row>
-            <Col xs={10} xsOffset={1} sm={6} smOffset={3} md={6} mdOffset={3}>
+            <Col xs={10} sm={6} smOffset={3} md={6} mdOffset={3}>
               <ControlLabel>
                 Add Friends/Family
               </ControlLabel>
               <Select
+                bsSize="large"
                 multi={true}
                 name="form-field-name"
                 value={selectedOptions}
@@ -68,8 +72,8 @@ function TripForm({ history, handleSubmit, handleChange, trip, handleUser, users
         </FormGroup>
         <FormGroup>
           <Row>
-            <Col xs={10} xsOffset={1} sm={6} smOffset={3} md={6} mdOffset={3}>
-              <Button type="submit">
+            <Col xs={10} sm={6} smOffset={3} md={6} mdOffset={3}>
+              <Button className="button" type="submit">
                 SAVE
               </Button>
               { ' ' }
