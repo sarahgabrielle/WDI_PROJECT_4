@@ -1,37 +1,43 @@
 import React from 'react';
-
 import BackButton from '../../utility/BackButton';
+import { FormGroup, FormControl, Form, ControlLabel, Button, Row, Col } from 'react-bootstrap';
 
 function MessageForm({ handleChange, handleSubmit, messages, message, history, messageDelete }){
+  console.log(message);
   return(
-    <div className="row">
+    <div className="messageForm ca bkt bku abk">
       <div>
         <BackButton history={history} />
       </div>
-      <h1>Messages</h1>
       { messages && messages.map(message =>
-        <div key={message.id}>
+        <div className="oq b acx" key={message.id}>
+          <img src={message.createdBy.image} className="bkp ru uk abc"/>
+          <div className="or">
+            <div className="bky">
+              <h6>{message.createdBy.username}</h6>
+            </div>
+          </div>
           <p>{message.content}</p>
-          <p>{message.createdBy.username}</p>
-          <button value={message.id} onClick={messageDelete}>Delete</button>
+          {/* <button className="button" value={message.id} onClick={messageDelete}>Delete</button> */}
         </div>
       )}
-      <form onSubmit={handleSubmit} className="col-md-6">
-        <div className="form-group">
-          <label htmlFor="content">MESSAGES</label>
-          <input
-            type="text"
-            className="form-control"
-            id="content"
-            name="content"
-            value={message.content}
-            onChange={handleChange}
-          />
-        </div>
+      <div className="message">
+        <form onSubmit={handleSubmit} className="col-md-6">
+          <div className="form-group">
+            <input
+              type="text"
+              className="form-control"
+              id="content"
+              name="content"
+              value={message.content}
+              onChange={handleChange}
+            />
+          </div>
+        </form>
         <div>
-          <button type="submit">POST</button>
+          <button className="button" type="submit">POST</button>
         </div>
-      </form>
+      </div>
     </div>
   );
 }
