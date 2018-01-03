@@ -1,5 +1,5 @@
 * {
-  color: #171717;
+  color: #1e3948;
 }
 
 .button {
@@ -198,160 +198,10 @@ html, body {
 //   }
 // }
 
-.form-group{
-  margin-bottom: 30px;
-}
-
-
-.Select-control {
-    background-color: #fff;
-    border-color: #d9d9d9 #ccc #b3b3b3;
-    border-radius: 4px;
-    border: 1px solid #ccc;
-    color: #333;
-    cursor: default;
-    display: table;
-    border-spacing: 0;
-    border-collapse: separate;
-    height: 45px;
-    outline: none;
-    overflow: hidden;
-    position: relative;
-}
-
-.message {
-  border: 1px solid red;
-  max-width: 900px;
-  margin: 0 auto;
-}
-
-.messages {
-  border: 1px solid green;
-  max-width: 900px;
-  margin: 0 auto;
-  display: flex;
-  margin-top: 0;
-}
-
-//this is the messages container of all the messages
-.bku .oq.b {
-    display: -webkit-box;
-    display: -ms-flexbox;
-    display: flex;
-    margin-top: 0;
-}
-
-.oq, .or {
-    overflow: visible;
-}
-
-.acx {
-    padding: 1.5rem !important;
-}
-
-.b {
-    position: relative;
-    display: block;
-    padding: 0.75rem 1.25rem;
-    margin-bottom: -1px;
-    background-color: #fff;
-    border: 1px solid rgba(0, 0, 0, 0.125);
-}
-
-.oq {
-    display: -webkit-box;
-    display: -ms-flexbox;
-    display: flex;
-    -webkit-box-align: start;
-    -ms-flex-align: start;
-    align-items: flex-start;
-}
-
-*, *::before, *::after {
-    -webkit-box-sizing: inherit;
-    box-sizing: inherit;
-}
-
-//this is the end of the messages styling
-
-
-//this is the image styling
-// @media (min-width: 576px)
-.bku .bkp {
-    width: 60px;
-}
-
-.bku .bkp {
-    border-radius: 100%;
-}
-
-.bku .bkp {
-    width: 42px;
-    margin-right: 5px;
-    height: 42px;
-}
-
-.abc {
-    margin-right: 1rem !important;
-}
-
-.uk {
-    -ms-flex-item-align: start !important;
-    align-self: flex-start !important;
-}
-
-.ru {
-    display: -webkit-box !important;
-    display: -ms-flexbox !important;
-    display: flex !important;
-}
-
-img {
-    vertical-align: middle;
-    border-style: none;
-}
-
-*, *::before, *::after {
-    -webkit-box-sizing: inherit;
-    box-sizing: inherit;
-}
-//end of image styling
-
-
-//
-.bkt {
-    padding-left: 0;
-    list-style: none;
-}
-
-.abk {
-    margin-bottom: 1.5rem !important;
-}
-
-.ca {
-    display: -webkit-box;
-    display: -ms-flexbox;
-    display: flex;
-    -webkit-box-orient: vertical;
-    -webkit-box-direction: normal;
-    -ms-flex-direction: column;
-    flex-direction: column;
-    padding-left: 0;
-    margin-bottom: 0;
-}
-
-div {
-    margin-top: 0;
-    margin-bottom: 1rem;
-}
-
-*, *::before, *::after {
-    -webkit-box-sizing: inherit;
-    box-sizing: inherit;
-}
 
 // @import '/login.scss';
 // @import '/register.scss';
 @import '/NavBar.scss';
 @import '/userProfile.scss';
 @import '/sideNav.scss';
+@import '/messages.scss';
