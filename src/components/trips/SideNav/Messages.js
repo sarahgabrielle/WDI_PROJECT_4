@@ -66,7 +66,6 @@ class Messages extends React.Component {
     console.log(this.state.trip.groupMessage);
     return(
       <div>
-        <h1>Trip Messages</h1>
         <MessageForm
           handleChange={this.handleChange}
           handleSubmit={this.handleSubmit}

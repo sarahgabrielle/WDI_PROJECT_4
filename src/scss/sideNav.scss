@@ -15,9 +15,8 @@
     width: 0;
     position: fixed;
     z-index: 1;
-    // top: 72px;
     top: 0px;
-    background-color: #2E2C2E;
+    background-color: #f5f8fa;
     overflow-x: hidden;
     padding-top: 60px;
     transition: 0.5s;
@@ -28,17 +27,15 @@
     text-decoration: none;
     display: block;
     transition: 0.3s;
-    color: white;
-    font-size: 0.875rem;
+    color: #171717;
     line-height: 1.4em;
-    font-family: "Roboto", "Helvetica", "Arial", sans-serif;
     font-weight: 500;
     text-transform: uppercase;
     margin-left: 10px;
 }
 
 .sidenav a:hover, .offcanvas a:focus{
-    color: #f1f1f1;
+    color: #171717;
 }
 
 
