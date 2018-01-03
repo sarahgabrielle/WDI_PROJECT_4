@@ -1,14 +1,11 @@
 import React from 'react';
 import BackButton from '../../utility/BackButton';
-import { FormGroup, FormControl, Form, ControlLabel, Button, Row, Col } from 'react-bootstrap';
+import { Form, Button} from 'react-bootstrap';
 
-function MessageForm({ handleChange, handleSubmit, messages, message, history, messageDelete }){
+function MessageForm({ handleChange, handleSubmit, messages, message, history }){
   console.log(message);
   return(
-    <div className="messageForm ca bkt bku abk">
-      <div>
-        <BackButton history={history} />
-      </div>
+    <div className="ca bkt bku abk">
       { messages && messages.map(message =>
         <div className="oq b acx" key={message.id}>
           <img src={message.createdBy.image} className="bkp ru uk abc"/>
@@ -18,25 +15,26 @@ function MessageForm({ handleChange, handleSubmit, messages, message, history, m
             </div>
           </div>
           <p>{message.content}</p>
-          {/* <button className="button" value={message.id} onClick={messageDelete}>Delete</button> */}
         </div>
       )}
-      <div className="message">
-        <form onSubmit={handleSubmit} className="col-md-6">
-          <div className="form-group">
-            <input
-              type="text"
-              className="form-control"
-              id="content"
-              name="content"
-              value={message.content}
-              onChange={handleChange}
-            />
-          </div>
-        </form>
-        <div>
-          <button className="button" type="submit">POST</button>
+      <div className="oq b acx">
+        <Form className="input-group" onSubmit={handleSubmit}>
+          <input
+            placeholder="Message"
+            type="text"
+            className="form-control"
+            id="content"
+            name="content"
+            value={message.content}
+            onChange={handleChange}
+          />
+        </Form>
+        <div className="jq">
+          <Button className="button" type="submit">POST</Button>
         </div>
+      </div>
+      <div className="backButton">
+        <BackButton history={history} />
       </div>
     </div>
   );

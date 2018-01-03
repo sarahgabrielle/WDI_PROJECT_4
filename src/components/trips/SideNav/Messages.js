@@ -65,16 +65,14 @@ class Messages extends React.Component {
   render(){
     console.log(this.state.trip.groupMessage);
     return(
-      <div>
-        <MessageForm
-          handleChange={this.handleChange}
-          handleSubmit={this.handleSubmit}
-          message={this.state.message}
-          messages={this.state.trip.groupMessage}
-          messageDelete={this.messageDelete}
-          history={this.props.history}
-        />
-      </div>
+      <MessageForm
+        handleChange={this.handleChange}
+        handleSubmit={this.handleSubmit}
+        message={this.state.message}
+        messages={this.state.trip.groupMessage}
+        messageDelete={this.messageDelete}
+        history={this.props.history}
+      />
     );
   }
 }
