@@ -15,6 +15,14 @@ documentSchema
   });
 
 documentSchema
+  .virtual('imageSRC')
+  .get(function getImageSRC() {
+    if(!this.filename) return null;
+    if(this.filename.match(/^http/)) return this.filename;
+    return `https://s3-eu-west-1.amazonaws.com/${process.env.AWS_BUCKET_NAME}/${this.filename}`;
+  });
+
+documentSchema
   .virtual('link')
   .get(function getDocLink() {
     if(!this.filename) return null;

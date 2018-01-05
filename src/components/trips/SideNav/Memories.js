@@ -58,16 +58,14 @@ class Memories extends React.Component {
 
   render(){
     return(
-      <div>
-        <MemoriesForm
-          handleChange={this.handleChange}
-          handleSubmit={this.handleSubmit}
-          memory={this.state.memory}
-          memories={this.state.trip.memories}
-          memoryDelete={this.memoryDelete}
-          history={this.props.history}
-        />
-      </div>
+      <MemoriesForm
+        handleChange={this.handleChange}
+        handleSubmit={this.handleSubmit}
+        memory={this.state.memory}
+        memories={this.state.trip.memories}
+        memoryDelete={this.memoryDelete}
+        history={this.props.history}
+      />
     );
   }
 }

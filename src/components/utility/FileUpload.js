@@ -18,7 +18,6 @@ const FileUpload = ({ onChange }) => {
       onChange={handleImage}
     />
   );
-  // }
 };
 
 export default FileUpload;

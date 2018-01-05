@@ -1,4 +1,5 @@
 import React from 'react';
+import '../../scss/memories.scss';
 
 const DragDrop = ({ onChange, value }) => {
   const fileReader = new FileReader();
