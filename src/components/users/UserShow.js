@@ -47,7 +47,7 @@ class UserShow extends React.Component {
 
       handleChange = ({ target: { name, value } }) => {
         const doc = Object.assign({}, this.state.doc, { [name]: value });
-        this.setState({ doc }, () => console.log(this.state));
+        this.setState({ doc });
       }
 
       handleSubmit = (e) => {

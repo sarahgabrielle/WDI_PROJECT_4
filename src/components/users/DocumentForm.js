@@ -7,7 +7,6 @@ function DocumentForm({ handleChange, handleSubmit }) {
   return(
     <Form onSubmit={handleSubmit}>
       <div className="fileUpload">
-        {/* <div className="test"> */}
         <FileUpload
           onChange={handleChange}
         />
