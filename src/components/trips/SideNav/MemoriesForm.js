@@ -1,7 +1,7 @@
 import React from 'react';
 import BackButton from '../../utility/BackButton';
 import DragDrop from '../../utility/DragDrop';
-import { Form, Button, Row, Col, FormGroup} from 'react-bootstrap';
+import { Form, Button } from 'react-bootstrap';
 
 function MemoriesForm({ handleChange, handleSubmit, memory, memories, memoryDelete, history }) {
   console.log(memories);
@@ -26,12 +26,12 @@ function MemoriesForm({ handleChange, handleSubmit, memory, memories, memoryDele
             />
           </div>
           <div className="addImage">
-              <Button className="button" type="submit">ADD IMAGE
-              </Button>
-              </div>
-              <div className="backButton">
-                <BackButton history={history} />
-              </div>
+            <Button className="button" type="submit">ADD IMAGE
+            </Button>
+          </div>
+          <div className="backButton">
+            <BackButton history={history} />
+          </div>
         </Form>
       </div>
     </div>

@@ -104,7 +104,6 @@ html, body {
   display: none;
 }
 
-
 //
 .google-map {
   height: calc(100vh - 64px);
@@ -205,3 +204,5 @@ html, body {
 @import '/userProfile.scss';
 @import '/sideNav.scss';
 @import '/messages.scss';
+@import '/memories.scss';
+@import '/dashboard.scss';
