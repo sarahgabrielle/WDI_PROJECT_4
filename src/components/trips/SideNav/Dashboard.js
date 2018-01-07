@@ -71,7 +71,6 @@ class DashBoard extends React.Component {
           </div>
         </div>
         <div className="forecasts">
-          
         </div>
         <div className="backButton">
           <BackButton history={history} />
