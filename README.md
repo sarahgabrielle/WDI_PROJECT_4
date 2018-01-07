@@ -75,11 +75,14 @@ Improvements:
 
 * Add functionality to enable users to add a "meeting point" marker  whether that be for lunch or après-ski.
 * oAuth
-* Invite a friend 
+* Invite a friend functionality (via email notification).
 * More TDD.
 
 ## Screenshots of the app:
 
+![]('/src/assets/UserProfile.png)
+![]('/src/assets/GroupMessage.png)
+![]('/src/assets/Memories.png)
 
 ## Important
 
