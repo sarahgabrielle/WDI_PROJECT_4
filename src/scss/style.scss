@@ -22,170 +22,7 @@ html, body {
   margin: 0;
   font-family: 'Belleza', sans-serif;
 }
-//
-// hr {
-//   border: 1px solid #CDCDD1;
-// }
-//
-// .loginForm{
-//   // color: #fff;
-//   margin-top: 100px;
-// }
-//
-// .registerForm{
-//   // color: #fff;
-// }
-//
-// nav{
-//   // height: 5vh;
-//   text-decoration: none;
-//   display: flex;
-//   justify-content: flex-end;
-//   background-color: rgba(0,0,0,0.0);
-//   a{
-//     color: #da1111;
-//     margin: 5px 10px;
-//   }
-//   a:visited {
-//     color: #da1111;
-//     display: inline;
-//     float: right;
-//     margin: 5px 10px;
-//     cursor:pointer;
-//   }
-//   a:link {
-//     text-decoration: none;
-//   }
-// }
-//
-// img.img-responsive {
-//   width: 150px;
-//   height: 150px;
-//   overflow: hidden;
-//   border-radius: 50%;
-//   border: 2px solid #fff;
-//   display: inline;
-//   float: left;
-//   margin: 0 20px;
-//
-// }
-//
-// //
-// // #background-video{
-// //   width: 100%;
-// //   height: 100%;
-// // }
-// //
-// // .userShow{
-// //   display: flex;
-// //   margin-top: 20px;
-// // }
-// //
-// a{
-//   color: #fff;
-//   text-decoration: none;
-// }
-//
-// a:hover{
-//   color: #da1111;
-// }
-//
-// ul{
-//   margin: 10px;
-//   padding: 0;
-//   list-style: none;
-// }
 
-.gm-style-mtc {
-  display: none;
-}
-
-.gm-fullscreen-control {
-  display: none;
-}
-
-//
-.google-map {
-  height: calc(100vh - 64px);
-}
-//
-// input {
-//     display: block;
-//     width: 100%;
-//     height: 34px;
-//     padding: 6px 12px;
-//     font-size: 14px;
-//     line-height: 1.42857143;
-//     color: #555;
-//     background-color: #fff;
-//     background-image: none;
-//     border: 1px solid #ccc;
-//     border-radius: 4px;
-//     -webkit-box-shadow: inset 0 1px 1px rgba(0,0,0,.075);
-//     box-shadow: inset 0 1px 1px rgba(0,0,0,.075);
-//     -webkit-transition: border-color ease-in-out .15s,-webkit-box-shadow ease-in-out .15s;
-//     -o-transition: border-color ease-in-out .15s,box-shadow ease-in-out .15s;
-//     transition: border-color ease-in-out .15s,box-shadow ease-in-out .15s;
-// }
-//
-//
-// .sidenav {
-//     height: 100vh;
-//     width: 0;
-//     position: fixed;
-//     z-index: 1;
-//     top: 0;
-//     left: 0;
-//     background-color: #2E2C2E;
-//     overflow-x: hidden;
-//     padding-top: 60px;
-//     transition: 0.5s;
-// }
-//
-// .sidenav a {
-//     padding: 8px 8px 8px 32px;
-//     text-decoration: none;
-//     font-size: 25px;
-//     color: #818181;
-//     display: block;
-//     transition: 0.3s
-// }
-//
-// .sidenav a:hover, .offcanvas a:focus{
-//     color: #f1f1f1;
-// }
-//
-//
-// .sidenav .closebtn {
-//     position: absolute;
-//     top: 0;
-//     right: 25px;
-//     font-size: 36px;
-//     margin-left: 50px;
-// }
-//
-// .sidebar-link {
-//   padding: 20px;
-//   color: black;
-// }
-//
-// div.drag-drop {
-//   input[type=file] {
-//     display: none;
-//   }
-//
-//   div.dropzone {
-//     height: 200px;
-//     width: 200px;
-//     background: url("http://www.kamarajcollege.ac.in/sites/default/files/blogpost-4.jpg");
-//     background-color: #fafafa;
-//     background-size: contain;
-//     // background-repeat: no-repeat;
-//     background-position: center;
-//     background-size: cover
-//   }
-// }
-//
 // .weather-icon {
 //   width: 64px;
 //   height: 64px;
@@ -197,12 +34,10 @@ html, body {
 //   }
 // }
 
-
-// @import '/login.scss';
-// @import '/register.scss';
 @import '/NavBar.scss';
 @import '/userProfile.scss';
 @import '/sideNav.scss';
 @import '/messages.scss';
 @import '/memories.scss';
 @import '/dashboard.scss';
+@import '/GoogleMaps.scss';
