@@ -9,7 +9,7 @@ Fourth and final project set by GA to build a full-stack MERN application in one
 * Consume your API with a separate front-end built with React
 * Be a complete product which most likely means multiple relationships and CRUD functionality for at least a couple of models
 * Implement thoughtful user stories/wireframes that are significant enough to help you know which features are core MVP and which can you cut
-* Have a visually impressive design 
+* Have a visually impressive design
 * Be deployed online so it's publicly accessible.
 * Have automated tests for at least one RESTful resource on the back-end.
 
@@ -52,7 +52,7 @@ Link to app: [](https://evening-badlands-38731.herokuapp.com)
 
 ## Approach taken:
 
-* I planned out my application by firstly sketching some wireframes and wrote user stories to define what my users would want to do with the app. I also drew on some inspiration from other ski apps. 
+* I planned out my application by firstly sketching some wireframes and wrote user stories to define what my users would want to do with the app. I also drew on some inspiration from other ski apps.
 * I used Trello to organise my tasks, by separating them into 'Backlog', 'In Progress', 'In Review' and 'Done' lists. This eased development headaches dramatically as it clearly structured the work I had done and the work that remained to be done.
 * I did some research on the APIs that I was going to use for my app.
 * I pseudo-coded all the basic elements of my application and built from there, starting with the user authentication first. I then moved to doing all the back-end elements of the application and continued testing my routes and controllers in Insomnia. Once those elements were working, I finally moved on to the front-end components.
@@ -69,7 +69,7 @@ Google Map - to provide the ski resort map and display all of the ski trails/lif
 
 Problems:
 
-* Finding good APIs for ski maps proved almost impossible - in the end I had to settle for Google Maps. 
+* Finding good APIs for ski maps proved almost impossible - in the end I had to settle for Google Maps.
 
 Improvements:
 
@@ -80,13 +80,13 @@ Improvements:
 
 ## Screenshots of the app:
 
-![]('/src/assets/UserProfile.png)
-![]('/src/assets/GroupMessage.png)
-![]('/src/assets/Memories.png)
+![](/src/assets/UserProfile.png)
+![](/src/assets/GroupMessage.png)
+![](/src/assets/Memories.png)
 
 ## Important
 
 Ensure that you add any relevant environment variables to heroku with `heroku config:set`, eg:
 
 `heroku config:set AWS_BUCKET_NAME=wdi-project-4`
-## 
+##
