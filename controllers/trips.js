@@ -7,7 +7,7 @@ function tripIndex(req, res, next){
 
   Trip
     .find()
-    .populate('createdBy')
+    .populate('createdBy Users')
     .exec()
     .then(trips => res.status(200).json(trips))
     .catch(next);
