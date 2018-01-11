@@ -22,7 +22,7 @@ Fourth and final project set by GA to build a full-stack MERN application in one
 
 ### Name of App:
 
-Skilog
+Skiløg
 
 ### App Concept:
 
