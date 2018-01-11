@@ -3,14 +3,14 @@ import ReactDOM from 'react-dom';
 import { BrowserRouter as Router, Route, Switch } from 'react-router-dom';
 
 import LandingPage from './components/utility/LandingPage';
-import Navbar from './components/utility/NavBar';
+import Navbar from './components/utility/Navbar';
 import Login from './components/auth/Login';
 import Register from './components/auth/Register';
 import UserRoutes from './components/users/UserRoutes';
 import TripEdit from './components/trips/TripEdit';
 import TripShow from './components/trips/TripShow';
 import TripNew from './components/trips/TripNew';
-import DashBoard from './components/trips/SideNav/DashBoard';
+import DashBoard from './components/trips/SideNav/Dashboard';
 import Messages from './components/trips/SideNav/Messages';
 import Memories from './components/trips/SideNav/Memories';
 
