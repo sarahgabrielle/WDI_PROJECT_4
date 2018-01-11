@@ -28,7 +28,7 @@ Skiløg
 
 The app was built to enable users to log their ski trips. Users can add trips which will display in the upcoming trip section. Users can view more details about the upcoming trip such as the Google Ski Trail Map and the ski resort's weather forecast. Users can upload photos and other documents (such as ski e-pass) to their trip and can also instant message their ski buddies.
 
-Link to app: [](https://evening-badlands-38731.herokuapp.com)
+Link to app: [](https://ski-log.herokuapp.com/)
 
 ## Technologies used:
 
