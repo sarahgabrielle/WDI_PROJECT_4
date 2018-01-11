@@ -46,12 +46,6 @@ module.exports = {
         secure: false
       }
     ]
-    // proxy: {
-    //   '/api': {
-    //     target: 'http://localhost:4000',
-    //     secure: false
-    //   }
-    // }
   },
   plugins: [HotModuleReplcement, HtmlWebpack, CopyWebpack]
 };
