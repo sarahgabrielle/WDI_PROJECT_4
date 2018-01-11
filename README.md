@@ -84,7 +84,7 @@ Improvements:
 ![](/src/assets/GroupMessage.png)
 ![](/src/assets/Memories.png)
 
-## Importantt
+## Important
 
 Ensure that you add any relevant environment variables to heroku with `heroku config:set`, eg:
 
