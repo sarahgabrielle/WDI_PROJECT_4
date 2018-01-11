@@ -2,7 +2,7 @@
   "name": "react-webpack-setup",
   "version": "1.0.0",
   "description": "A React and Webpack setup for WDI",
-  "main": "server.js",
+  "main": "index.js",
   "license": "MIT",
   "scripts": {
     "start": "yarn build && node index",
