@@ -2,38 +2,18 @@
   color: #1e3948;
 }
 
-.button {
-  border-color: #3097D1;
-  color: #3097D1;
-}
-
-.button:hover {
-  color: #fff;
-  background-color: #31b0d5;
-  border-color: #269abc;
-  text-decoration: none;
-}
-
 html, body {
   height: 100%;
   background-color: #f5f8fa;
   color: #171717;
   padding: 0;
   margin: 0;
-  font-family: 'Belleza', sans-serif;
+  font-family: 'Montserrat', sans-serif;
 }
 
-// .weather-icon {
-//   width: 64px;
-//   height: 64px;
-//   background-repeat: no-repeat;
-//   background-size: contain;
-//   background-position: center;
-//   &.snow {
-//     background-image: url(http://www.iro-mavrogeni.co.uk/images/projects/CCVB-Website/weather-icon-02.gif)
-//   }
-// }
-
+@import 'buttons';
+@import 'fonts';
+@import 'video';
 @import 'NavBar';
 @import 'userProfile';
 @import 'sideNav';

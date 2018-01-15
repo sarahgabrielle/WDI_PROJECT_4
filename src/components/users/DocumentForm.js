@@ -10,7 +10,7 @@ function DocumentForm({ handleChange, handleSubmit }) {
         <FileUpload
           onChange={handleChange}
         />
-        <input className="fileTitle" type="text" name="title" onChange={handleChange} placeholder="Enter Document Title" />
+        <input className="fileTitle" type="text" name="title" onChange={handleChange} placeholder="Enter Doc Title"/>
       </div>
       <div className="addDocument">
         <Button className="button" type="submit">ADD DOCUMENT</Button>

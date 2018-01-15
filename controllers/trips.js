@@ -7,7 +7,7 @@ function tripIndex(req, res, next){
 
   Trip
     .find()
-    .populate('createdBy Users')
+    .populate('createdBy users')
     .exec()
     .then(trips => res.status(200).json(trips))
     .catch(next);
@@ -27,7 +27,7 @@ function tripShow(req, res, next){
 
   Trip
     .findById(req.params.id)
-    .populate('createdBy groupMessage.createdBy')
+    .populate('createdBy groupMessage.createdBy users')
     .exec()
     .then((trip) => {
       if (!trip) return res.notFound();

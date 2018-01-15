@@ -41,10 +41,27 @@ class DashBoard extends React.Component {
 
   render(){
     if (!this.state.weather) return null;
-    const { offset, daily } = this.state.weather;
-    console.log(this.state.trip);
+    const { offset, currently, hourly, daily } = this.state.weather;
+    console.log(this.state.weather);
     return(
       <div>
+        <div className="forecasts">
+          <div className="bkv">
+            <h4 className="title">TODAY</h4>
+          </div>
+          <div className="snapshot">
+            <div className="icon">
+              <canvas data-icon={currently.icon} width="50" height="50"></canvas>
+            </div>
+            <div className="temp">{currently.temperature}˚C</div>
+            <div className="summary">{currently.summary}</div>
+          </div>
+          <div className="hourlySummary">{hourly.summary}</div>
+          <div className="extraData">
+            <div className="wind">Wind: {currently.windSpeed} Km/h</div>
+            <div className="visibility">Visibility: {currently.visibility} km</div>
+          </div>
+        </div>
         <div className="forecasts">
           <div className="bkv">
             <h4 className="title">WEATHER FORECAST</h4>
@@ -53,27 +70,27 @@ class DashBoard extends React.Component {
             {daily.data.map(data => {
               return(
                 <div className="weather" key={data.time}>
+                  <div>{data.temperatureMax}˚C</div>
                   <div>
                     <canvas data-icon={data.icon} width="50" height="50"></canvas>
                   </div>
                   <div>
                     {moment.unix(data.time).format('MMM Do')}
                   </div>
-                  {/* <p>{data.summary}</p> */}
-                  {/* <p>{moment.unix(data.sunriseTime).add(offset, 'hours').format('LT')}</p> */}
-                  {/* <p>{moment.unix(data.sunsetTime).add(offset, 'hours').format('LT')}</p> */}
-                  {/* <p>{data.temperatureMin}˚C</p> */}
-                  {/* <p>{data.temperatureMax}˚C</p> */}
-                  {/* <p>{data.windSpeed}</p> */}
                 </div>
               );
             })}
           </div>
         </div>
         <div className="forecasts">
-        </div>
-        <div className="backButton dashboardPage">
-          <BackButton history={history} />
+          <div className="bkv">
+            <h4 className="title">TRIP MEMBERS</h4>
+          </div>
+          { this.state.trip.users && this.state.trip.users.map(user =>
+            <div className="imageBox" key={user.id}>
+              <img src={user.image} className="photo"/>
+            </div>
+          )}
         </div>
       </div>
     );

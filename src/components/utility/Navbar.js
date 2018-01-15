@@ -14,7 +14,7 @@ const NavBar = ({ history }) => {
 
   return(
     <div className="root">
-      <img src="../../assets/snow-mountain.png" alt="Logo here" className="logo"/>
+      <Link to="/"><img src="../../assets/snow-mountain.png" alt="Logo here" className="logo"/></Link>
       { !Auth.isAuthenticated() && <Link to="/login" className="navLink">Login</Link>}
       {' '}
       { !Auth.isAuthenticated() && <Link to="/register" className="navLink">Register</Link>}

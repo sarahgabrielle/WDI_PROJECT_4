@@ -30,6 +30,7 @@ The app was built to enable users to log their ski trips. Users can add trips wh
 
 Link to app: [](https://ski-log.herokuapp.com/)
 
+
 ## Technologies used:
 
 * HTML

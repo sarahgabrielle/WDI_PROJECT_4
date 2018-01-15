@@ -198,14 +198,9 @@ class UserShow extends React.Component {
                         <a href={doc.link}>{doc.title}</a>
                       </li>
                       <li className="bli">
-                        {/* <button value={doc.id} onClick={this.documentDelete}> */}
-                        {/* </button> */}
-
-                        {/* <a type="submit" value={doc.id} onClick={this.documentDelete}>
-                          <i className="material-icons">delete</i>
-                        </a> */}
+                        <button className="docButton" value={doc.id} onClick={this.documentDelete}><strong>x</strong>
+                        </button>
                       </li>
-                      <button type="button" className="glyphicon" value={doc.id} onClick={this.documentDelete}></button>
                     </ul>
                   </div>
                 )}

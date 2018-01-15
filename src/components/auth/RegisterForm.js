@@ -122,7 +122,7 @@ const RegisterForm = ({ handleChange, handleSubmit, user, errors }) => {
         <FormGroup>
           <Row>
             <Col xs={10} sm={6} smOffset={3} md={6} mdOffset={3}>
-              <Button type="submit" disabled={formInvalid}>REGISTER</Button>
+              <Button className="button" type="submit" disabled={formInvalid}>REGISTER</Button>
             </Col>
           </Row>
         </FormGroup>

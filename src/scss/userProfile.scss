@@ -124,18 +124,6 @@ img {
 .abk {
     margin-bottom: 1.5rem;
 }
-
-// p {
-//     margin-top: 0;
-//     margin-bottom: 1rem;
-//     font-size: initial;
-//     display: block;
-//     -webkit-margin-before: 1em;
-//     -webkit-margin-after: 1em;
-//     -webkit-margin-start: 0px;
-//     -webkit-margin-end: 0px;
-// }
-
 .blh {
     list-style: none;
     padding: 0;
@@ -229,4 +217,15 @@ input#test {
     outline: none;
     overflow: hidden;
     position: relative;
+}
+
+.docButton {
+  background: none;
+    border: none;
+    margin-left: -10px;
+    /* margin-top: -1px; */
+    padding: 0;
+    margin: 0;
+    // border: 1px solid red;
+    margin-bottom: 0;
 }
