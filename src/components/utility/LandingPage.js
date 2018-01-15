@@ -2,7 +2,7 @@ import React from 'react';
 
 class Video extends React.Component {
   state = {
-    videoURL: 'src/components/utility/movies/gopro.mp4'
+    // videoURL: 'src/components/utility/movies/gopro.mp4'
   }
 
 
