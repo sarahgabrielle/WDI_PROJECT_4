@@ -8,11 +8,12 @@ class Video extends React.Component {
 
   render() {
     return (
-      <video id="background-video" loop autoPlay>
-        <source src={this.state.videoURL} type="video/mp4" />
-        <source src={this.state.videoURL} type="video/ogg" />
-        Your browser does not support the video tag.
-      </video>
+      <div>
+        <img className="landingPage" src="/assets/moritz-matlik.jpg" />
+        <div className="landingPageText">
+          <div className="landingPageTitle">Find Your Adventure</div>
+        </div>
+      </div>
     );
   }
 }
