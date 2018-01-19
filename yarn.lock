@@ -4689,9 +4689,9 @@ negotiator@0.6.1:
   version "0.6.1"
   resolved "https://registry.yarnpkg.com/negotiator/-/negotiator-0.6.1.tgz#2b327184e8992101177b28563fb5e7102acd0ca9"
 
-newrelic@^2.6.0:
-  version "2.6.0"
-  resolved "https://registry.yarnpkg.com/newrelic/-/newrelic-2.6.0.tgz#8672c25c3bda68582ba8dd00a25e3198ef98e42e"
+newrelic@^2.6.1:
+  version "2.6.1"
+  resolved "https://registry.yarnpkg.com/newrelic/-/newrelic-2.6.1.tgz#ebf490a290616b9002e18a5a0f250b8c6e3ae365"
   dependencies:
     async "^2.1.4"
     concat-stream "^1.5.0"
