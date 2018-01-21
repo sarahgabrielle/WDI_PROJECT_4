@@ -115,7 +115,7 @@ class UserShow extends React.Component {
                   { this.state.user.upcomingTrips && <div>
                     { this.state.user.upcomingTrips.map((trip, i) => {
                       return(
-                        <a className="bjx" key={trip.id} href={`/trips/${trip.id}`}>
+                        <div className="bjx" key={trip.id} href={`/trips/${trip.id}`}>
                           {trip.resort} - {'  '}
                           { ' ' }
                           {moment(trip.date).format('dddd, Do MMM YYYY')}
@@ -130,7 +130,7 @@ class UserShow extends React.Component {
                             <li className="bli">
                               { Auth.isAuthenticated &&
                                 <a>
-                                  <i className="material-icons" onClick={(e) => this.deleteTrip(trip, e)}>delete</i>
+                                  <i className="material-icons" onClick={() => this.deleteTrip(trip)}>delete</i>
                                 </a>
                               }
                             </li>
@@ -138,7 +138,7 @@ class UserShow extends React.Component {
                           <div className="countdown">
                             Holiday countdown: <Counter date={trip.date} />
                           </div>
-                        </a>
+                        </div>
                       );
                     })}
                   </div>
