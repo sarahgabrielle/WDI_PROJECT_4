@@ -1,7 +1,7 @@
 import React from 'react';
 import Axios from 'axios';
 import moment from 'moment';
-// import '../../utility/skycons';
+import '../../utility/skycons';
 // import BackButton from '../../utility/BackButton';
 
 class DashBoard extends React.Component {
