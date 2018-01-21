@@ -115,7 +115,7 @@ class UserShow extends React.Component {
                   { this.state.user.upcomingTrips && <div>
                     { this.state.user.upcomingTrips.map((trip, i) => {
                       return(
-                        <div className="bjx" key={trip.id} href={`/trips/${trip.id}`}>
+                        <a className="bjx" key={trip.id} href={`/trips/${trip.id}`}>
                           {trip.resort} - {'  '}
                           { ' ' }
                           {moment(trip.date).format('dddd, Do MMM YYYY')}
@@ -129,16 +129,16 @@ class UserShow extends React.Component {
                             </li>
                             <li className="bli">
                               { Auth.isAuthenticated &&
-                                <a>
+                                <Link to={`/users/${this.state.user.id}`}>
                                   <i className="material-icons" onClick={() => this.deleteTrip(trip)}>delete</i>
-                                </a>
+                                </Link>
                               }
                             </li>
                           </ul>
                           <div className="countdown">
                             Holiday countdown: <Counter date={trip.date} />
                           </div>
-                        </div>
+                        </a>
                       );
                     })}
                   </div>
@@ -153,7 +153,7 @@ class UserShow extends React.Component {
                   {this.state.user.pastTrips && <div>
                     { this.state.user.pastTrips.map(trip => {
                       return(
-                        <div className="bjx" key={trip.id} href={`/trips/${trip.id}`}>
+                        <a className="bjx" key={trip.id} href={`/trips/${trip.id}`}>
                           {trip.resort} -  {'  '}
                           { ' ' }{moment(trip.date).format('dddd, Do MMM YYYY')}
                           <ul className="blh">
@@ -166,13 +166,13 @@ class UserShow extends React.Component {
                             </li>
                             <li className="bli">
                               { Auth.isAuthenticated &&
-                                <a>
+                                <Link to={`/users/${this.state.user.id}`}>
                                   <i className="material-icons" onClick={() => this.deleteTrip(trip)}>delete</i>
-                                </a>
+                                </Link>
                               }
                             </li>
                           </ul>
-                        </div>
+                        </a>
                       );
                     })}
                   </div>
