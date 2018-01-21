@@ -1,8 +1,8 @@
 import React from 'react';
 import Axios from 'axios';
 import moment from 'moment';
-import '../../utility/skycons';
-import BackButton from '../../utility/BackButton';
+// import '../../utility/skycons';
+// import BackButton from '../../utility/BackButton';
 
 class DashBoard extends React.Component {
   state = {
@@ -41,7 +41,7 @@ class DashBoard extends React.Component {
 
   render(){
     if (!this.state.weather) return null;
-    const { offset, currently, hourly, daily } = this.state.weather;
+    const { currently, hourly, daily } = this.state.weather;
     console.log(this.state.weather);
     return(
       <div>
