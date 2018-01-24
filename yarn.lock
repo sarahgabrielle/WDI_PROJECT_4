@@ -4561,9 +4561,9 @@ mongoose-fill@^1.7.0:
   dependencies:
     async "^1.4.2"
 
-mongoose-unique-validator@^1.0.6:
-  version "1.0.6"
-  resolved "https://registry.yarnpkg.com/mongoose-unique-validator/-/mongoose-unique-validator-1.0.6.tgz#fab31e68c1a5ba6f5b05da8e93842db55eb0a3b1"
+mongoose-unique-validator@^2.0.0:
+  version "2.0.0"
+  resolved "https://registry.yarnpkg.com/mongoose-unique-validator/-/mongoose-unique-validator-2.0.0.tgz#76e406cd0b322bbbb79496e2b7425d885ce661c4"
   dependencies:
     lodash.foreach "^4.1.0"
     lodash.get "^4.0.2"
