@@ -29,7 +29,7 @@
     "moment": "^2.19.3",
     "mongoose": "^4.11.12",
     "mongoose-fill": "^1.7.0",
-    "mongoose-unique-validator": "^1.0.6",
+    "mongoose-unique-validator": "^2.0.0",
     "morgan": "^1.8.2",
     "newrelic": "^2.6.0",
     "react": "^15.6.1",
