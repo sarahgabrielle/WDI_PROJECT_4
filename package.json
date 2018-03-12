@@ -73,7 +73,7 @@
     "supertest": "^3.0.0",
     "url-loader": "^0.5.9",
     "webpack": "^3.3.0",
-    "webpack-dev-server": "^2.5.1"
+    "webpack-dev-server": "^3.1.1"
   },
   "repository": "git@github.com:sarahgabrielle/WDI_PROJECT_4.git",
   "author": "sarahalpay <sarah.g.alpay@gmail.com>"
