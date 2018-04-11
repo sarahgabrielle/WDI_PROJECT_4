@@ -2,6 +2,10 @@
 # yarn lockfile v1
 
 
+"@newrelic/koa@^1.0.0":
+  version "1.0.3"
+  resolved "https://registry.yarnpkg.com/@newrelic/koa/-/koa-1.0.3.tgz#83e25d79ff35b46a28391c93e94ed4e002ba47ec"
+
 "@newrelic/native-metrics@^2.1.0":
   version "2.1.2"
   resolved "https://registry.yarnpkg.com/@newrelic/native-metrics/-/native-metrics-2.1.2.tgz#9a595dc602654b717188a294507087a51e79fba3"
@@ -3368,7 +3372,7 @@ https-browserify@^1.0.0:
   version "1.0.0"
   resolved "https://registry.yarnpkg.com/https-browserify/-/https-browserify-1.0.0.tgz#ec06c10e0a34c0f2faf199f7fd7fc78fffd03c73"
 
-https-proxy-agent@^0.3.5:
+https-proxy-agent@^0.3.6:
   version "0.3.6"
   resolved "https://registry.yarnpkg.com/https-proxy-agent/-/https-proxy-agent-0.3.6.tgz#713fa38e5d353f50eb14a342febe29033ed1619b"
   dependencies:
@@ -4689,13 +4693,14 @@ negotiator@0.6.1:
   version "0.6.1"
   resolved "https://registry.yarnpkg.com/negotiator/-/negotiator-0.6.1.tgz#2b327184e8992101177b28563fb5e7102acd0ca9"
 
-newrelic@^2.6.0:
-  version "2.6.0"
-  resolved "https://registry.yarnpkg.com/newrelic/-/newrelic-2.6.0.tgz#8672c25c3bda68582ba8dd00a25e3198ef98e42e"
+newrelic@^3.3.1:
+  version "3.3.1"
+  resolved "https://registry.yarnpkg.com/newrelic/-/newrelic-3.3.1.tgz#52fddd74d10af7dbfe4bb4a750a72306602e55ce"
   dependencies:
+    "@newrelic/koa" "^1.0.0"
     async "^2.1.4"
     concat-stream "^1.5.0"
-    https-proxy-agent "^0.3.5"
+    https-proxy-agent "^0.3.6"
     json-stringify-safe "^5.0.0"
     readable-stream "^2.1.4"
     semver "^5.3.0"
