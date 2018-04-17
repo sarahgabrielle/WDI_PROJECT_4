@@ -27,7 +27,7 @@
     "material-ui": "^1.0.0-beta.23",
     "material-ui-icons": "^1.0.0-beta.17",
     "moment": "^2.19.3",
-    "mongoose": "^4.11.12",
+    "mongoose": "^5.0.15",
     "mongoose-fill": "^1.7.0",
     "mongoose-unique-validator": "^1.0.6",
     "morgan": "^1.8.2",
