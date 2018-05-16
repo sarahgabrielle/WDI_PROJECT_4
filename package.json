@@ -40,7 +40,7 @@
     "react-router-bootstrap": "^0.24.4",
     "react-router-dom": "^4.2.2",
     "react-select": "^1.1.0",
-    "request": "^2.83.0",
+    "request": "^2.86.0",
     "request-promise": "^4.2.2",
     "skycons-component": "^1.1.2",
     "socket.io": "^2.0.4",
