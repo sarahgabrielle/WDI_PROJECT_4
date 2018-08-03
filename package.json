@@ -36,7 +36,7 @@
     "react-bootstrap": "^0.31.5",
     "react-bootstrap-autosuggest": "^0.5.0",
     "react-bootstrap-sidebar": "^0.0.1",
-    "react-dom": "^15.6.1",
+    "react-dom": "^16.0.1",
     "react-router-bootstrap": "^0.24.4",
     "react-router-dom": "^4.2.2",
     "react-select": "^1.1.0",
