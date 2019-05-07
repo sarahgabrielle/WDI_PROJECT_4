@@ -12,7 +12,9 @@
     "seed": "node db/seeds",
     "test:client": "node_modules/.bin/_mocha test/client/helper \"test/client/**/*_test.js\"",
     "test:server": "node_modules/.bin/_mocha \"test/api/**/*_test.js\"",
-    "test": "yarn test:server && yarn test:client"
+    "test": "yarn test:server && yarn test:client",
+    "snyk-protect": "snyk protect",
+    "prepublish": "npm run snyk-protect"
   },
   "dependencies": {
     "aws-sdk": "^2.168.0",
@@ -44,7 +46,8 @@
     "request-promise": "^4.2.2",
     "skycons-component": "^1.1.2",
     "socket.io": "^2.0.4",
-    "socket.io-client": "^2.0.4"
+    "socket.io-client": "^2.0.4",
+    "snyk": "^1.161.1"
   },
   "devDependencies": {
     "babel-core": "^6.25.0",
@@ -76,5 +79,6 @@
     "webpack-dev-server": "^2.5.1"
   },
   "repository": "git@github.com:sarahgabrielle/WDI_PROJECT_4.git",
-  "author": "sarahalpay <sarah.g.alpay@gmail.com>"
+  "author": "sarahalpay <sarah.g.alpay@gmail.com>",
+  "snyk": true
 }
