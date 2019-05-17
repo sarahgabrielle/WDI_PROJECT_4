@@ -20,7 +20,7 @@
     "bcrypt": "^1.0.3",
     "body-parser": "^1.18.1",
     "bootstrap-css-only": "^3.3.7",
-    "express": "^4.15.4",
+    "express": "^4.17.0",
     "font-awesome": "^4.7.0",
     "jsonwebtoken": "^8.1.0",
     "lodash": "^4.17.4",
