@@ -17,7 +17,7 @@
   "dependencies": {
     "aws-sdk": "^2.168.0",
     "axios": "^0.17.1",
-    "bcrypt": "^1.0.3",
+    "bcrypt": "^4.0.1",
     "body-parser": "^1.18.1",
     "bootstrap-css-only": "^3.3.7",
     "express": "^4.15.4",
