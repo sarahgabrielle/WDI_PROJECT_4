@@ -31,7 +31,7 @@
     "mongoose-fill": "^1.7.0",
     "mongoose-unique-validator": "^1.0.6",
     "morgan": "^1.8.2",
-    "newrelic": "^2.6.0",
+    "newrelic": "^7.0.1",
     "react": "^15.6.1",
     "react-bootstrap": "^0.31.5",
     "react-bootstrap-autosuggest": "^0.5.0",
